@@ -1,27 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dto;
-
-import entity.Address;
-import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author Jesper
  */
 public class CityInfoDTO {
+
     int id;
     String zipCode, city;
-    List<Address> addresses;
 
-    public CityInfoDTO(int id, String zipCode, String city, List<Address> addresses) {
+    public CityInfoDTO(int id, String zipCode, String city) {
         this.id = id;
         this.zipCode = zipCode;
         this.city = city;
-        this.addresses = addresses;
     }
 
     public int getId() {
@@ -48,13 +39,4 @@ public class CityInfoDTO {
         this.city = city;
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-    }
-    
-    
 }

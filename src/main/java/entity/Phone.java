@@ -16,7 +16,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Phone.findAll", query = "SELECT p FROM Phone p")
-    , @NamedQuery(name = "PhoneDTO.findByNumber", query = "SELECT NEW DTO.PhoneDTO(p.id, p.number, p.description, p.infoEntity.email) FROM Phone p WHERE p.number = :number")})
+    , @NamedQuery(name = "PhoneDTO.findByNumber", query = "SELECT NEW dto.PhoneDTO(p.id, p.number, p.description, p.infoEntity.id) FROM Phone p WHERE p.number = :number")})
 public class Phone implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -67,6 +67,5 @@ public class Phone implements Serializable {
     public void setInfoEntity(InfoEntity infoEntity) {
         this.infoEntity = infoEntity;
     }
-    
 
 }

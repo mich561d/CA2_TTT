@@ -4,6 +4,8 @@ import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
@@ -11,6 +13,10 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 @DiscriminatorValue("PERSON")
+@NamedQueries({
+    @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
+    , @NamedQuery(name = "PersonDTO.findByNumber", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email, p.address, p.hobbies, p.phones) FROM Person p WHERE p.phones.number = :number")
+    , @NamedQuery(name = "PersonDTO.findAllByHobby", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email, p.address, p.hobbies, p.phones) FROM Person p WHERE p.hobbies.id = :hobby")})
 public class Person extends InfoEntity {
 
     private static final long serialVersionUID = 1L;

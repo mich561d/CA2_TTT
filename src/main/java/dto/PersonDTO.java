@@ -1,36 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dto;
 
-import entity.Hobby;
-import entity.Phone;
 import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author Jesper, Michael
  */
 public class PersonDTO {
 
     private int id;
-    private int firstName, lastName;
-    private List<Hobby> hobbies;
-    private List<Phone> phones;
-    private String email, address;
+    private String firstName, lastName, email, address;
+    private List<String> hobbies, phones;
 
-    public PersonDTO(int id, int firstName, int lastName, List<Hobby> hobbies, List<Phone> phones, String email, String address) {
+    public PersonDTO(int id, String firstName, String lastName, String email, String address, List<String> hobbies, List<String> phones) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.hobbies = hobbies;
-        this.phones = phones;
         this.email = email;
         this.address = address;
+        this.hobbies = hobbies;
+        this.phones = phones;
     }
-    
 
     public int getId() {
         return id;
@@ -40,36 +30,20 @@ public class PersonDTO {
         this.id = id;
     }
 
-    public int getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(int firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public int getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(int lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public List<Hobby> getHobbies() {
-        return hobbies;
-    }
-
-    public void setHobbies(List<Hobby> hobbies) {
-        this.hobbies = hobbies;
-    }
-
-    public List<Phone> getPhones() {
-        return phones;
-    }
-
-    public void setPhones(List<Phone> phones) {
-        this.phones = phones;
     }
 
     public String getEmail() {
@@ -86,6 +60,22 @@ public class PersonDTO {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<String> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<String> hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public List<String> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<String> phones) {
+        this.phones = phones;
     }
 
 }

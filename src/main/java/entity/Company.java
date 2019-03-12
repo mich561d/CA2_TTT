@@ -13,8 +13,9 @@ import javax.persistence.NamedQuery;
 @Entity
 @DiscriminatorValue("COMPANY")
 @NamedQueries({
-    @NamedQuery(name = "company.findAll", query = "SELECT c FROM Company c")
-    , @NamedQuery(name = "companyDTO.findCompanyByCVR", query = "SELECT NEW DTO.CompanyDTO(c.id, c.name, c.description, c.cvr, c.numEmployees, c.marketValue, c.email, c.address) FROM Company c WHERE c.cvr = :cvr")})
+    @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c")
+    , @NamedQuery(name = "CompanyDTO.findByPhone", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.phones.number = :phone")
+    , @NamedQuery(name = "CompanyDTO.findByCVR", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.cvr = :cvr")})
 public class Company extends InfoEntity {
 
     private static final long serialVersionUID = 1L;

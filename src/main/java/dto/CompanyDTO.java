@@ -1,54 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dto;
+
+import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author Jesper, Michael
  */
 public class CompanyDTO {
-    private int id;
-    private String name, description;
-    private int cvr, numEmployees, marketValue;
-    private String email, phone, address;
 
-    public CompanyDTO(int id, String name, String description, int cvr, int numEmployees, int marketValue, String email, String phone, String address) {
+    private int id, cvr, numEmployees, marketValue;
+    private String email, name, description, address;
+    private List<String> phones;
+
+    public CompanyDTO(int id, int cvr, int numEmployees, int marketValue, String email, String name, String description, String address, List<String> phones) {
         this.id = id;
-        this.name = name;
-        this.description = description;
         this.cvr = cvr;
         this.numEmployees = numEmployees;
         this.marketValue = marketValue;
         this.email = email;
-        this.phone = phone;
+        this.name = name;
+        this.description = description;
         this.address = address;
+        this.phones = phones;
     }
-    
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getCvr() {
@@ -83,12 +64,20 @@ public class CompanyDTO {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getName() {
+        return name;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getAddress() {
@@ -98,6 +87,13 @@ public class CompanyDTO {
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    
+
+    public List<String> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<String> phones) {
+        this.phones = phones;
+    }
+
 }

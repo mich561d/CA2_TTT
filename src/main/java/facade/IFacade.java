@@ -1,10 +1,10 @@
 package facade;
 
-import entity.CityInfo;
-import entity.Company;
-import entity.Hobby;
-import entity.Person;
-import entity.Phone;
+import dto.CityInfoDTO;
+import dto.CompanyDTO;
+import dto.HobbyDTO;
+import dto.PersonDTO;
+import dto.PhoneDTO;
 import java.util.List;
 
 /**
@@ -13,24 +13,24 @@ import java.util.List;
  */
 public interface IFacade {
 
-    public abstract Phone getPhoneByNumber(String number);
+    public abstract PhoneDTO getPhoneByNumber(String number);
 
-    public abstract Person getPersonByPhone(Phone phone);
+    public abstract PersonDTO getPersonByPhone(PhoneDTO phone);
 
-    public abstract Company getCompanyByPhone(Phone phone);
+    public abstract CompanyDTO getCompanyByPhone(PhoneDTO phone);
 
-    public abstract Company getCompanyByCVR(int cvr);
+    public abstract CompanyDTO getCompanyByCVR(int cvr);
 
-    public abstract Hobby getHobbyByName(String name);
+    public abstract HobbyDTO getHobbyByName(String name);
 
-    public abstract List<Person> getAllPersonsByHobby(Hobby hobby);
+    public abstract List<PersonDTO> getAllPersonsByHobby(HobbyDTO hobby);
 
-    public abstract CityInfo getCityByZip(String zip);
+    public abstract CityInfoDTO getCityByZip(String zip);
 
-    public abstract List<Person> getAllPersonsByCity(CityInfo city);
+    public abstract List<PersonDTO> getAllPersonsByCity(CityInfoDTO city);
 
     public abstract List<String> getAllZipCodes();
 
-    public abstract List<Company> getAllCompaniesWithMoreEmployeesThan(int amount);
+    public abstract List<CompanyDTO> getAllCompaniesWithMoreEmployeesThan(int amount);
 
 }
