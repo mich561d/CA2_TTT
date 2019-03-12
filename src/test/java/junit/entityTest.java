@@ -86,7 +86,7 @@ public class entityTest {
 
     @Test
     public void getAllZipCodesTest() {
-        List<String> zips = facade.getAllZipCodes();
+        List<CityInfoDTO> zips = facade.getAllZipCodes();
         assertEquals(1352, zips.size());
     }
 

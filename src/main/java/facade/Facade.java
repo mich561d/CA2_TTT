@@ -21,7 +21,8 @@ public class Facade implements IFacade {
     public Facade() {
         this.emf = Persistence.createEntityManagerFactory("pu", null);
     }
-
+    
+    //**
     @Override
     public PhoneDTO getPhoneByNumber(String number) {
         EntityManager em = emf.createEntityManager();
@@ -51,7 +52,8 @@ public class Facade implements IFacade {
             em.close();
         }
     }
-
+    
+    //**
     @Override
     public CompanyDTO getCompanyByCVR(int cvr) {
         EntityManager em = emf.createEntityManager();
@@ -61,7 +63,7 @@ public class Facade implements IFacade {
             em.close();
         }
     }
-
+    //**
     @Override
     public HobbyDTO getHobbyByName(String name) {
         EntityManager em = emf.createEntityManager();
@@ -92,22 +94,31 @@ public class Facade implements IFacade {
         }
     }
 
-    // PLEASE FIX ME
     @Override
     public List<PersonDTO> getAllPersonsByCity(CityInfoDTO city) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    // PLEASE FIX ME
+    
+    //**
     @Override
-    public List<String> getAllZipCodes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<CityInfoDTO> getAllZipCodes() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CityInfoDTO.findAllZipCodes", CityInfoDTO.class).getResultList();
+        } finally {
+            em.close();
+        }
     }
-
-    // PLEASE FIX ME
+    
+    //**
     @Override
     public List<CompanyDTO> getAllCompaniesWithMoreEmployeesThan(int amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CompanyDTO.findCompanyWithMoreEmployeesThan", CompanyDTO.class).setParameter("amount", amount).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
 }

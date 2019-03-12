@@ -29,7 +29,7 @@ public interface IFacade {
 
     public abstract List<PersonDTO> getAllPersonsByCity(CityInfoDTO city);
 
-    public abstract List<String> getAllZipCodes();
+    public abstract List<CityInfoDTO> getAllZipCodes();
 
     public abstract List<CompanyDTO> getAllCompaniesWithMoreEmployeesThan(int amount);
 
