@@ -3,6 +3,8 @@ package entity;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
@@ -10,6 +12,9 @@ import javax.persistence.Entity;
  */
 @Entity
 @DiscriminatorValue("COMPANY")
+@NamedQueries({
+    @NamedQuery(name = "company.findAll", query = "SELECT c FROM Company c")
+    , @NamedQuery(name = "companyDTO.findCompanyByCVR", query = "SELECT NEW DTO.CompanyDTO(c.id, c.name, c.description, c.cvr, c.numEmployees, c.marketValue, c.email, c.address) FROM Company c WHERE c.cvr = :cvr")})
 public class Company extends InfoEntity {
 
     private static final long serialVersionUID = 1L;

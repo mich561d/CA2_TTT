@@ -7,12 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Jesper, Michael, Mads
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Hobby.findAll", query = "SELECT h FROM Hobby h")
+    , @NamedQuery(name = "HobbyDTO.findByHobbyName", query = "SELECT NEW DTO.HobbyDTO(h.id, h.name, h.description) FROM Hobby h WHERE h.name = :name")})
 public class Hobby implements Serializable {
 
     private static final long serialVersionUID = 1L;

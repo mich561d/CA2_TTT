@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -13,6 +15,9 @@ import javax.persistence.OneToMany;
  * @author Jesper, Michael, Mads
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "CityInfo.findAll", query = "SELECT c FROM CityInfo c")
+    , @NamedQuery(name = "cityInfoDTO.findCityByZipCode", query = "SELECT NEW DTO.CityInfoDTO(c.id, c.zipCode, c.city) FROM CityInfo c WHERE c.zipCode = :zipCode")})
 public class CityInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
