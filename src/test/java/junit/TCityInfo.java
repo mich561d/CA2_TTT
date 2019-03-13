@@ -21,7 +21,7 @@ public class TCityInfo {
         List<CityInfoDTO> cities = facade.getAllCities();
         assertEquals(1352, cities.size());
     }
-    
+
     @Test
     public void testGetAllCitiesRaw() {
         List<CityInfo> cities = facade.getAllCitiesRaw();

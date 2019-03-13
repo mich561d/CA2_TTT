@@ -6,6 +6,7 @@ import dto.CompanyDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
+import entity.CityInfo;
 import entity.Hobby;
 import java.util.List;
 import javax.persistence.EntityManager;

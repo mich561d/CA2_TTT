@@ -83,8 +83,11 @@ public class Company extends InfoEntity {
     }
 
     public String toSql() {
-        return "INSERT INTO INFOENTITY (ENTITY_TYPE,EMAIL) VALUES ('C','" + this.getEmail() + "');\n"
-                + "SET @infoentity = LAST_INSERT_ID();\n"
-                + "INSERT INTO COMPANY (ID,CVR,DESCRIPTION,MARKETVALUE,NAME,NUMEMPLOYEES) VALUES (LAST_INSERT_ID(),'" + this.cvr + "','" + this.description + "','" + this.marketValue + "','" + this.name + "','" + this.numEmployees + "');\n";
+        StringBuilder str = new StringBuilder();
+        str.append("INSERT INTO ADDRESS (STREET,ADDITIONALINFO,CITYINFO_ID) VALUES ('").append(this.getAddress().getStreet()).append("','").append(this.getAddress().getAdditionalInfo()).append("','").append(this.getAddress().getCityInfo().getId()).append("');");
+        str.append("INSERT INTO INFOENTITY (ENTITY_TYPE,EMAIL,ADRESS_ID) VALUES ('C','").append(this.getEmail()).append("',LAST_INSERT_ID());\n");
+        str.append("INSERT INTO COMPANY (ID,CVR,DESCRIPTION,MARKETVALUE,NAME,NUMEMPLOYEES) VALUES (LAST_INSERT_ID(),'").append(this.cvr).append("','").append(this.description).append("','").append(this.marketValue).append("','").append(this.name).append("','").append(this.numEmployees).append("');\n");
+        str.append("INSERT INTO PHONE(INFOENTITY_ID,DESCRIPTION,NUMBER) VALUES (LAST_INSERT_ID(),'").append(this.getPhones().get(0).getDescription()).append("','").append(this.getPhones().get(0).getNumber()).append("');\n");
+        return str.toString();
     }
 }
