@@ -1,0 +1,110 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package facade;
+
+import dto.HobbyDTO;
+import entity.Hobby;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+/**
+ *
+ * @author Jesper
+ */
+public class HobbyFacade implements IHobby {
+
+    EntityManagerFactory emf;
+
+    public HobbyFacade() {
+        this.emf = Persistence.createEntityManagerFactory("pu", null);
+    }
+
+    @Override
+    public Hobby getHobbyByID(int id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("Hobby.FindByID", Hobby.class).setParameter("id", id).getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public HobbyDTO getHobbyByName(String name) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("HobbyDTO.findByName", HobbyDTO.class).setParameter("name", name).getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Hobby> getAllHobbies() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("Hobby.findAll", Hobby.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public HobbyDTO createHobby(Hobby hobby) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(hobby);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return new HobbyDTO(hobby.getId(), hobby.getName(), hobby.getDescription());
+    }
+
+    @Override
+    public HobbyDTO updateHobby(HobbyDTO updatedHobby) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            HobbyDTO h = getHobbyByName(updatedHobby.getName());
+            em.getTransaction().begin();
+            em.persist(updatedHobby);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return updatedHobby;
+    }
+
+    @Override
+    public void deleteHobbyByID(int id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Hobby h = getHobbyByID(id);
+            em.getTransaction().begin();
+            em.remove(h);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public void deleteHobbyByName(String name) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            HobbyDTO h = getHobbyByName(name);
+            em.getTransaction().begin();
+            em.remove(h);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+}
