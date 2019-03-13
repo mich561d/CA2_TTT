@@ -16,11 +16,11 @@ import javax.persistence.Persistence;
  *
  * @author Jesper
  */
-public class HobbyFacade implements IHobby {
+public class FHobby implements IHobby {
 
     EntityManagerFactory emf;
 
-    public HobbyFacade() {
+    public FHobby() {
         this.emf = Persistence.createEntityManagerFactory("pu", null);
     }
 
@@ -71,7 +71,9 @@ public class HobbyFacade implements IHobby {
     public HobbyDTO updateHobby(HobbyDTO updatedHobby) {
         EntityManager em = emf.createEntityManager();
         try {
-            HobbyDTO h = getHobbyByName(updatedHobby.getName());
+            Hobby h = getHobbyByID(updatedHobby.getId());
+            h.setName(updatedHobby.getName());
+            h.setDescription(updatedHobby.getDescription());
             em.getTransaction().begin();
             em.persist(updatedHobby);
             em.getTransaction().commit();
