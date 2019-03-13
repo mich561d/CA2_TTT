@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface IPerson {
 
-    public abstract PersonDTO getPersonByID(int id);
+    public abstract Person getPersonByID(int id);
 
     public abstract PersonDTO getPersonByEmail(String email);
 
@@ -27,7 +27,7 @@ public interface IPerson {
 
     public abstract List<PersonDTO> getAllPersonsByAddress(AddressDTO address);
 
-    public abstract PersonDTO createHobby(Person person);
+    public abstract PersonDTO createPerson(Person person);
 
     public abstract PersonDTO updatePerson(PersonDTO updatedPerson);
 
