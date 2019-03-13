@@ -5,7 +5,10 @@ import dto.AddressDTO;
 import dto.CityInfoDTO;
 import dto.CompanyDTO;
 import entity.Company;
+import entity.Phone;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 /**
@@ -22,32 +25,62 @@ public class FCompany implements ICompany {
 
     @Override
     public Company getCompanyByID(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("Company.findById", Company.class).setParameter("id", id).getSingleResult();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public CompanyDTO getCompanyByEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CompanyDTO.findByEmail", CompanyDTO.class).setParameter("email", email).getSingleResult();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
-    public CompanyDTO getCompanyByPhone(String phone) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CompanyDTO getCompanyByPhone(String number) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CompanyDTO.findByPhone", CompanyDTO.class).setParameter("number", number).getSingleResult();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public CompanyDTO getCompanyByCVR(int cvr) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CompanyDTO.findByCVR", CompanyDTO.class).setParameter("cvr", cvr).getSingleResult();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public List<CompanyDTO> getAllCompanies() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CompanyDTO.findAll", CompanyDTO.class).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public List<CompanyDTO> getAllCompaniessByCity(CityInfoDTO city) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CompanyDTO.findByCity", CompanyDTO.class).setParameter("zip", city.getZipCode()).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
@@ -57,27 +90,82 @@ public class FCompany implements ICompany {
 
     @Override
     public List<CompanyDTO> getAllCompaniesWithNumEmployeesOver(int amount) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CompanyDTO.findByEmployeeCountMoreThan", CompanyDTO.class).setParameter("amount", amount).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public List<CompanyDTO> getAllCompaniesWithMarketValueOver(int value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CompanyDTO.findByMarketValueHigherThan", CompanyDTO.class).setParameter("value", value).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public CompanyDTO createCompany(Company company) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(company);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        List<String> phones = new ArrayList();
+        for (int i = 0; i < phones.size(); i++) {
+            phones.add(company.getPhones().get(i).getNumber());
+        }
+        
+        return new CompanyDTO(company.getId(), company.getCvr(), company.getNumEmployees(), company.getMarketValue(), company.getEmail(), company.getName(), company.getDescription(), company.getAddress().getStreet(), phones);
     }
 
     @Override
     public CompanyDTO updateCompany(CompanyDTO updatedCompany) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        Company c = getCompanyByID(updatedCompany.getId());
+        c.setName(updatedCompany.getName());
+        c.setDescription(updatedCompany.getDescription());
+        c.setCvr(updatedCompany.getCvr());
+        c.setNumEmployees(updatedCompany.getNumEmployees());
+        c.setMarketValue(updatedCompany.getMarketValue());
+        c.setEmail(updatedCompany.getEmail());
+        c.setPhones(null);
+        c.setAddress(null);
+        try {
+            em.getTransaction().begin();
+            em.persist(c);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        
+        List<String> phones = new ArrayList();
+        for (int i = 0; i < phones.size(); i++) {
+            phones.add(c.getPhones().get(i).getNumber());
+        }
+        
+        return new CompanyDTO(c.getId(), c.getCvr(), c.getNumEmployees(), c.getMarketValue(), c.getEmail(), c.getName(), c.getDescription(), c.getAddress().getStreet(), phones);
+  
     }
 
     @Override
-    public void deleteCompany() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteCompany(int id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Company c = getCompanyByID(id);
+            em.getTransaction().begin();
+            em.remove(c);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
 }
