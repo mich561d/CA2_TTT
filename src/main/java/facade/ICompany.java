@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface ICompany {
 
-    public abstract CompanyDTO getCompanyByID(int id);
+    public abstract Company getCompanyByID(int id);
 
     public abstract CompanyDTO getCompanyByEmail(String email);
 

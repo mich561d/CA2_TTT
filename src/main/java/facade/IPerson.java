@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface IPerson {
 
-    public abstract PersonDTO getPersonByID(int id);
+    public abstract Person getPersonByID(int id);
 
     public abstract PersonDTO getPersonByEmail(String email);
 
