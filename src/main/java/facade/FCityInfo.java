@@ -14,8 +14,8 @@ public class FCityInfo implements ICityInfo {
 
     EntityManagerFactory emf;
 
-    public FCityInfo() {
-        this.emf = Persistence.createEntityManagerFactory("pu", null);
+    public FCityInfo(EntityManagerFactory emf) {
+        this.emf = emf;
     }
 
     @Override

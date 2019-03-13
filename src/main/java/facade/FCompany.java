@@ -5,12 +5,19 @@ import dto.CityInfoDTO;
 import dto.CompanyDTO;
 import entity.Company;
 import java.util.List;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
  * @author Michael
  */
 public class FCompany implements ICompany {
+
+    EntityManagerFactory emf;
+
+    public FCompany(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
 
     @Override
     public Company getCompanyByID(int id) {
