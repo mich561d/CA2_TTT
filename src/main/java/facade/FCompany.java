@@ -122,7 +122,7 @@ public class FCompany implements ICompany {
         for (int i = 0; i < phones.size(); i++) {
             phones.add(company.getPhones().get(i).getNumber());
         }
-        
+
         return new CompanyDTO(company.getId(), company.getCvr(), company.getNumEmployees(), company.getMarketValue(), company.getEmail(), company.getName(), company.getDescription(), company.getAddress().getStreet(), phones);
     }
 
@@ -145,14 +145,14 @@ public class FCompany implements ICompany {
         } finally {
             em.close();
         }
-        
+
         List<String> phones = new ArrayList();
         for (int i = 0; i < phones.size(); i++) {
             phones.add(c.getPhones().get(i).getNumber());
         }
-        
+
         return new CompanyDTO(c.getId(), c.getCvr(), c.getNumEmployees(), c.getMarketValue(), c.getEmail(), c.getName(), c.getDescription(), c.getAddress().getStreet(), phones);
-  
+
     }
 
     @Override
