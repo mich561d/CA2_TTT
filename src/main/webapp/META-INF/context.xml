@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/CA2_TTT">
   <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="jdbc:mysql://139.59.147.129:3306/CA2[transformer on Default schema]" password="transformerpass" type="javax.sql.DataSource" url="jdbc:mysql://139.59.147.129:3306/CA2" username="transformer"/>
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="java:/" password="transformerpass" type="javax.sql.DataSource" url="jdbc:mysql://139.59.147.129:3306/CA2" username="transformer"/>
 </Context>
