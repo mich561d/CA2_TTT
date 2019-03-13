@@ -27,7 +27,7 @@ public interface IPerson {
 
     public abstract List<PersonDTO> getAllPersonsByAddress(AddressDTO address);
 
-    public abstract PersonDTO createHobby(Person person);
+    public abstract PersonDTO createPerson(Person person);
 
     public abstract PersonDTO updatePerson(PersonDTO updatedPerson);
 
