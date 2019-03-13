@@ -1,5 +1,6 @@
 package facade;
 
+import interfaces.IFacade;
 import dto.CityInfoDTO;
 import dto.CompanyDTO;
 import dto.HobbyDTO;
@@ -132,11 +133,6 @@ public class Facade implements IFacade {
         } finally {
             em.close();
         }
-    }
-
-    @Override
-    public List<CityInfo> getAllCityInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

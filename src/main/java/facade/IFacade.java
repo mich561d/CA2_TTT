@@ -36,7 +36,7 @@ public interface IFacade {
     public abstract List<CompanyDTO> getAllCompaniesWithMoreEmployeesThan(int amount);
 
     public abstract List<Hobby> getAllHobbies();
-    
+
     public abstract List<CityInfo> getAllCityInfo();
 
 }
