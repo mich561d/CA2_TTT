@@ -19,7 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
         Persistence.generateSchema("pu", null);
-        
+
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
 //        EntityManager em = emf.createEntityManager();
 //         List<Hobby> hobbies = new ArrayList();

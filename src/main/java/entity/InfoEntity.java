@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "ENTITY_TYPE")
-@Table(name="INFOENTITY")
+@Table(name = "INFOENTITY")
 public abstract class InfoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
