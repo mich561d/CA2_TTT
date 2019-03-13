@@ -1,6 +1,7 @@
 package facade;
 
 import dto.CityInfoDTO;
+import entity.CityInfo;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,6 +23,16 @@ public class FCityInfo implements ICityInfo {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("CityInfoDTO.findAll", CityInfoDTO.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<CityInfo> getAllCitiesRaw() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CityInfo.findAll", CityInfo.class).getResultList();
         } finally {
             em.close();
         }
