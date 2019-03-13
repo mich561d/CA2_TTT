@@ -1,4 +1,4 @@
-package facade;
+package interfaces;
 
 import dto.CityInfoDTO;
 import entity.CityInfo;

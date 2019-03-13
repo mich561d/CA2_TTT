@@ -6,7 +6,7 @@ import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
 import facade.Facade;
-import facade.IFacade;
+import interfaces.IFacade;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;

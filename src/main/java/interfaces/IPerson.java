@@ -1,4 +1,4 @@
-package facade;
+package interfaces;
 
 import dto.AddressDTO;
 import dto.CityInfoDTO;

@@ -7,7 +7,7 @@ import entity.Hobby;
 import entity.Person;
 import entity.Phone;
 import facade.Facade;
-import facade.IFacade;
+import interfaces.IFacade;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
