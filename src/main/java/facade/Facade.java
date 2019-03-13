@@ -5,6 +5,7 @@ import dto.CompanyDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
+import entity.Hobby;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -21,8 +22,7 @@ public class Facade implements IFacade {
     public Facade() {
         this.emf = Persistence.createEntityManagerFactory("pu", null);
     }
-    
-    //**
+
     @Override
     public PhoneDTO getPhoneByNumber(String number) {
         EntityManager em = emf.createEntityManager();
@@ -52,8 +52,7 @@ public class Facade implements IFacade {
             em.close();
         }
     }
-    
-    //**
+
     @Override
     public CompanyDTO getCompanyByCVR(int cvr) {
         EntityManager em = emf.createEntityManager();
@@ -63,7 +62,7 @@ public class Facade implements IFacade {
             em.close();
         }
     }
-    //**
+
     @Override
     public HobbyDTO getHobbyByName(String name) {
         EntityManager em = emf.createEntityManager();
@@ -96,26 +95,39 @@ public class Facade implements IFacade {
 
     @Override
     public List<PersonDTO> getAllPersonsByCity(CityInfoDTO city) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    //**
-    @Override
-    public List<CityInfoDTO> getAllZipCodes() {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("CityInfoDTO.findAllZipCodes", CityInfoDTO.class).getResultList();
+            return em.createNamedQuery("PersonDTO.findAllByCity", PersonDTO.class).setParameter("zip", city.getZipCode()).getResultList();
         } finally {
             em.close();
         }
     }
-    
-    //**
+
+    @Override
+    public List<String> getAllZipCodes() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CityInfoDTO.findAllZipCodes", String.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
     @Override
     public List<CompanyDTO> getAllCompaniesWithMoreEmployeesThan(int amount) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("CompanyDTO.findCompanyWithMoreEmployeesThan", CompanyDTO.class).setParameter("amount", amount).getResultList();
+            return em.createNamedQuery("CompanyDTO.findByEmployeeCountMoreThan", CompanyDTO.class).setParameter("amount", amount).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Hobby> getAllHobbies() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("Hobby.findAll", Hobby.class).getResultList();
         } finally {
             em.close();
         }

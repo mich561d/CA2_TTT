@@ -5,11 +5,6 @@ import dto.CompanyDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
-import entity.CityInfo;
-import entity.Company;
-import entity.Hobby;
-import entity.Person;
-import entity.Phone;
 import facade.Facade;
 import facade.IFacade;
 import java.util.List;
@@ -86,7 +81,7 @@ public class entityTest {
 
     @Test
     public void getAllZipCodesTest() {
-        List<CityInfoDTO> zips = facade.getAllZipCodes();
+        List<String> zips = facade.getAllZipCodes();
         assertEquals(1352, zips.size());
     }
 

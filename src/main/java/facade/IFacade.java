@@ -5,6 +5,7 @@ import dto.CompanyDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
+import entity.Hobby;
 import java.util.List;
 
 /**
@@ -29,8 +30,10 @@ public interface IFacade {
 
     public abstract List<PersonDTO> getAllPersonsByCity(CityInfoDTO city);
 
-    public abstract List<CityInfoDTO> getAllZipCodes();
+    public abstract List<String> getAllZipCodes();
 
     public abstract List<CompanyDTO> getAllCompaniesWithMoreEmployeesThan(int amount);
+    
+    public abstract List<Hobby> getAllHobbies();
 
 }

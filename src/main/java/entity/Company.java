@@ -16,7 +16,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c")
     , @NamedQuery(name = "CompanyDTO.findByPhone", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.phones.number = :phone")
     , @NamedQuery(name = "CompanyDTO.findByCVR", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.cvr = :cvr")
-    , @NamedQuery(name = "CompanyDTO.findCompanyWithMoreEmployeesThan", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones.number) FROM Company c WHERE c.numEmployees > :amount")})
+    , @NamedQuery(name = "CompanyDTO.findByEmployeeCountMoreThan", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones.number) FROM Company c WHERE c.numEmployees > :amount")})
 public class Company extends InfoEntity {
 
     private static final long serialVersionUID = 1L;

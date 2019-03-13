@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 @NamedQueries({
     @NamedQuery(name = "CityInfo.findAll", query = "SELECT c FROM CityInfo c")
     , @NamedQuery(name = "CityInfoDTO.findByZipCode", query = "SELECT NEW dto.CityInfoDTO(c.id, c.zipCode, c.city) FROM CityInfo c WHERE c.zipCode = :zipCode")
-    , @NamedQuery(name = "CityInfoDTO.findAllZipCodes", query = "SELECT NEW dto.CityInfoDTO(c.zipCode) FROM CityInfo c")})
+    , @NamedQuery(name = "CityInfo.findAllZipCodes", query = "SELECT c.zipCode FROM CityInfo c")})
 public class CityInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
