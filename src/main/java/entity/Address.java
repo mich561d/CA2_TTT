@@ -36,6 +36,10 @@ public class Address implements Serializable {
         this.cityInfo = cityInfo;
     }
 
+
+    
+    
+
     public Address(String street, String additionalInfo, List<InfoEntity> infoEntities, CityInfo cityInfo) {
         this.street = street;
         this.additionalInfo = additionalInfo;

@@ -34,10 +34,10 @@ public class TCompany {
         assertNotNull(c);
     }
 
-    public void testGetCompanyByPhone() {
-        CompanyDTO c = facade.getCompanyByPhone("10000001");
-        assertNotNull(c);
-    }
+//    public void testGetCompanyByPhone() {
+//        CompanyDTO c = facade.getCompanyByPhone("10000001");
+//        assertNotNull(c);
+//    }
 
     public void testGetCompanyByCVR() {
         CompanyDTO c = facade.getCompanyByCVR(70000001);

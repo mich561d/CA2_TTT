@@ -5,6 +5,7 @@ import dto.AddressDTO;
 import dto.CityInfoDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
+import dto.PhoneDTO;
 import entity.Person;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class FPerson implements IPerson {
     }
 
     @Override
-    public PersonDTO getPersonByPhone(String phone) {
+    public PersonDTO getPersonByPhone(PhoneDTO phone) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("PersonDTO.findByNumber", PersonDTO.class).setParameter("number", phone).getSingleResult();

@@ -3,6 +3,7 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import facade.FCompany;
+import facade.FPhone;
 import facade.Facade;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.Context;
@@ -19,7 +20,7 @@ import javax.ws.rs.core.Response;
 /**
  * REST Web Service
  *
- * @author Admin
+ * @author Jesper
  */
 @Path("company")
 public class CompanyResource {
@@ -29,6 +30,7 @@ public class CompanyResource {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     EntityManagerFactory emf;
     FCompany fCompany = new FCompany(emf);
+    FPhone fPhone = new FPhone(emf);
     Facade f = new Facade();
 
     /**
@@ -37,11 +39,22 @@ public class CompanyResource {
     public CompanyResource() {
     }
 
-//    @GET
-//    @Path("/{number}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response getCompanyByPhone(@PathParam("number") String number) {
-//        return Response.ok().entity(gson.toJson(fCompany.getCompanyByPhone(f.getPhoneByNumber(number)))).build();
-//    }
+    @GET
+    @Path("/{number}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getCompanyByPhone(@PathParam("number") String number) {
+        return Response.ok().entity(gson.toJson(fCompany.getCompanyByPhone(fPhone.getPhoneByNumber(number)))).build();
+    }
+
+    @GET
+    @Path("/{cvr}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getCompanyByCVR(@PathParam("cvr") int cvr) {
+        return Response.ok().entity(gson.toJson(fCompany.getCompanyByCVR(cvr))).build();
+    }
+    
+    
+
 }
