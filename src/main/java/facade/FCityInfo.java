@@ -2,6 +2,9 @@ package facade;
 
 import dto.CityInfoDTO;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -9,9 +12,20 @@ import java.util.List;
  */
 public class FCityInfo implements ICityInfo {
 
+    EntityManagerFactory emf;
+
+    public FCityInfo() {
+        this.emf = Persistence.createEntityManagerFactory("pu", null);
+    }
+
     @Override
     public List<CityInfoDTO> getAllCities() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CityInfoDTO.findAll", CityInfoDTO.class).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
 }
