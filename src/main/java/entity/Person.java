@@ -4,13 +4,15 @@ import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author Jesper, Michael, Mads
  */
 @Entity
-@DiscriminatorValue("PERSON")
+@DiscriminatorValue("P")
+@Table(name="PERSON")
 public class Person extends InfoEntity {
 
     private static final long serialVersionUID = 1L;
@@ -50,6 +52,12 @@ public class Person extends InfoEntity {
 
     public void setHobbies(List<Hobby> hobbies) {
         this.hobbies = hobbies;
+    }
+    
+    public String toSql() {
+        return "INSERT INTO INFOENTITY (ENTITY_TYPE,EMAIL) VALUES ('P','" + this.getEmail() + "');\n"
+                +"SET @infoentity = LAST_INSERT_ID();\n"
+                +"INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME) VALUES (LAST_INSERT_ID(),'" + this.firstName + "','" + this.lastName + "');\n";
     }
 
 }

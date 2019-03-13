@@ -3,13 +3,15 @@ package entity;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
  * @author Jesper, Michael, Mads
  */
 @Entity
-@DiscriminatorValue("COMPANY")
+@DiscriminatorValue("C")
+@Table(name = "Company")
 public class Company extends InfoEntity {
 
     private static final long serialVersionUID = 1L;
@@ -66,6 +68,12 @@ public class Company extends InfoEntity {
 
     public void setMarketValue(int marketValue) {
         this.marketValue = marketValue;
+    }
+
+    public String toSql() {
+        return "INSERT INTO INFOENTITY (ENTITY_TYPE,EMAIL) VALUES ('C','" + this.getEmail() + "');\n"
+                + "SET @infoentity = LAST_INSERT_ID();\n"
+                + "INSERT INTO COMPANY (ID,CVR,DESCRIPTION,MARKETVALUE,NAME,NUMEMPLOYEES) VALUES (LAST_INSERT_ID(),'" + this.cvr + "','" + this.description + "','" + this.marketValue + "','" + this.name + "','" + this.numEmployees + "');\n";
     }
 
 }

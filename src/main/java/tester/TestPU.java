@@ -13,16 +13,20 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Micheal
+ * @author Fen
  */
-public class Main {
+public class TestPU {
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
-        Persistence.generateSchema("pu", null);
-        
+        // TODO code application logic here
+        Persistence.generateSchema("pu-test", null);
+
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
 //        EntityManager em = emf.createEntityManager();
-//         List<Hobby> hobbies = new ArrayList();
+//        List<Hobby> hobbies = new ArrayList();
 //        hobbies.add(new Hobby("Programming", "Java is great"));
 //        List<Phone> phones = new ArrayList();
 //        phones.add(new Phone("12435687", "mobil"));
@@ -30,4 +34,5 @@ public class Main {
 //        Person person = new Person("Mads", "Floistrup", hobbies, "cph-mf226@cphbusiness.dk", phones, address);
 //        em.persist(person);
     }
+
 }

@@ -26,6 +26,11 @@ public class Hobby implements Serializable {
     public Hobby() {
     }
 
+    public Hobby(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public Hobby(String name, String description, List<Person> persons) {
         this.name = name;
         this.description = description;
@@ -62,6 +67,10 @@ public class Hobby implements Serializable {
 
     public void setPersons(List<Person> persons) {
         this.persons = persons;
+    }
+
+    public String toSql() {
+        return "INSERT INTO HOBBY (NAME,DESCRIPTION) VALUES ('" + this.name + "','" + this.description + "');\n";
     }
 
 }

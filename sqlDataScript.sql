@@ -1,0 +1,1 @@
+INSERT INTO name (name,surname,gender) VALUES ('Linda','Schreiber','female');

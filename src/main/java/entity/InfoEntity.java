@@ -11,6 +11,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
@@ -19,7 +20,8 @@ import javax.persistence.OneToMany;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "ENTITY_TYPE")
-public class InfoEntity implements Serializable {
+@Table(name="INFOENTITY")
+public abstract class InfoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

@@ -25,6 +25,11 @@ public class Phone implements Serializable {
     public Phone() {
     }
 
+    public Phone(String number, String description) {
+        this.number = number;
+        this.description = description;
+    }
+
     public Phone(String number, String description, InfoEntity infoEntity) {
         this.number = number;
         this.description = description;
@@ -62,6 +67,9 @@ public class Phone implements Serializable {
     public void setInfoEntity(InfoEntity infoEntity) {
         this.infoEntity = infoEntity;
     }
-    
+
+    public String toSql() {
+        return "INSERT INTO PERSON (NUMBER,DESCRIPTION) VALUES ('" + this.number + "','" + this.description + "');\n";
+    }
 
 }
