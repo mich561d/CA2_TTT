@@ -5,6 +5,7 @@ import dto.CityInfoDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import entity.Person;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -88,15 +89,7 @@ public class FPerson implements IPerson {
 
     @Override
     public PersonDTO createPerson(Person person) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            em.getTransaction().begin();
-            em.persist(person);
-            em.getTransaction().commit();
-        } finally {
-            em.close();
-        }
-        return new PersonDTO();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
