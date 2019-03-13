@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-    <persistence-unit name="pu" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="pu-test" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <non-jta-data-source/>
         <class>entity.Address</class>
         <class>entity.CityInfo</class>
         <class>entity.Company</class>
@@ -12,13 +11,13 @@
         <class>entity.Phone</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://139.59.147.129:3306/CA2"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://139.59.147.129:3306/CATEST"/>
             <property name="javax.persistence.jdbc.user" value="transformer"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.password" value="transformerpass"/>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="javax.persistence.sql-load-script-source" value="scripts/zipAndHobbies.sql"/>
-            <property name="eclipselink.canonicalmodel.subpackage" value="db"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="test"/>
         </properties>
     </persistence-unit>
 </persistence>
