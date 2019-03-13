@@ -10,7 +10,6 @@ import entity.Hobby;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -20,8 +19,8 @@ public class FHobby implements IHobby {
 
     EntityManagerFactory emf;
 
-    public FHobby() {
-        this.emf = Persistence.createEntityManagerFactory("pu", null);
+    public FHobby(EntityManagerFactory emf) {
+        this.emf = emf;
     }
 
     @Override
