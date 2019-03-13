@@ -8,9 +8,11 @@ import entity.Hobby;
 import entity.Person;
 import entity.Phone;
 import facade.FCityInfo;
+import facade.FHobby;
 import facade.Facade;
 import interfaces.ICityInfo;
 import interfaces.IFacade;
+import interfaces.IHobby;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,12 +35,13 @@ public class Generator {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
 
     public void generateRandomPersons(int sampleAmount) throws IOException {
-        IFacade facade = new Facade();
+        ICityInfo cityInfoFacade = new FCityInfo(emf);
+        IHobby hobbyFacade = new FHobby(emf);
         Random rand = new Random();
         String path = "src/main/resources/scripts/infoEntities.sql";
 
-        List<Hobby> allHobbies = facade.getAllHobbies();
-        List<String> allZipCodes = facade.getAllZipCodes();
+        List<Hobby> allHobbies = hobbyFacade.getAllHobbies();
+        List<CityInfo> allZipCodes = cityInfoFacade.getAllCitiesRaw();
         int phoneNumber = 50000000;
 
         for (int i = 0; i < sampleAmount; i++) {
@@ -52,27 +55,29 @@ public class Generator {
             Person person = new Person(firstName, lastName, hobbies, email, phones, address);
 
             int amountOfHobbies = rand.nextInt(3) + 1;
-            for (int j = 0; j < amountOfHobbies; i++) {
+            for (int j = 0; j < amountOfHobbies; j++) {
                 int hobby = rand.nextInt(allHobbies.size());
                 hobbies.add(allHobbies.get(hobby));
             }
-
+            person.setHobbies(hobbies);
             int amountOfPhones = rand.nextInt(2) + 1;
-            for (int j = 0; j < amountOfPhones; i++) {
+            for (int j = 0; j < amountOfPhones; j++) {
                 phones.add(new Phone(Integer.toString(phoneNumber++), "mobile", person));
             }
+            person.setPhones(phones);
+            address = new Address("Personstreet", "Number: " + i, allZipCodes.get(rand.nextInt(allZipCodes.size())));
+            person.setAddress(address);
 
             writeToFile(person.toSql(), path, true);
         }
     }
 
     public void generateRandomCompanies(int sampleAmount) throws IOException {
-        ICityInfo facade = new FCityInfo(emf);
+        ICityInfo cityInfoFacade = new FCityInfo(emf);
         Random rand = new Random();
         String path = "src/main/resources/scripts/infoEntities.sql";
 
-        //List<Hobby> allHobbies = facade.getAllHobbies();
-        List<CityInfo> allZipCodes = facade.getAllCitiesRaw();
+        List<CityInfo> allZipCodes = cityInfoFacade.getAllCitiesRaw();
         int phoneNumber = 10000000;
         int cvrNumber = 70000000;
 

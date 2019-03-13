@@ -1,6 +1,7 @@
 package entity;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -27,7 +28,7 @@ public class Person extends InfoEntity {
 
     private static final long serialVersionUID = 1L;
     private String firstName, lastName;
-    @ManyToMany(mappedBy = "persons")
+    @ManyToMany(mappedBy = "persons", cascade = CascadeType.ALL)
     private List<Hobby> hobbies;
 
     public Person() {
