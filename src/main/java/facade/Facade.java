@@ -1,5 +1,6 @@
 package facade;
 
+import interfaces.IFacade;
 import dto.CityInfoDTO;
 import dto.CompanyDTO;
 import dto.HobbyDTO;

@@ -1,5 +1,6 @@
 package facade;
 
+import interfaces.IHobby;
 import dto.HobbyDTO;
 import entity.Hobby;
 import java.util.List;

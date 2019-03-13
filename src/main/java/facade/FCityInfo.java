@@ -1,5 +1,6 @@
 package facade;
 
+import interfaces.ICityInfo;
 import dto.CityInfoDTO;
 import entity.CityInfo;
 import java.util.List;
