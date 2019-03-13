@@ -6,8 +6,8 @@ package dto;
  */
 public class CityInfoDTO {
 
-    int id;
-    String zipCode, city;
+    private int id;
+    private String zipCode, city;
 
     public CityInfoDTO(int id, String zipCode, String city) {
         this.id = id;

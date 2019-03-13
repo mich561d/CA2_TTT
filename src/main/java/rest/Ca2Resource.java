@@ -118,7 +118,7 @@ public class Ca2Resource {
     public Response getAllHobbies() {
         return Response.ok().entity(gson.toJson(f.getAllHobbies())).build();
     }
-    
+
     @GET
     @Path("/person/{zipcode}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -126,7 +126,5 @@ public class Ca2Resource {
     public Response getAllPersonsByCity(@PathParam("zipcode") String zipcode) {
         return Response.ok().entity(gson.toJson(f.getAllPersonsByCity(f.getCityByZip(zipcode)))).build();
     }
-    
-    
 
 }

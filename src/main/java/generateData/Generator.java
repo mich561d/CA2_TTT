@@ -34,7 +34,7 @@ public class Generator {
         for (int i = 0; i < sampleAmount; i++) {
             String firstName = FIRSTNAMES[rand.nextInt(FIRSTNAMES.length)];
             String lastName = LASTNAMES[rand.nextInt(LASTNAMES.length)];
-            
+
 //            ArrayList<Hobby> hobbies = new ArrayList();
 //            int amountOfHobbies = rand.nextInt(3) + 1;
 //            for(int j = 0; j < amountOfHobbies ; i++) {
@@ -42,10 +42,8 @@ public class Generator {
 //                hobbies.add(allHobies.get(hobby));
 //            }
             String email = "" + firstName + "@" + lastName + ".com";
-            
-            
+
             //persons.add(new Person(FIRSTNAMES[fName], LASTNAMES[lName], hobbies, email, phones, address));
-            
         }
 
         //return gson.toJson(persons);
@@ -78,7 +76,7 @@ public class Generator {
     }
 
     public static void main(String[] args) {
-        
+
         Generator generator = new Generator();
         try {
             //System.out.println(Generator.generateRandomPersons(100));

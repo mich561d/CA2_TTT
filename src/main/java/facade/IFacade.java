@@ -33,7 +33,7 @@ public interface IFacade {
     public abstract List<String> getAllZipCodes();
 
     public abstract List<CompanyDTO> getAllCompaniesWithMoreEmployeesThan(int amount);
-    
+
     public abstract List<Hobby> getAllHobbies();
 
 }
