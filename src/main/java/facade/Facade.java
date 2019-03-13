@@ -5,6 +5,7 @@ import dto.CompanyDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
+import entity.CityInfo;
 import entity.Hobby;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -131,6 +132,11 @@ public class Facade implements IFacade {
         } finally {
             em.close();
         }
+    }
+
+    @Override
+    public List<CityInfo> getAllCityInfo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -78,8 +78,10 @@ public class Company extends InfoEntity {
     }
 
     public String toSql() {
-        return "INSERT INTO INFOENTITY (ENTITY_TYPE,EMAIL) VALUES ('C','" + this.getEmail() + "');\n"
+        String sql = "INSERT INTO INFOENTITY (ENTITY_TYPE,EMAIL) VALUES ('C','" + this.getEmail() + "');\n"
                 + "SET @infoentity = LAST_INSERT_ID();\n"
                 + "INSERT INTO COMPANY (ID,CVR,DESCRIPTION,MARKETVALUE,NAME,NUMEMPLOYEES) VALUES (LAST_INSERT_ID(),'" + this.cvr + "','" + this.description + "','" + this.marketValue + "','" + this.name + "','" + this.numEmployees + "');\n";
+        System.out.println(sql);
+        return sql;
     }
 }
