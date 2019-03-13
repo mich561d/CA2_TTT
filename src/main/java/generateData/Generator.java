@@ -7,7 +7,9 @@ import entity.Company;
 import entity.Hobby;
 import entity.Person;
 import entity.Phone;
+import facade.FCityInfo;
 import facade.Facade;
+import interfaces.ICityInfo;
 import interfaces.IFacade;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -17,6 +19,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -26,6 +30,7 @@ public class Generator {
 
     private final static String[] FIRSTNAMES = {"Mads", "Christian", "Jesper", "Michael", "Lone", "Sine"};
     private final static String[] LASTNAMES = {"Nielsen", "Jensen", "Olsen", "Fløistrup", "Andersen", "Åberg"};
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
 
     public void generateRandomPersons(int sampleAmount) throws IOException {
         IFacade facade = new Facade();
@@ -62,12 +67,12 @@ public class Generator {
     }
 
     public void generateRandomCompanies(int sampleAmount) throws IOException {
-        //IFacade facade = new Facade();
+        ICityInfo facade = new FCityInfo(emf);
         Random rand = new Random();
         String path = "src/main/resources/scripts/infoEntities.sql";
 
         //List<Hobby> allHobbies = facade.getAllHobbies();
-        //List<String> allZipCodes = facade.getAllZipCodes();
+        List<CityInfo> allZipCodes = facade.getAllCitiesRaw();
         int phoneNumber = 10000000;
         int cvrNumber = 70000000;
 
@@ -92,6 +97,7 @@ public class Generator {
                 phones.add(new Phone(Integer.toString(phoneNumber++), "mobile", company));
             }
             company.setPhones(phones);
+            address = new Address("Companystreet", "Number: " + i, allZipCodes.get(rand.nextInt(allZipCodes.size())));
             company.setAddress(address);
             System.out.println("----- Added Phone & Address -----");
             writeToFile(company.toSql(), path, true);
