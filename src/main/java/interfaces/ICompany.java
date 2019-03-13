@@ -34,5 +34,5 @@ public interface ICompany {
 
     public abstract CompanyDTO updateCompany(CompanyDTO updatedCompany);
 
-    public abstract void deleteCompany();
+    public abstract void deleteCompany(int id);
 }

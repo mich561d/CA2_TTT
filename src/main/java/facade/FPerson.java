@@ -99,8 +99,16 @@ public class FPerson implements IPerson {
     }
 
     @Override
-    public void deletePerson() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deletePerson(int id) {
+        EntityManager em = emf.createEntityManager();
+        Person p = getPersonByID(id);
+        try {
+            em.getTransaction().begin();
+            em.remove(p);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
 }
