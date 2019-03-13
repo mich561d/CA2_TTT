@@ -62,8 +62,12 @@ public class Person extends InfoEntity {
     }
 
     public String toSql() {
-        return "INSERT INTO INFOENTITY (ENTITY_TYPE,EMAIL) VALUES ('P','" + this.getEmail() + "');\n"
-                + "SET @infoentity = LAST_INSERT_ID();\n"
-                + "INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME) VALUES (LAST_INSERT_ID(),'" + this.firstName + "','" + this.lastName + "');\n";
+        StringBuilder str = new StringBuilder();
+        str.append("INSERT INTO INFOENTITY (ENTITY_TYPE,EMAIL) VALUES ('P','").append(this.getEmail()).append("');\n");
+        str.append("INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME) VALUES (LAST_INSERT_ID(),'").append(this.firstName).append("','").append(this.lastName).append("');\n");
+        
+        return str.toString();//"INSERT INTO INFOENTITY (ENTITY_TYPE,EMAIL) VALUES ('P','" + this.getEmail() + "');\n"
+                //+ "SET @infoentity = LAST_INSERT_ID();\n"
+                //+ "INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME) VALUES (LAST_INSERT_ID(),'" + this.firstName + "','" + this.lastName + "');\n";
     }
 }
