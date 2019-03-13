@@ -71,6 +71,7 @@ public class TCompany {
 
     public void testCreateCompany() {
         List<CompanyDTO> csBefore = facade.getAllCompanies();
+        // Creating company
         List<Phone> phones = new ArrayList();
         Phone phone = new Phone("13371337", "Call the elite");
         phones.add(phone);
@@ -79,16 +80,24 @@ public class TCompany {
         address.getInfoEntities().add(company);
         phone.setInfoEntity(company);
         facade.createCompany(company);
-        facade.createCompany(company);
+        // Done creating company
         List<CompanyDTO> csAfter = facade.getAllCompanies();
         assertEquals(csBefore.size() + 1, csAfter.size());
     }
 
     public void testUpdateCompany() {
-
+        CompanyDTO cBefore = facade.getCompanyByCVR(70000000);
+        String newValue = "NewName A/S";
+        cBefore.setName(newValue);
+        facade.updateCompany(cBefore);
+        CompanyDTO cAfter = facade.getCompanyByCVR(70000000);
+        assertEquals(cBefore.getName(), cAfter.getName());
     }
 
     public void testDeleteCompany() {
-
+        List<CompanyDTO> csBefore = facade.getAllCompanies();
+        facade.deleteCompany(4);
+        List<CompanyDTO> csAfter = facade.getAllCompanies();
+        assertEquals(csBefore.size() - 1, csAfter.size());
     }
 }

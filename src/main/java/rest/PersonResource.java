@@ -43,6 +43,7 @@ public class PersonResource {
     /**
      * Retrieves representation of an instance of rest.PersonResource
      *
+     * @param number
      * @return an instance of java.lang.String
      */
     @GET
