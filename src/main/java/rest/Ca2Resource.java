@@ -51,8 +51,16 @@ public class Ca2Resource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getPersonByPhone(@PathParam("number") String number) {
-        //return Response.ok().entity(gson.toJson(f.getPersonByPhone())).build();
-        return null;
+        return Response.ok().entity(gson.toJson(f.getPersonByPhone(f.getPhoneByNumber(number)))).build();
+
+    }
+
+    @GET
+    @Path("/{number}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getCompanyByPhone(@PathParam("number") String number) {
+        return Response.ok().entity(gson.toJson(f.getCompanyByPhone(f.getPhoneByNumber(number)))).build();
     }
 
     @GET
@@ -69,6 +77,14 @@ public class Ca2Resource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getHobbyByName(@PathParam("hobby") String hobby) {
         return Response.ok().entity(gson.toJson(f.getHobbyByName(hobby))).build();
+    }
+
+    @GET
+    @Path("/{hobby}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getPersonsByHobby(@PathParam("hobby") String hobby) {
+        return Response.ok().entity(gson.toJson(f.getAllPersonsByHobby(f.getHobbyByName(hobby)))).build();
     }
 
     @GET
@@ -94,5 +110,23 @@ public class Ca2Resource {
     public Response getCompanyWithMoreEmployeesThan(@PathParam("amount") int amount) {
         return Response.ok().entity(gson.toJson(f.getAllCompaniesWithMoreEmployeesThan(amount))).build();
     }
+
+    @GET
+    @Path("/hobby/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getAllHobbies() {
+        return Response.ok().entity(gson.toJson(f.getAllHobbies())).build();
+    }
+    
+    @GET
+    @Path("/person/{zipcode}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getAllPersonsByCity(@PathParam("zipcode") String zipcode) {
+        return Response.ok().entity(gson.toJson(f.getAllPersonsByCity(f.getCityByZip(zipcode)))).build();
+    }
+    
+    
 
 }
