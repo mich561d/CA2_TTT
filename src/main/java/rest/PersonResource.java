@@ -8,6 +8,8 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import facade.FPerson;
+import facade.FPhone;
+import facade.Facade;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -30,11 +32,12 @@ public class PersonResource {
 
     @Context
     private UriInfo context;
-    
+
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     EntityManagerFactory emf;
     FPerson fPerson = new FPerson(emf);
-    FPhone
+    FPhone fPhone = new FPhone(emf);
+    Facade f = new Facade();
 
     /**
      * Creates a new instance of PersonResource
@@ -44,23 +47,30 @@ public class PersonResource {
 
     /**
      * Retrieves representation of an instance of rest.PersonResource
+     *
      * @return an instance of java.lang.String
      */
+//    @GET
+//    @Path("/{number}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getPersonByPhone(@PathParam("number") String number) {
+//        return Response.ok().entity(gson.toJson(fPerson.getPersonByPhone(f.getPhoneByNumber(number)))).build();
+//
+//    }
     @GET
-    @Path("/{number}")
+    @Path("/person/{hobby}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getPersonByPhone(@PathParam("number") String number) {
-        return Response.ok().entity(gson.toJson(f.getPersonByPhone(f.getPhoneByNumber(number)))).build();
-
+    public Response getPersonsByHobby(@PathParam("hobby") String hobby) {
+        return Response.ok().entity(gson.toJson(f.getAllPersonsByHobby(f.getHobbyByName(hobby)))).build();
     }
 
-    /**
-     * PUT method for updating or creating an instance of PersonResource
-     * @param content representation for the resource
-     */
-    @PUT
+    @GET
+    @Path("/person/{zipcode}")
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
+    public Response getAllPersonsByCity(@PathParam("zipcode") String zipcode) {
+        return Response.ok().entity(gson.toJson(f.getAllPersonsByCity(f.getCityByZip(zipcode)))).build();
     }
 }

@@ -37,7 +37,9 @@ public class Ca2Resource {
      */
     public Ca2Resource() {
     }
-
+    
+    
+    //Get Phone by Number, har vi overhovedet brug for denne? f.getPhoneByNumber bruges jo kun til at få phone til at kunne få person
     @GET
     @Path("/{number}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -45,7 +47,8 @@ public class Ca2Resource {
     public Response getPhoneByNumber(@PathParam("number") String number) {
         return Response.ok().entity(gson.toJson(f.getPhoneByNumber(number))).build();
     }
-
+    
+    //Fungere ikke i PersonRecourse men for some fucking reason virker den her 
     @GET
     @Path("/{number}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -79,13 +82,13 @@ public class Ca2Resource {
         return Response.ok().entity(gson.toJson(f.getHobbyByName(hobby))).build();
     }
 
-    @GET
-    @Path("/{hobby}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getPersonsByHobby(@PathParam("hobby") String hobby) {
-        return Response.ok().entity(gson.toJson(f.getAllPersonsByHobby(f.getHobbyByName(hobby)))).build();
-    }
+//    @GET
+//    @Path("/{hobby}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getPersonsByHobby(@PathParam("hobby") String hobby) {
+//        return Response.ok().entity(gson.toJson(f.getAllPersonsByHobby(f.getHobbyByName(hobby)))).build();
+//    }
 
     @GET
     @Path("/{zip}")
@@ -119,12 +122,12 @@ public class Ca2Resource {
         return Response.ok().entity(gson.toJson(f.getAllHobbies())).build();
     }
 
-    @GET
-    @Path("/person/{zipcode}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getAllPersonsByCity(@PathParam("zipcode") String zipcode) {
-        return Response.ok().entity(gson.toJson(f.getAllPersonsByCity(f.getCityByZip(zipcode)))).build();
-    }
+//    @GET
+//    @Path("/person/{zipcode}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getAllPersonsByCity(@PathParam("zipcode") String zipcode) {
+//        return Response.ok().entity(gson.toJson(f.getAllPersonsByCity(f.getCityByZip(zipcode)))).build();
+//    }
 
 }
