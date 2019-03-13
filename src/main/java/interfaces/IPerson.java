@@ -4,6 +4,7 @@ import dto.AddressDTO;
 import dto.CityInfoDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
+import dto.PhoneDTO;
 import entity.Person;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface IPerson {
 
     public abstract PersonDTO getPersonByEmail(String email);
 
-    public abstract PersonDTO getPersonByPhone(String phone);
+    public abstract PersonDTO getPersonByPhone(PhoneDTO phone);
 
     public abstract List<PersonDTO> getAllPersons();
 

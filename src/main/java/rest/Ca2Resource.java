@@ -58,21 +58,21 @@ public class Ca2Resource {
 
     }
 
-    @GET
-    @Path("/{number}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getCompanyByPhone(@PathParam("number") String number) {
-        return Response.ok().entity(gson.toJson(f.getCompanyByPhone(f.getPhoneByNumber(number)))).build();
-    }
+//    @GET
+//    @Path("/{number}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getCompanyByPhone(@PathParam("number") String number) {
+//        return Response.ok().entity(gson.toJson(f.getCompanyByPhone(f.getPhoneByNumber(number)))).build();
+//    }
 
-    @GET
-    @Path("/{cvr}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getCompanyByCVR(@PathParam("cvr") int cvr) {
-        return Response.ok().entity(gson.toJson(f.getCompanyByCVR(cvr))).build();
-    }
+//    @GET
+//    @Path("/{cvr}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getCompanyByCVR(@PathParam("cvr") int cvr) {
+//        return Response.ok().entity(gson.toJson(f.getCompanyByCVR(cvr))).build();
+//    }
 
     @GET
     @Path("/{hobby}")

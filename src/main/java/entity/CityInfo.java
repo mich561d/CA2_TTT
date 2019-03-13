@@ -40,6 +40,13 @@ public class CityInfo implements Serializable {
         this.addresses = addresses;
     }
 
+    public CityInfo(String zipCode, String city) {
+        this.zipCode = zipCode;
+        this.city = city;
+    }
+    
+    
+
     public Integer getId() {
         return id;
     }

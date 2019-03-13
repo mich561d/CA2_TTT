@@ -4,6 +4,7 @@ import interfaces.ICompany;
 import dto.AddressDTO;
 import dto.CityInfoDTO;
 import dto.CompanyDTO;
+import dto.PhoneDTO;
 import entity.Company;
 import entity.Phone;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Michael
+ * @author Michael, Jesper
  */
 public class FCompany implements ICompany {
 
@@ -44,10 +45,10 @@ public class FCompany implements ICompany {
     }
 
     @Override
-    public CompanyDTO getCompanyByPhone(String number) {
+    public CompanyDTO getCompanyByPhone(PhoneDTO phone) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("CompanyDTO.findByPhone", CompanyDTO.class).setParameter("number", number).getSingleResult();
+            return em.createNamedQuery("CompanyDTO.findByPhone", CompanyDTO.class).setParameter("number", phone).getSingleResult();
         } finally {
             em.close();
         }

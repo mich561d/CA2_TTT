@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rest;
 
 import com.google.gson.Gson;
@@ -56,10 +51,10 @@ public class PersonResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getPersonByPhone(@PathParam("number") String number) {
-        return Response.ok().entity(gson.toJson(f.getPersonByPhone(f.getPhoneByNumber(number)))).build();
+        return Response.ok().entity(gson.toJson(fPerson.getPersonByPhone(fPhone.getPhoneByNumber(number)))).build();
 
     }
-
+    
     @GET
     @Path("/person/{hobby}")
     @Produces(MediaType.APPLICATION_JSON)
