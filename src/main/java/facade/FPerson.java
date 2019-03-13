@@ -53,17 +53,32 @@ public class FPerson implements IPerson {
 
     @Override
     public List<PersonDTO> getAllPersons() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("PersonDTO.findAll", PersonDTO.class).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public List<PersonDTO> getAllPersonsByHobby(HobbyDTO hobby) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("PersonDTO.findAllByHobby", PersonDTO.class).setParameter("hobby", hobby.getId()).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public List<PersonDTO> getAllPersonsByCity(CityInfoDTO city) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("PersonDTO.findAllByCity", PersonDTO.class).setParameter("zip", city.getZipCode()).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
@@ -73,7 +88,15 @@ public class FPerson implements IPerson {
 
     @Override
     public PersonDTO createPerson(Person person) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(person);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return new PersonDTO();
     }
 
     @Override
