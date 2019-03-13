@@ -48,16 +48,18 @@ public class PersonResource {
     /**
      * Retrieves representation of an instance of rest.PersonResource
      *
+     * @param number
      * @return an instance of java.lang.String
      */
-//    @GET
-//    @Path("/{number}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response getPersonByPhone(@PathParam("number") String number) {
-//        return Response.ok().entity(gson.toJson(fPerson.getPersonByPhone(f.getPhoneByNumber(number)))).build();
-//
-//    }
+    @GET
+    @Path("/{number}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getPersonByPhone(@PathParam("number") String number) {
+        return Response.ok().entity(gson.toJson(f.getPersonByPhone(f.getPhoneByNumber(number)))).build();
+
+    }
+
     @GET
     @Path("/person/{hobby}")
     @Produces(MediaType.APPLICATION_JSON)
