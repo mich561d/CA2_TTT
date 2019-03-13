@@ -6,6 +6,8 @@ import dto.HobbyDTO;
 import dto.PersonDTO;
 import entity.Person;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -13,19 +15,40 @@ import java.util.List;
  */
 public class FPerson implements IPerson {
 
+    EntityManagerFactory emf;
+
+    public FPerson(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
+
     @Override
     public Person getPersonByID(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("Person.findById", Person.class).setParameter("id", id).getSingleResult();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public PersonDTO getPersonByEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("PersonDTO.findByEmail", PersonDTO.class).setParameter("email", email).getSingleResult();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public PersonDTO getPersonByPhone(String phone) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("PersonDTO.findByNumber", PersonDTO.class).setParameter("number", phone).getSingleResult();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
