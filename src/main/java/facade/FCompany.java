@@ -120,7 +120,7 @@ public class FCompany implements ICompany {
             em.close();
         }
         List<String> phones = new ArrayList();
-        for (int i = 0; i < phones.size(); i++) {
+        for (int i = 0; i < company.getPhones().size(); i++) {
             phones.add(company.getPhones().get(i).getNumber());
         }
 

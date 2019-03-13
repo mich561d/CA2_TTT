@@ -39,4 +39,24 @@ public class FCityInfo implements ICityInfo {
         }
     }
 
+    @Override
+    public CityInfoDTO getCityByZip(String zip) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CityInfoDTO.findByZipCode", CityInfoDTO.class).setParameter("zipCode", zip).getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<String> getAllZipCodes() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CityInfoDTO.findAllZipCodes", String.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
 }

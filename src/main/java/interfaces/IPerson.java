@@ -32,5 +32,5 @@ public interface IPerson {
 
     public abstract PersonDTO updatePerson(PersonDTO updatedPerson);
 
-    public abstract void deletePerson(int id);
+    public abstract void deletePersonById(int id);
 }

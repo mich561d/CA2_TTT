@@ -48,15 +48,14 @@ public class Ca2Resource {
         return Response.ok().entity(gson.toJson(f.getPhoneByNumber(number))).build();
     }
     
-    //Fungere ikke i PersonRecourse men for some fucking reason virker den her 
-    @GET
-    @Path("/{number}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getPersonByPhone(@PathParam("number") String number) {
-        return Response.ok().entity(gson.toJson(f.getPersonByPhone(f.getPhoneByNumber(number)))).build();
-
-    }
+//    @GET
+//    @Path("/{number}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getPersonByPhone(@PathParam("number") String number) {
+//        return Response.ok().entity(gson.toJson(f.getPersonByPhone(f.getPhoneByNumber(number)))).build();
+//
+//    }
 
 //    @GET
 //    @Path("/{number}")
@@ -74,13 +73,13 @@ public class Ca2Resource {
 //        return Response.ok().entity(gson.toJson(f.getCompanyByCVR(cvr))).build();
 //    }
 
-    @GET
-    @Path("/{hobby}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getHobbyByName(@PathParam("hobby") String hobby) {
-        return Response.ok().entity(gson.toJson(f.getHobbyByName(hobby))).build();
-    }
+//    @GET
+//    @Path("/{hobby}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getHobbyByName(@PathParam("hobby") String hobby) {
+//        return Response.ok().entity(gson.toJson(f.getHobbyByName(hobby))).build();
+//    }
 
 //    @GET
 //    @Path("/{hobby}")
@@ -90,38 +89,39 @@ public class Ca2Resource {
 //        return Response.ok().entity(gson.toJson(f.getAllPersonsByHobby(f.getHobbyByName(hobby)))).build();
 //    }
 
-    @GET
-    @Path("/{zip}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getCityByZip(@PathParam("zip") String zip) {
-        return Response.ok().entity(gson.toJson(f.getCityByZip(zip))).build();
-    }
+//    @GET
+//    @Path("/{zip}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getCityByZip(@PathParam("zip") String zip) {
+//        return Response.ok().entity(gson.toJson(f.getCityByZip(zip))).build();
+//    }
 
-    @GET
-    @Path("/all/zipcodes")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getAllZipCodes() {
-        return Response.ok().entity(gson.toJson(f.getAllZipCodes())).build();
-    }
+//    @GET
+//    @Path("/all/zipcodes")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getAllZipCodes() {
+//        return Response.ok().entity(gson.toJson(f.getAllZipCodes())).build();
+//    }
 
-    @GET
-    @Path("/company/{amount}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getCompanyWithMoreEmployeesThan(@PathParam("amount") int amount) {
-        return Response.ok().entity(gson.toJson(f.getAllCompaniesWithMoreEmployeesThan(amount))).build();
-    }
+//    @GET
+//    @Path("/company/{amount}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getCompanyWithMoreEmployeesThan(@PathParam("amount") int amount) {
+//        return Response.ok().entity(gson.toJson(f.getAllCompaniesWithMoreEmployeesThan(amount))).build();
+//    }
 
-    @GET
-    @Path("/hobby/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getAllHobbies() {
-        return Response.ok().entity(gson.toJson(f.getAllHobbies())).build();
-    }
+//    @GET
+//    @Path("/hobby/all")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response getAllHobbies() {
+//        return Response.ok().entity(gson.toJson(f.getAllHobbies())).build();
+//    }
 
+    
 //    @GET
 //    @Path("/person/{zipcode}")
 //    @Produces(MediaType.APPLICATION_JSON)

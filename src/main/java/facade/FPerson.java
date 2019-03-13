@@ -83,6 +83,8 @@ public class FPerson implements IPerson {
             em.close();
         }
     }
+    
+    //**** Alt under her ikke lavet som CRUD metoder endnu
 
     @Override
     public List<PersonDTO> getAllPersonsByAddress(AddressDTO address) {
@@ -100,7 +102,7 @@ public class FPerson implements IPerson {
     }
 
     @Override
-    public void deletePerson(int id) {
+    public void deletePersonById(int id) {
         EntityManager em = emf.createEntityManager();
         Person p = getPersonByID(id);
         try {
