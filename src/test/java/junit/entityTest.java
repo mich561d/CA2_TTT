@@ -1,10 +1,10 @@
 package junit;
 
-import entity.CityInfo;
-import entity.Company;
-import entity.Hobby;
-import entity.Person;
-import entity.Phone;
+import dto.CityInfoDTO;
+import dto.CompanyDTO;
+import dto.HobbyDTO;
+import dto.PersonDTO;
+import dto.PhoneDTO;
 import facade.Facade;
 import facade.IFacade;
 import java.util.List;
@@ -29,53 +29,53 @@ public class entityTest {
 
     @Test
     public void getPhoneByNumberTest() {
-        Phone phone = facade.getPhoneByNumber("12435687");
+        PhoneDTO phone = facade.getPhoneByNumber("12435687");
         assertNotNull(phone);
     }
 
     @Test
     public void getPersonByPhoneTest() {
-        Phone phone = facade.getPhoneByNumber("12435687");
-        Person person = facade.getPersonByPhone(phone);
+        PhoneDTO phone = facade.getPhoneByNumber("12435687");
+        PersonDTO person = facade.getPersonByPhone(phone);
         assertNotNull(person);
     }
 
     @Test
     public void getCompanyByPhoneTest() {
-        Phone phone = facade.getPhoneByNumber("21346578");
-        Company company = facade.getCompanyByPhone(phone);
+        PhoneDTO phone = facade.getPhoneByNumber("21346578");
+        CompanyDTO company = facade.getCompanyByPhone(phone);
         assertNotNull(company);
     }
 
     @Test
     public void getCompanyByCVRTest() {
-        Company company = facade.getCompanyByCVR(36069420);
+        CompanyDTO company = facade.getCompanyByCVR(36069420);
         assertNotNull(company);
     }
 
     @Test
     public void getHobbyByNameTest() {
-        Hobby hobby = facade.getHobbyByName("Programming");
+        HobbyDTO hobby = facade.getHobbyByName("Programming");
         assertNotNull(hobby);
     }
 
     @Test
     public void getAllPersonsByHobbyTest() {
-        Hobby hobby = facade.getHobbyByName("Programming");
-        List<Person> persons = facade.getAllPersonsByHobby(hobby);
+        HobbyDTO hobby = facade.getHobbyByName("Programming");
+        List<PersonDTO> persons = facade.getAllPersonsByHobby(hobby);
         assertEquals(10, persons.size());
     }
 
     @Test
     public void getCityByZipTest() {
-        CityInfo city = facade.getCityByZip("2800");
+        CityInfoDTO city = facade.getCityByZip("2800");
         assertEquals("Lyngby", city.getCity());
     }
 
     @Test
     public void getAllPersonsByCityTest() {
-        CityInfo city = facade.getCityByZip("2800");
-        List<Person> persons = facade.getAllPersonsByCity(city);
+        CityInfoDTO city = facade.getCityByZip("2800");
+        List<PersonDTO> persons = facade.getAllPersonsByCity(city);
         assertEquals(12, persons.size());
     }
 
@@ -87,7 +87,7 @@ public class entityTest {
 
     @Test
     public void getAllCompaniesWithMoreEmployeesThanTest() {
-        List<Company> companies = facade.getAllCompaniesWithMoreEmployeesThan(360);
+        List<CompanyDTO> companies = facade.getAllCompaniesWithMoreEmployeesThan(360);
         assertEquals(42, companies.size());
     }
 

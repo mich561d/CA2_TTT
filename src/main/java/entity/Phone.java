@@ -6,12 +6,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Jesper, Michael, Mads
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Phone.findAll", query = "SELECT p FROM Phone p")
+    , @NamedQuery(name = "PhoneDTO.findByNumber", query = "SELECT NEW dto.PhoneDTO(p.id, p.number, p.description, p.infoEntity.id) FROM Phone p WHERE p.number = :number")})
 public class Phone implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,11 +28,6 @@ public class Phone implements Serializable {
     private InfoEntity infoEntity;
 
     public Phone() {
-    }
-
-    public Phone(String number, String description) {
-        this.number = number;
-        this.description = description;
     }
 
     public Phone(String number, String description, InfoEntity infoEntity) {
@@ -71,5 +71,4 @@ public class Phone implements Serializable {
     public String toSql() {
         return "INSERT INTO PERSON (NUMBER,DESCRIPTION) VALUES ('" + this.number + "','" + this.description + "');\n";
     }
-
 }

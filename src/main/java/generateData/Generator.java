@@ -56,10 +56,10 @@ public class Generator {
         String path = "src/main/resources/sqlDataScript.sql";
         //Person with phone: 12435687
         List<Hobby> hobbies = new ArrayList();
-        hobbies.add(new Hobby("Programming", "Java is great"));
+        hobbies.add(new Hobby("Programming", "Java is great", new ArrayList<Person>()));
         List<Phone> phones = new ArrayList();
-        phones.add(new Phone("12435687", "mobil"));
-        Address address = new Address("Godthåbsvej", "121, 3th", new CityInfo("2000", "Frederiksberg"));
+        phones.add(new Phone("12435687", "mobil", new Person()));
+        Address address = new Address("Godthåbsvej", "121, 3th", new CityInfo("2000", "Frederiksberg", new ArrayList<Address>()));
         Person person = new Person("Mads", "Floistrup", hobbies, "cph-mf226@cphbusiness.dk", phones, address);
 
         writeToFile(person.toSql(), path, false);

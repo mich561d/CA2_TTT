@@ -3,6 +3,8 @@ package entity;
 import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -12,6 +14,11 @@ import javax.persistence.Table;
 @Entity
 @DiscriminatorValue("C")
 @Table(name = "Company")
+@NamedQueries({
+    @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c")
+    , @NamedQuery(name = "CompanyDTO.findByPhone", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.phones.number = :phone")
+    , @NamedQuery(name = "CompanyDTO.findByCVR", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.cvr = :cvr")
+    , @NamedQuery(name = "CompanyDTO.findByEmployeeCountMoreThan", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones.number) FROM Company c WHERE c.numEmployees > :amount")})
 public class Company extends InfoEntity {
 
     private static final long serialVersionUID = 1L;
@@ -75,5 +82,4 @@ public class Company extends InfoEntity {
                 + "SET @infoentity = LAST_INSERT_ID();\n"
                 + "INSERT INTO COMPANY (ID,CVR,DESCRIPTION,MARKETVALUE,NAME,NUMEMPLOYEES) VALUES (LAST_INSERT_ID(),'" + this.cvr + "','" + this.description + "','" + this.marketValue + "','" + this.name + "','" + this.numEmployees + "');\n";
     }
-
 }
