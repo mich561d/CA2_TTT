@@ -24,6 +24,17 @@ public class CompanyDTO {
         this.phones = phones;
     }
 
+    public CompanyDTO(int id, int cvr, int numEmployees, int marketValue, String email, String name, String description, String address) {
+        this.id = id;
+        this.cvr = cvr;
+        this.numEmployees = numEmployees;
+        this.marketValue = marketValue;
+        this.email = email;
+        this.name = name;
+        this.description = description;
+        this.address = address;
+    }
+
     public int getId() {
         return id;
     }
