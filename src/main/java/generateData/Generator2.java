@@ -2,6 +2,7 @@ package generateData;
 
 import entity.Address;
 import entity.CityInfo;
+import entity.Company;
 import entity.Hobby;
 import entity.Person;
 import entity.Phone;
@@ -9,6 +10,7 @@ import facade.FCityInfo;
 import facade.FHobby;
 import interfaces.ICityInfo;
 import interfaces.IHobby;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -33,7 +35,6 @@ public class Generator2 {
         ICityInfo cityInfoFacade = new FCityInfo(emf);
         IHobby hobbyFacade = new FHobby(emf);
         Random rand = new Random();
-        //String path = "src/main/resources/scripts/infoEntities.sql";
 
         List<Hobby> allHobbies = hobbyFacade.getAllHobbies();
         List<CityInfo> allZipCodes = cityInfoFacade.getAllCitiesRaw();
@@ -63,9 +64,41 @@ public class Generator2 {
             address = new Address("Personstreet", "Number: " + i, allZipCodes.get(rand.nextInt(allZipCodes.size())));
             person.setAddress(address);
 
-            //writeToFile(person.toSql(), path, true);
         }
         return persons;
+    }
+    
+    public List<Company> generateRandomCompanies(int sampleAmount) {
+        ArrayList<Company> companies = new ArrayList();
+        ICityInfo cityInfoFacade = new FCityInfo(emf);
+        Random rand = new Random();
+
+        List<CityInfo> allZipCodes = cityInfoFacade.getAllCitiesRaw();
+        int phoneNumber = 10000000;
+        int cvrNumber = 70000000;
+
+        for (int i = 0; i < sampleAmount; i++) {
+            String name = "Company " + i;
+            String description = "Description of " + name;
+            int cvr = cvrNumber++;
+            int numEmployees = rand.nextInt(1000);
+            int marketValue = 1000 * numEmployees;
+            String email = "" + name + "@" + name + ".com";
+            ArrayList<Phone> phones = new ArrayList();
+            Address address = new Address();
+
+            //String name, String description, int cvr, int numEmployees, int marketValue, String email, List<Phone> phones, Address address
+            Company company = new Company(name, description, cvr, numEmployees, marketValue, email, phones, address);
+            int amountOfPhones = rand.nextInt(2) + 1;
+            for (int j = 0; j < amountOfPhones; j++) {
+                phones.add(new Phone(Integer.toString(phoneNumber++), "mobile", company));
+            }
+            company.setPhones(phones);
+            address = new Address("Companystreet", "Number: " + i, allZipCodes.get(rand.nextInt(allZipCodes.size())));
+            company.setAddress(address);
+            companies.add(company);
+        }
+        return companies;
     }
 
 }
