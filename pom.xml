@@ -185,7 +185,7 @@
                         <artifactId>tomcat7-maven-plugin</artifactId>  
                         <version>2.2</version>  
                         <configuration>
-                            <url>http://dueinator.dk/manager/text</url>  
+                            <url>https://dueinator.dk/manager/text</url>  
                             <server>TomcatServer</server>
                             <path>/CA2</path>
                             <username>admin</username>

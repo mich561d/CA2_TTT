@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import facade.FCityInfo;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -26,7 +27,7 @@ public class CityInfoResource {
     @Context
     private UriInfo context;
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    EntityManagerFactory emf;
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu2", null);
     FCityInfo fCity = new FCityInfo(emf);
 
     /**
