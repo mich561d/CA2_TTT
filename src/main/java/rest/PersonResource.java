@@ -4,9 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dto.PersonDTO;
 import entity.Person;
+import facade.FCityInfo;
+import facade.FHobby;
 import facade.FPerson;
 import facade.FPhone;
-import facade.Facade;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -36,7 +37,8 @@ public class PersonResource {
     EntityManagerFactory emf;
     FPerson fPerson = new FPerson(emf);
     FPhone fPhone = new FPhone(emf);
-    Facade f = new Facade();
+    FHobby fHobby = new FHobby(emf);
+    FCityInfo fCity = new FCityInfo(emf);
 
     /**
      * Creates a new instance of PersonResource
@@ -82,7 +84,7 @@ public class PersonResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getPersonsByHobby(@PathParam("hobby") String hobby) {
-        return Response.ok().entity(gson.toJson(f.getAllPersonsByHobby(f.getHobbyByName(hobby)))).build();
+        return Response.ok().entity(gson.toJson(fPerson.getAllPersonsByHobby(fHobby.getHobbyByName(hobby)))).build();
     }
 
     @GET
@@ -90,7 +92,7 @@ public class PersonResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getAllPersonsByCity(@PathParam("zipcode") String zipcode) {
-        return Response.ok().entity(gson.toJson(f.getAllPersonsByCity(f.getCityByZip(zipcode)))).build();
+        return Response.ok().entity(gson.toJson(fPerson.getAllPersonsByCity(fCity.getCityByZip(zipcode)))).build();
     }
 
     @GET
@@ -107,21 +109,19 @@ public class PersonResource {
         Person p = gson.fromJson(content, Person.class);
         fPerson.createPerson(p);
     }
-    
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void updatePerson(String content) {
         PersonDTO p = gson.fromJson(content, PersonDTO.class);
         fPerson.updatePerson(p);
     }
-    
+
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     public void deletePerson(int id) {
         fPerson.deletePersonById(fPerson.getPersonByID(id).getId());
     }
-    
-    
 
     //    @GET
 //    @Path("/person/{zipcode}")

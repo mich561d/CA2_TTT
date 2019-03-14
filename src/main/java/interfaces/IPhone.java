@@ -12,7 +12,7 @@ import dto.PhoneDTO;
  * @author Admin
  */
 public interface IPhone {
-    
+
     public abstract PhoneDTO getPhoneByNumber(String number);
-    
+
 }

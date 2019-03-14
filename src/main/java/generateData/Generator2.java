@@ -69,7 +69,7 @@ public class Generator2 {
         }
         return persons;
     }
-    
+
     public List<Company> generateRandomCompanies(int sampleAmount) {
         ArrayList<Company> companies = new ArrayList();
         ICityInfo cityInfoFacade = new FCityInfo(emf);

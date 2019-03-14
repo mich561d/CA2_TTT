@@ -7,6 +7,7 @@ import dto.CompanyDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
+import entity.Address;
 import entity.Person;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,12 +85,15 @@ public class FPerson implements IPerson {
             em.close();
         }
     }
-    
-    //**** Alt under her ikke lavet som CRUD metoder endnu
 
     @Override
     public List<PersonDTO> getAllPersonsByAddress(AddressDTO address) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CompanyDTO.findAllByAddress", PersonDTO.class).setParameter("address", address.getStreet()).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
@@ -116,7 +120,19 @@ public class FPerson implements IPerson {
 
     @Override
     public PersonDTO updatePerson(PersonDTO updatedPerson) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            Person p = getPersonByID(updatedPerson.getId());
+            p.setEmail(updatedPerson.getEmail());
+            p.setFirstName(updatedPerson.getFirstName());
+            p.setLastName(updatedPerson.getLastName());
+            em.persist(p);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return updatedPerson;
     }
 
     @Override
