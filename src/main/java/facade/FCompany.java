@@ -86,7 +86,12 @@ public class FCompany implements ICompany {
 
     @Override
     public List<CompanyDTO> getAllCompaniesByAddress(AddressDTO address) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CompanyDTO.findAllByAddress", CompanyDTO.class).setParameter("address", address.getStreet()).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     @Override

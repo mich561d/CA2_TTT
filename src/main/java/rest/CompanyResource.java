@@ -7,7 +7,6 @@ import entity.Company;
 import facade.FCityInfo;
 import facade.FCompany;
 import facade.FPhone;
-import facade.Facade;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -37,7 +36,6 @@ public class CompanyResource {
     FCompany fCompany = new FCompany(emf);
     FPhone fPhone = new FPhone(emf);
     FCityInfo fCity = new FCityInfo(emf);
-    Facade f = new Facade();
 
     /**
      * Creates a new instance of CompanyResource
@@ -124,19 +122,19 @@ public class CompanyResource {
         Company c = gson.fromJson(content, Company.class);
         fCompany.createCompany(c);
     }
-    
+
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     public void updateCompany(String content) {
-       CompanyDTO c = gson.fromJson(content, CompanyDTO.class);
-       fCompany.updateCompany(c);
+        CompanyDTO c = gson.fromJson(content, CompanyDTO.class);
+        fCompany.updateCompany(c);
     }
-    
+
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     public void deleteCompany(int id) {
-       Company c = fCompany.getCompanyByID(id);
-       fCompany.deleteCompany(c.getId());
+        Company c = fCompany.getCompanyByID(id);
+        fCompany.deleteCompany(c.getId());
     }
 
 }

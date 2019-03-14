@@ -27,7 +27,7 @@ public class TestPU {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
         Generator2 generator = new Generator2(emf);
         List<Person> persons = generator.generateRandomPersons(50);
-        
+
 //        EntityManager em = emf.createEntityManager();
 //        List<Hobby> hobbies = new ArrayList();
 //        hobbies.add(new Hobby("Programming", "Java is great"));

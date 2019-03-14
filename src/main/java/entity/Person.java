@@ -23,7 +23,7 @@ import javax.persistence.Table;
     , @NamedQuery(name = "PersonDTO.findByEmail", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email, p.address) FROM Person p WHERE p.email = :email")
     , @NamedQuery(name = "PersonDTO.findByNumber", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email, p.address) FROM Person p LEFT JOIN p.phones as n GROUP BY n.id HAVING n.number = :number")
     /*, @NamedQuery(name = "PersonDTO.findAllByHobby", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email, p.address) FROM Person p WHERE p.hobbies.id = :hobby")*/
-    /*, @NamedQuery(name = "PersonDTO.findAllByCity", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email, p.address) FROM Person p LEFT JOIN p.address as a GROUP BY a.id HAVING a.cityInfo.zip = :zip")*/
+ /*, @NamedQuery(name = "PersonDTO.findAllByCity", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email, p.address) FROM Person p LEFT JOIN p.address as a GROUP BY a.id HAVING a.cityInfo.zip = :zip")*/
     , @NamedQuery(name = "PersonDTO.findAllByAddress", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email, p.address) FROM Person p WHERE p.address.street = :street")})
 public class Person extends InfoEntity {
 

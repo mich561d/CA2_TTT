@@ -37,12 +37,12 @@ public class Hobby implements Serializable {
         this.description = description;
         this.persons = persons;
     }
-    
+
     public Hobby(String name, String description) {
         this.name = name;
         this.description = description;
     }
-    
+
     public Integer getId() {
         return id;
     }
