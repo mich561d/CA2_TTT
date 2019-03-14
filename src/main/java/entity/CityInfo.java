@@ -44,8 +44,6 @@ public class CityInfo implements Serializable {
         this.zipCode = zipCode;
         this.city = city;
     }
-    
-    
 
     public Integer getId() {
         return id;

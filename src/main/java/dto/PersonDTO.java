@@ -1,5 +1,8 @@
 package dto;
 
+import entity.Hobby;
+import entity.Phone;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +23,14 @@ public class PersonDTO {
         this.address = address;
         this.hobbies = hobbies;
         this.phones = phones;
+    }
+
+    public PersonDTO(int id, String firstName, String lastName, String email, String address) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
     }
 
     public int getId() {

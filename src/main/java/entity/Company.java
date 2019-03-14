@@ -17,13 +17,13 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c")
     , @NamedQuery(name = "Company.findById", query = "SELECT c FROM Company c WHERE c.id = :id")
-    , @NamedQuery(name = "CompanyDTO.findAll", query = "SELECT NEW dto.companyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c")
-    , @NamedQuery(name = "CompanyDTO.findByEmail", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.email = :email")
-    , @NamedQuery(name = "CompanyDTO.findByPhone", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE :number MEMBER OF c.phones")
-    , @NamedQuery(name = "CompanyDTO.findByCVR", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.cvr = :cvr")
-    , @NamedQuery(name = "CompanyDTO.findByCity", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.address.cityInfo.zip = :zip")
-    , @NamedQuery(name = "CompanyDTO.findByEmployeeCountMoreThan", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.numEmployees > :amount")
-    , @NamedQuery(name = "CompanyDTO.findByMarketValueHigherThan", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address, c.phones) FROM Company c WHERE c.marketValue > :value")})
+    , @NamedQuery(name = "CompanyDTO.findAll", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address) FROM Company c")
+    , @NamedQuery(name = "CompanyDTO.findByEmail", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address) FROM Company c WHERE c.email = :email")
+    , @NamedQuery(name = "CompanyDTO.findByPhone", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address) FROM Company c WHERE :number MEMBER OF c.phones")
+    , @NamedQuery(name = "CompanyDTO.findByCVR", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address) FROM Company c WHERE c.cvr = :cvr")
+    /*, @NamedQuery(name = "CompanyDTO.findByCity", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address) FROM Company c WHERE c.address.cityInfo.zip = :zip")*/
+    , @NamedQuery(name = "CompanyDTO.findByEmployeeCountMoreThan", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address) FROM Company c WHERE c.numEmployees > :amount")
+    , @NamedQuery(name = "CompanyDTO.findByMarketValueHigherThan", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description, c.address) FROM Company c WHERE c.marketValue > :value")})
 public class Company extends InfoEntity {
 
     private static final long serialVersionUID = 1L;
