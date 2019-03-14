@@ -6,7 +6,7 @@ INSERT INTO HOBBY (NAME, DESCRIPTION) VALUES ('Amateur radio', 'Do they even hav
 INSERT INTO HOBBY (NAME, DESCRIPTION) VALUES ('Animation', 'Svampebob Firkant er gruppens favorit animation');
 INSERT INTO HOBBY (NAME, DESCRIPTION) VALUES ('Baking', 'Cake is great');
 INSERT INTO HOBBY (NAME, DESCRIPTION) VALUES ('Beatboxing', 'Ba Dum Tss');
-INSERT INTO HOBBY (NAME, DESCRIPTION) VALUES ('Programming', 'Nerdy business');
+INSERT INTO HOBBY (NAME, DESCRIPTION) VALUES ('Dancing', 'Swag');
 INSERT INTO HOBBY (NAME, DESCRIPTION) VALUES ('Football', 'No, I do not mean soccer!');
 INSERT INTO HOBBY (NAME, DESCRIPTION) VALUES ('Gaming', 'pewpew');
 
