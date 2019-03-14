@@ -22,8 +22,8 @@ import javax.persistence.EntityManagerFactory;
  */
 public class Generator2 {
 
-    private final static String[] FIRSTNAMES = {"Mads", "Christian", "Jesper", "Michael", "Lone", "Sine"};
-    private final static String[] LASTNAMES = {"Nielsen", "Jensen", "Olsen", "Fløistrup", "Andersen", "Åberg"};
+    private final static String[] FIRSTNAMES = {"Mads", "Christian", "Jesper", "Michael", "Lone", "Sine", "Anders", "Peter", "Bente", "Mette", "Lisbeth", "Anne", "Rasmus"};
+    private final static String[] LASTNAMES = {"Nielsen", "Jensen", "Olsen", "Fløistrup", "Andersen", "Åberg", "Hansen", "Jacobsen", "Carlsen", "Antonsen", "Laursen", "Olrik", "Madsen", "Petersen", "Christensen"};
     EntityManagerFactory emf;
 
     public Generator2(EntityManagerFactory emf) {

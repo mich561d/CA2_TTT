@@ -30,7 +30,7 @@ public class Hobby implements Serializable {
     private Integer id;
     private String name, description;
 
-    @ManyToMany(mappedBy = "hobbies")
+    @ManyToMany(mappedBy = "hobbies", cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     private List<Person> persons;
 
     public Hobby() {

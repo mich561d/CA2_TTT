@@ -31,7 +31,7 @@ public class Person extends InfoEntity {
 
     private static final long serialVersionUID = 1L;
     private String firstName, lastName;
-    @ManyToMany(cascade = {CascadeType.REFRESH, CascadeType.MERGE}) //, cascade = CascadeType.ALL mappedBy = "persons", 
+    @ManyToMany//(cascade = {CascadeType.REFRESH, CascadeType.MERGE}) //, cascade = CascadeType.ALL mappedBy = "persons", 
     @JoinTable(
             name = "PERSON_HOBBY",
             joinColumns = @JoinColumn(name = "PERSON_ID", referencedColumnName = "ID"),
