@@ -1,265 +1,229 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <title>API Docs</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/simple-sidebar.css" rel="stylesheet">
-        <link href="Assets/CSS/StyleSheet.css" rel="stylesheet" type="text/css"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <style>
-            body {
-                font-family: "Lato", sans-serif;
-            }
-
-            .sidenav {
-                width: 140px;
-                position: fixed;
-                z-index: 1;
-                top: 60px;
-                left: 10px;
-                background: #eee;
-                overflow-x: hidden;
-                padding: 8px 0;
-            }
-
-            .sidenav a {
-                padding: 6px 8px 6px 16px;
-                text-decoration: none;
-                font-size: 20px;
-                color: #2196F3;
-                display: block;
-            }
-
-            .sidenav a:hover {
-                color: #064579;
-            }
-
-            .main {
-                margin-left: 140px;
-                font-size: 28px;
-                padding: 0px 10px;
-            }
-
-            @media screen and (max-height: 450px) {
-                .sidenav {padding-top: 15px;}
-                .sidenav a {font-size: 18px;}
-            }
-        </style>
+        <link href="CSS/StyleSheet.css" rel="stylesheet" type="text/css"/>
+        <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+        <link rel="icon" href="Assets/Images/faviconTTT.png"/>
+        <title>API Docs</title>
     </head>
-    <body style="background-color: gainsboro;">
-        <div class="w3-teal">
-            <div class="w3-container">
-                <h1>CA2 url commands.</h1>
-            </div>
-        </div>
-        <div class="d-flex" id="wrapper" style="text-align: center">
-            <div id="page-content-wrapper">
-                <div class="sidenav">
-                    <a href="#phone Commands">Phone Commands</a>
-                    <a href="#person Commands">Person Commands</a>
-                    <a href="#company Commands">Comapny Commands</a>
-                    <a href="#hobbies Commands">Hobbies Commands</a>
-                    <a href="#cities Commands">Cities Commands</a>
+    <body>
+        <header id="section-5">
+            <h1>CA2 url commands</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#section-1" class="navTitleTop">Person Commands</a></li>
+                <li><a href="#section-2" class="navTitle">Comapny Commands</a></li>
+                <li><a href="#section-3" class="navTitle">Hobbies Commands</a></li>
+                <li><a href="#section-4" class="navTitle">Cities Commands</a></li>
+                <li><a href="#section-5" class="navTitle">To the top</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="section-1">
+                <div class="sectionHolder">
+                    <div class="container">
+                        <div class="control-group">
+                            <h2>Persons commands:</h2>
+                            <p>@Path("/{number}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getPersonByPhone
+                            <hr>
+                            <p>@Path("/{hobby}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getAllPersonsByHobby
+                            <hr>
+                            <p>@Path("/person/{zipcode}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getAllPersonsByCity
+                            <hr>
+                            <p>@Path("/person/{id}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getPersonByID
+                            <hr>
+                            <p>@Path("/person/{email}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getPersonByEmail
+                            <hr>
+                            <p>@Path("/person/all")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getAllPersons
+                            <hr>
+                            <p>@Path("/person/{address}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getAllPersonsByAddress
+                            <hr>
+                            <p>@Path("/person/create")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: createPerson
+                            <hr>
+                            <p>@Path("/person/update")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: updatePerson
+                            <hr>
+                            <p>@Path("/person/delete")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: deletePerson
+                        </div>
+                    </div>
                 </div>
+            </section>
+            <section id="section-2">
+                <div class="sectionHolder">
+                    <div class="container">
+                        <div class="control-group">
+                            <h2>Company commands:</h2>
+                            <p>@Path("/{number}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getCompanyByPhone
+                            <hr>
+                            <p>@Path("/{cvr}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getCompanyByCVR
+                            <hr>
+                            <p>@Path("/company/{amount}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getAllCompaniesWithMoreEmployeesThan
+                            <hr>
+                            <p>@path("/company/{id}"</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getCompanyByID
+                            <hr>
+                            <p>@path("/company/{email}"</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getCompanyByEmail
+                            <hr>
+                            <p>@path("/all/companies"</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getAllCompanies
+                            <hr>
+                            <p>@path("/company/{city}"</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getAllCompaniessByCity
+                            <hr>
+                            <p>@path("/company/{address}"</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getAllCompaniesByAddress
+                            <hr>
+                            <p>@path("/company/{value}"</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getAllCompaniesWithMarketValueOver
+                            <hr>
+                            <p>@path("/company/{create}"</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: createCompany
+                            <hr>
+                            <p>@path("/company/{update}"</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: updateCompany
+                            <hr>
+                            <p>@path("/company/{update}"</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: updateCompany
+                            <hr>
+                            <p>@path("/company/{delete}"</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: deleteCompany
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-3">
+                <div class="sectionHolder">
+                    <div class="container">
+                        <div class="control-group">
+                            <h2>Hobbies commands:</h2>
+                            <p>@Path("/{hobby}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getHobbyByName
+                            <hr>
+                            <p>@Path("/hobby/all")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getAllHobbies
+                            <hr>
+                            <p>@Path("/hobby/{id}")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: getHobbyByID
+                            <hr>
+                            <p>@Path("/hobby/create")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: createHobby
+                            <hr>
+                            <p>@Path("/hobby/update")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: updateHobby
+                            <hr>
+                            <p>@Path("/hobby/delete/id")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: deleteHobbyByID
+                            <hr>
+                            <p>@Path("/hobby/delete/name")</p>
+                            <a href="http://localhost:8084"></a>
+                            <br>
+                            Output: deleteHobbyByName
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-4">
+                <div class="container">
+                    <div class="control-group">
+                        <h2>City Commands:</h2>
+                        <p>@Path("/{zip}")</p>
+                        <a href="http://localhost:8084"></a>
+                        <br>
+                        Output: getCityByZip
+                        <hr>
+                        <p>@Path("/all/zipcodes")</p>
+                        <a href="http://localhost:8084"></a>
+                        <br>
+                        Output: getAllZipCodes
+                        <hr>
+                        <p>@Path("/all/cities</p>
+                        <a href="http://localhost:8084"></a>
+                        <br>
+                        Output: getAlleCities
+                    </div>
+                </div>
+            </section>
+        </main>
 
-                <div class="main">
-                    
-                    <hr>
-                    <!--Phone commands-->
-                    <h2>Phone commands:</h2>
-                    <hr>
-                    <p>@Path("/{number}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getPhoneByPhoneNumber
-                    <hr>
+        <footer>
+            &copy;2019 Created by The Turtle Troopers
+        </footer>
 
-                    <!--Persons commands-->
-                    <h2>Persons commands:</h2>
-                    <hr>
-                    <p>@Path("/{number}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getPersonByPhone
-                    <hr>
-                    <p>@Path("/{hobby}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllPersonsByHobby
-                    <hr>
-                    <p>@Path("/person/{zipcode}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllPersonsByCity
-                    <hr>
-                    <p>@Path("/person/{id}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getPersonByID
-                    <hr>
-                    <p>@Path("/person/{email}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getPersonByEmail
-                    <hr>
-                    <p>@Path("/person/all")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllPersons
-                    <hr>
-                    <p>@Path("/person/{address}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllPersonsByAddress
-                    <hr>
-                    <p>@Path("/person/create")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: createPerson
-                    <hr>
-                    <p>@Path("/person/update")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: updatePerson
-                    <hr>
-                    <p>@Path("/person/delete")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: deletePerson
-                    <hr>
-
-                    <!--Company commands-->
-                    <h2>Company commands:</h2>
-                    <hr>
-                    <p>@Path("/{number}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getCompanyByPhone
-                    <hr>
-                    <p>@Path("/{cvr}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getCompanyByCVR
-                    <hr>
-                    <p>@Path("/company/{amount}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllCompaniesWithMoreEmployeesThan
-                    <hr>
-                    <p>@path("/company/{id}"</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getCompanyByID
-                    <hr>
-                    <p>@path("/company/{email}"</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getCompanyByEmail
-                    <hr>
-                    <p>@path("/all/companies"</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllCompanies
-                    <hr>
-                    <p>@path("/company/{city}"</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllCompaniessByCity
-                    <hr>
-                    <p>@path("/company/{address}"</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllCompaniesByAddress
-                    <hr>
-                    <p>@path("/company/{value}"</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllCompaniesWithMarketValueOver
-                    <hr>
-                    <p>@path("/company/{create}"</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: createCompany
-                    <hr>
-                    <p>@path("/company/{update}"</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: updateCompany
-                    <hr>
-                    <p>@path("/company/{update}"</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: updateCompany
-                    <hr>
-                    <p>@path("/company/{delete}"</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: deleteCompany
-                    <hr>
-
-                    <!--Hobbies commands-->
-                    <h2>Hobbies commands:</h2>
-                    <p>@Path("/{hobby}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getHobbyByName
-                    <hr>
-                    <p>@Path("/hobby/all")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllHobbies
-                    <hr>
-                    <p>@Path("/hobby/{id}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getHobbyByID
-                    <hr>
-                    <p>@Path("/hobby/create")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: createHobby
-                    <hr>
-                    <p>@Path("/hobby/update")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: updateHobby
-                    <hr>
-                    <p>@Path("/hobby/delete/id")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: deleteHobbyByID
-                    <hr>
-                    <p>@Path("/hobby/delete/name")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: deleteHobbyByName
-                    <hr>
-
-                    <!--Cities commands-->
-                    <h2>City Commands:</h2>
-                    <hr>
-                    <p>@Path("/{zip}")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getCityByZip
-                    <hr>
-                    <p>@Path("/all/zipcodes")</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAllZipCodes
-                    <hr>
-                    <p>@Path("/all/cities</p>
-                    <a href="http://localhost:8084"></a>
-                    <br>
-                    Output: getAlleCities
-                </div> 
-            </div>
-        </div>
+        <script src="Assets/JS/frontpage.js" type="text/javascript"></script>
     </body>
 </html>
