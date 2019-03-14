@@ -46,14 +46,14 @@ public class PersonResource {
     public PersonResource() {
     }
 
-//    @GET
-//    @Path("/Person/id={id}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response get(@PathParam("id") int id) {
-//        return Response.ok().entity(gson.toJson(fPerson.getPersonByID(id))).build();
-//    }
-//
+    @GET
+    @Path("/id={id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response get(@PathParam("id") int id) {
+        return Response.ok().entity(gson.toJson(fPerson.getPersonByID(id))).build();
+    }
+
 //    @GET
 //    @Path("/Person/email={email}")
 //    @Produces(MediaType.APPLICATION_JSON)

@@ -51,41 +51,42 @@ public class CompanyResource {
     public Response getCompanyById(@PathParam("id") int id) {
         return Response.ok().entity(gson.toJson(fCompany.getCompanyByID(id))).build();
     }
+
+    @GET
+    @Path("/email={email}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getCompanyByEmail(@PathParam("email") String email) {
+        return Response.ok().entity(gson.toJson(fCompany.getCompanyByEmail(email))).build();
+    }
+
+    
+    @GET
+    @Path("/company/phone={number}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getCompanyByPhone(@PathParam("number") String number) {
+        return Response.ok().entity(gson.toJson(fCompany.getCompanyByPhone(fPhone.getPhoneByNumber(number)))).build();
+    }
+
+    @GET
+    @Path("/cvr={cvr}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getCompanyByCVR(@PathParam("cvr") int cvr) {
+        return Response.ok().entity(gson.toJson(fCompany.getCompanyByCVR(cvr))).build();
+    }
+
+    @GET
+    @Path("/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getAllCompanies() {
+        return Response.ok().entity(gson.toJson(fCompany.getAllCompanies())).build();
+    }
 //
 //    @GET
-//    @Path("/company/email={email}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response getCompanyByEmail(@PathParam("email") String email) {
-//        return Response.ok().entity(gson.toJson(fCompany.getCompanyByEmail(email))).build();
-//    }
-//
-//    @GET
-//    @Path("/company/phone={number}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response getCompanyByPhone(@PathParam("number") String number) {
-//        return Response.ok().entity(gson.toJson(fCompany.getCompanyByPhone(fPhone.getPhoneByNumber(number)))).build();
-//    }
-//
-//    @GET
-//    @Path("/company/cvr={cvr}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response getCompanyByCVR(@PathParam("cvr") int cvr) {
-//        return Response.ok().entity(gson.toJson(fCompany.getCompanyByCVR(cvr))).build();
-//    }
-//
-//    @GET
-//    @Path("/company/all")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response getAllCompanies() {
-//        return Response.ok().entity(gson.toJson(fCompany.getAllCompanies())).build();
-//    }
-//
-//    @GET
-//    @Path("/company/zipcode={zipcode}")
+//    @Path("/zipcode={zipcode}")
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Consumes(MediaType.APPLICATION_JSON)
 //    public Response getCompanyByZipCode(@PathParam("zipcode") String number) {
@@ -94,7 +95,7 @@ public class CompanyResource {
 //
 //    //Facade metode ikke implementeret, da vi mangler korrekte joins på vores entities 
 //    @GET
-//    @Path("/company/address={address}")
+//    @Path("/address={address}")
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Consumes(MediaType.APPLICATION_JSON)
 //    public Response getCompanyByAddress(@PathParam("address") String address) {
@@ -102,7 +103,7 @@ public class CompanyResource {
 //    }
 //
 //    @GET
-//    @Path("/company/empcount={amount}")
+//    @Path("/empcount={amount}")
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Consumes(MediaType.APPLICATION_JSON)
 //    public Response getCompanyWithMoreEmployeesThan(@PathParam("amount") int amount) {
@@ -110,7 +111,7 @@ public class CompanyResource {
 //    }
 //
 //    @GET
-//    @Path("/company/value={value}")
+//    @Path("/value={value}")
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Consumes(MediaType.APPLICATION_JSON)
 //    public Response get(@PathParam("number") int value) {
