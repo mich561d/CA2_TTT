@@ -29,7 +29,7 @@ public class Person extends InfoEntity {
 
     private static final long serialVersionUID = 1L;
     private String firstName, lastName;
-    @ManyToMany(mappedBy = "persons", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "persons") //, cascade = CascadeType.ALL
     private List<Hobby> hobbies;
 
     public Person() {
@@ -74,5 +74,9 @@ public class Person extends InfoEntity {
         return str.toString();//"INSERT INTO INFOENTITY (ENTITY_TYPE,EMAIL) VALUES ('P','" + this.getEmail() + "');\n"
         //+ "SET @infoentity = LAST_INSERT_ID();\n"
         //+ "INSERT INTO PERSON (ID,FIRSTNAME,LASTNAME) VALUES (LAST_INSERT_ID(),'" + this.firstName + "','" + this.lastName + "');\n";
+    }
+
+    public void add(Person person) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

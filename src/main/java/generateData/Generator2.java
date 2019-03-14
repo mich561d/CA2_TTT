@@ -63,6 +63,7 @@ public class Generator2 {
             person.setPhones(phones);
             address = new Address("Personstreet", "Number: " + i, allZipCodes.get(rand.nextInt(allZipCodes.size())));
             person.setAddress(address);
+            persons.add(person);
 
         }
         return persons;
