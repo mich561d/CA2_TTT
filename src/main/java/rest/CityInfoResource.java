@@ -37,7 +37,7 @@ public class CityInfoResource {
     }
 
     @GET
-    @Path("/city/all")
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getAllCities() {
@@ -45,7 +45,7 @@ public class CityInfoResource {
     }
 
     @GET
-    @Path("/city/zipcode={zip}")
+    @Path("/zipcode={zip}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getCityByZip(@PathParam("zip") String zip) {
@@ -53,7 +53,7 @@ public class CityInfoResource {
     }
 
     @GET
-    @Path("/city/allzipcodes")
+    @Path("/allzipcodes")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response get() {

@@ -11,6 +11,7 @@ import dto.HobbyDTO;
 import entity.Hobby;
 import facade.FHobby;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -36,7 +37,7 @@ public class HobbyResource {
     private UriInfo context;
 
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    EntityManagerFactory emf;
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu2", null);
     FHobby fHobby = new FHobby(emf);
 
     /**
@@ -45,8 +46,9 @@ public class HobbyResource {
     public HobbyResource() {
     }
 
+    //Not working (HTTP Status 500)
     @GET
-    @Path("/hobby/id={id}")
+    @Path("/id={id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response get(@PathParam("id") int id) {
@@ -54,7 +56,7 @@ public class HobbyResource {
     }
 
     @GET
-    @Path("/hobby/name={hobby}")
+    @Path("/name={hobby}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getHobbyByName(@PathParam("hobby") String hobby) {
@@ -62,7 +64,7 @@ public class HobbyResource {
     }
 
     @GET
-    @Path("/hobby/all")
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getAllHobbies() {
@@ -90,11 +92,11 @@ public class HobbyResource {
         fHobby.deleteHobbyByID(h.getId());
     }
 
-    @DELETE
-    @Produces(MediaType.APPLICATION_JSON)
-    public void deleteHobbyByName(String name) {
-        HobbyDTO h = fHobby.getHobbyByName(name);
-        fHobby.deleteHobbyByName(h.getName());
-    }
+//    @DELETE
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public void deleteHobbyByName(String name) {
+//        HobbyDTO h = fHobby.getHobbyByName(name);
+//        fHobby.deleteHobbyByName(h.getName());
+//    }
 
 }

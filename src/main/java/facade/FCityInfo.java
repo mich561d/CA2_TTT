@@ -43,7 +43,7 @@ public class FCityInfo implements ICityInfo {
     public CityInfoDTO getCityByZip(String zip) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("CityInfoDTO.findByZipCode", CityInfoDTO.class).setParameter("zipCode", zip).getSingleResult();
+            return em.createNamedQuery("CityInfoDTO.findByZipCode", CityInfoDTO.class).setParameter("zip", zip).getSingleResult();
         } finally {
             em.close();
         }
@@ -53,7 +53,7 @@ public class FCityInfo implements ICityInfo {
     public List<String> getAllZipCodes() {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("CityInfoDTO.findAllZipCodes", String.class).getResultList();
+            return em.createNamedQuery("CityInfo.findAllZipCodes", String.class).getResultList();
         } finally {
             em.close();
         }
