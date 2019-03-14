@@ -6,6 +6,7 @@ import entity.Company;
 import entity.Hobby;
 import entity.Person;
 import entity.Phone;
+import facade.FCompany;
 import facade.FPerson;
 import generateData.Generator2;
 import java.util.ArrayList;
@@ -25,15 +26,20 @@ public class TestPU {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Persistence.generateSchema("pu-test", null);
+        //Persistence.generateSchema("pu-test", null);
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-test");
         Generator2 generator = new Generator2(emf);
         List<Person> persons = generator.generateRandomPersons(50);
         List<Company> companies = generator.generateRandomCompanies(10);
         FPerson fPerson = new FPerson(emf);
         for(int i = 0; i < persons.size(); i++) {
-            System.out.println(persons.get(i).getHobbies().get(0).getName());
+            //System.out.println(persons.get(i).getHobbies().get(0).getName());
             fPerson.createPerson(persons.get(i));
+        }
+        FCompany fCompany = new FCompany(emf);
+        for(int i = 0; i < companies.size(); i++) {
+            //System.out.println(persons.get(i).getHobbies().get(0).getName());
+            fCompany.createCompany(companies.get(i));
         }
         
         

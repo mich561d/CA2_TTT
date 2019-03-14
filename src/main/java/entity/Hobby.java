@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -27,7 +29,8 @@ public class Hobby implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name, description;
-    @ManyToMany (cascade = CascadeType.ALL)
+
+    @ManyToMany(mappedBy = "hobbies")
     private List<Person> persons;
 
     public Hobby() {
@@ -38,12 +41,12 @@ public class Hobby implements Serializable {
         this.description = description;
         this.persons = persons;
     }
-    
+
     public Hobby(String name, String description) {
         this.name = name;
         this.description = description;
     }
-    
+
     public Integer getId() {
         return id;
     }

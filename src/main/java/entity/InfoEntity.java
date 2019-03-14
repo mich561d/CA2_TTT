@@ -29,9 +29,9 @@ public abstract class InfoEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
-    @OneToMany(mappedBy = "infoEntity", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "infoEntity", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<Phone> phones;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Address address;
 
     public InfoEntity() {

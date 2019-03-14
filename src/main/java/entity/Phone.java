@@ -25,7 +25,7 @@ public class Phone implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String number, description;
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne (cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private InfoEntity infoEntity;
 
     public Phone() {

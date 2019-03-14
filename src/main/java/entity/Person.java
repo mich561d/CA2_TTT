@@ -4,6 +4,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -29,7 +31,11 @@ public class Person extends InfoEntity {
 
     private static final long serialVersionUID = 1L;
     private String firstName, lastName;
-    @ManyToMany(mappedBy = "persons") //, cascade = CascadeType.ALL
+    @ManyToMany(cascade = {CascadeType.REFRESH, CascadeType.MERGE}) //, cascade = CascadeType.ALL mappedBy = "persons", 
+    @JoinTable(
+            name = "PERSON_HOBBY",
+            joinColumns = @JoinColumn(name = "PERSON_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "HOBBY_ID", referencedColumnName = "ID"))
     private List<Hobby> hobbies;
 
     public Person() {

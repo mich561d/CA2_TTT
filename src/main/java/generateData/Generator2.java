@@ -36,11 +36,11 @@ public class Generator2 {
         IHobby hobbyFacade = new FHobby(emf);
         Random rand = new Random();
 
-        List<Hobby> allHobbies = hobbyFacade.getAllHobbies();
         List<CityInfo> allZipCodes = cityInfoFacade.getAllCitiesRaw();
         int phoneNumber = 50000000;
 
         for (int i = 0; i < amountOfPersons; i++) {
+            List<Hobby> allHobbies = hobbyFacade.getAllHobbies();
             String firstName = FIRSTNAMES[rand.nextInt(FIRSTNAMES.length)];
             String lastName = LASTNAMES[rand.nextInt(LASTNAMES.length)];
             ArrayList<Hobby> hobbies = new ArrayList();
@@ -54,6 +54,7 @@ public class Generator2 {
             for (int j = 0; j < amountOfHobbies; j++) {
                 int hobby = rand.nextInt(allHobbies.size());
                 hobbies.add(allHobbies.get(hobby));
+                allHobbies.remove(hobby); //So the same hobby won't be picked twice.
             }
             person.setHobbies(hobbies);
             int amountOfPhones = rand.nextInt(2) + 1;
