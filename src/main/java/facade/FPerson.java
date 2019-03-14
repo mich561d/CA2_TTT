@@ -3,6 +3,7 @@ package facade;
 import interfaces.IPerson;
 import dto.AddressDTO;
 import dto.CityInfoDTO;
+import dto.CompanyDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
@@ -105,7 +106,16 @@ public class FPerson implements IPerson {
         } finally {
             em.close();
         }
-        return null; // TODO
+        List<String> phones = new ArrayList();
+        for (int i = 0; i < person.getPhones().size(); i++) {
+            phones.add(person.getPhones().get(i).getNumber());
+        }
+        List<String> hobbies = new ArrayList();
+        for (int i = 0; i < person.getHobbies().size(); i++) {
+            hobbies.add(person.getHobbies().get(i).getName());
+        }
+
+        return new PersonDTO(person.getId(),person.getFirstName(),person.getLastName(),person.getEmail(),person.getAddress().getStreet(),hobbies,phones);
     }
 
     @Override
