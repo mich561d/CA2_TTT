@@ -24,15 +24,15 @@ public class TestData {
         List<Person> persons = generator.generateExactTestPersonData();
         List<Company> companies = generator.generateExactTestCompanyData();
         FPerson fPerson = new FPerson(emf);
-        for(int i = 0; i < persons.size(); i++) {
+        for (int i = 0; i < persons.size(); i++) {
             //System.out.println(persons.get(i).getHobbies().get(0).getName());
             fPerson.createPerson(persons.get(i));
         }
         FCompany fCompany = new FCompany(emf);
-        for(int i = 0; i < companies.size(); i++) {
+        for (int i = 0; i < companies.size(); i++) {
             //System.out.println(persons.get(i).getHobbies().get(0).getName());
             fCompany.createCompany(companies.get(i));
         }
     }
-    
+
 }

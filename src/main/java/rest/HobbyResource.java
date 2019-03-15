@@ -98,5 +98,4 @@ public class HobbyResource {
 //        HobbyDTO h = fHobby.getHobbyByName(name);
 //        fHobby.deleteHobbyByName(h.getName());
 //    }
-
 }
