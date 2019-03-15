@@ -29,7 +29,7 @@
                         <div class="control-group">
                             <h2>Persons commands:</h2>
                             <p>@Path("/{number}")</p>
-                            <a href="http://localhost:8084"></a>
+                            <a href="https://"></a>
                             <br>
                             Output: getPersonByPhone
                             <hr>
@@ -159,38 +159,38 @@
                     <div class="container">
                         <div class="control-group">
                             <h2>Hobbies commands:</h2>
-                            <p>@Path("/{hobby}")</p>
-                            <a href="http://localhost:8084"></a>
+                            <h3>Get Hobby By Name</h3>
+                            <p>@Path("api/Hobby/Name={hobby}")</p>
+                            <a href="https://dueinator.dk/CA2/api/Hobby/Name/Programming">Link to JSON</a>
                             <br>
-                            Output: getHobbyByName
+                            {
+                            "id": 1,
+                            "name": "Programming",
+                            "description": "Nerdy business"
+                            }
                             <hr>
-                            <p>@Path("/hobby/all")</p>
-                            <a href="http://localhost:8084"></a>
+                            <p>@Path("https://dueinator.dk/CA2/api/Hobby/All")</p>
+                            <a href="https://dueinator.dk/CA2/api/Hobby/All">Link to JSON</a>
                             <br>
                             Output: getAllHobbies
                             <hr>
-                            <p>@Path("/hobby/{id}")</p>
-                            <a href="http://localhost:8084"></a>
-                            <br>
-                            Output: getHobbyByID
-                            <hr>
                             <p>@Path("/hobby/create")</p>
-                            <a href="http://localhost:8084"></a>
+                            <a href="http://localhost:8084">Link to JSON</a>
                             <br>
                             Output: createHobby
                             <hr>
                             <p>@Path("/hobby/update")</p>
-                            <a href="http://localhost:8084"></a>
+                            <a href="http://localhost:8084">Link to JSON</a>
                             <br>
                             Output: updateHobby
                             <hr>
                             <p>@Path("/hobby/delete/id")</p>
-                            <a href="http://localhost:8084"></a>
+                            <a href="http://localhost:8084">Link to JSON</a>
                             <br>
                             Output: deleteHobbyByID
                             <hr>
                             <p>@Path("/hobby/delete/name")</p>
-                            <a href="http://localhost:8084"></a>
+                            <a href="http://localhost:8084">Link to JSON</a>
                             <br>
                             Output: deleteHobbyByName
                         </div>
@@ -202,17 +202,17 @@
                     <div class="control-group">
                         <h2>City Commands:</h2>
                         <p>@Path("/{zip}")</p>
-                        <a href="http://localhost:8084"></a>
+                        <a href="https://dueinator.dk/CA2/api/City/{zip}"></a>
                         <br>
                         Output: getCityByZip
                         <hr>
-                        <p>@Path("/all/zipcodes")</p>
-                        <a href="http://localhost:8084"></a>
+                        <p>@Path("api/City/{zip}")</p>
+                        <a href="https://dueinator.dk/CA2/api/City/AllZips"></a>
                         <br>
                         Output: getAllZipCodes
                         <hr>
-                        <p>@Path("/all/cities</p>
-                        <a href="http://localhost:8084"></a>
+                        <p>@Path("api/City/AllCities</p>
+                        <a href="https://dueinator.dk/CA2/api/City/AllCities"></a>
                         <br>
                         Output: getAlleCities
                     </div>
