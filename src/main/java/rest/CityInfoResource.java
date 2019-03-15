@@ -50,12 +50,13 @@ public class CityInfoResource {
     @Path("/AllZips")
     @Produces(MediaType.APPLICATION_JSON)
     public Response get() {
-        JsonObject jo = new JsonObject();
+        List<JsonObject> jos = new ArrayList();
         List<String> zips = fCity.getAllZipCodes();
-        List<String> newList = new ArrayList();
         for (int i = 0; i < zips.size(); i++) {
+            JsonObject jo = new JsonObject();
             jo.addProperty("zip" + i, zips.get(i));
+            jos.add(jo);
         }
-        return Response.ok().entity(gson.toJson(jo)).build();
+        return Response.ok().entity(gson.toJson(jos)).build();
     }
 }
