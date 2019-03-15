@@ -18,7 +18,7 @@ import javax.persistence.Persistence;
 public class Main {
 
     public static void main(String[] args) {
-        Persistence.generateSchema("pu2", null);
+        //Persistence.generateSchema("pu2", null);
 
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
 //        EntityManager em = emf.createEntityManager();

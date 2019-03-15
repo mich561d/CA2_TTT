@@ -19,6 +19,7 @@ public class FillDB {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //Persistence.generateSchema("pu2", null);
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu2");
         Generator2 generator = new Generator2(emf);
         List<Person> persons = generator.generateRandomPersons(500);
