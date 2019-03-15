@@ -13,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @DiscriminatorValue("C")
-@Table(name = "Company")
+@Table(name = "COMPANY")
 @NamedQueries({
     @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c")
     , @NamedQuery(name = "Company.findById", query = "SELECT c FROM Company c WHERE c.id = :id")

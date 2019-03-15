@@ -28,7 +28,7 @@ public class CityInfo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String zip, city;
-    @OneToMany(mappedBy = "cityInfo", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "cityInfo", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Address> addresses;
 
     public CityInfo() {
