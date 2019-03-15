@@ -110,14 +110,14 @@ public class Generator2 {
         IHobby hobbyFacade = new FHobby(emf);
         Hobby hobby = hobbyFacade.getHobbyByID(hobbyFacade.getHobbyByName("Programming").getId());
 
-        List<Person> persons = generateRandomPersons(50);
+        List<Person> persons = generateRandomPersons(20);
 
         persons.get(0).getPhones().get(0).setNumber("12435687");
 
         ArrayList<Hobby> programmingHobby = new ArrayList();
         programmingHobby.add(hobby);
         for (int i = 0; i < persons.size(); i++) {
-            if (i < 10) {
+            if (i < 9) {
                 if(!persons.get(i).getHobbies().contains(hobby))
                 persons.get(i).setHobbies(programmingHobby);
             } else {
@@ -132,11 +132,11 @@ public class Generator2 {
 
     public List<Company> generateExactTestCompanyData() {
         Random rand = new Random();
-        List<Company> companies = generateRandomCompanies(50);
+        List<Company> companies = generateRandomCompanies(20);
         companies.get(0).getPhones().get(0).setNumber("21346578");
         companies.get(0).setCvr(36069420);
         for (int i = 0; i < companies.size(); i++) {
-            if (i < 42) {
+            if (i < 7) {
                 companies.get(i).setNumEmployees(rand.nextInt(1000) + 361);
             } else {
                 companies.get(i).setNumEmployees(rand.nextInt(360));
