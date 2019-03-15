@@ -17,6 +17,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Phone.findAll", query = "SELECT p FROM Phone p")
+    , @NamedQuery(name = "Phone.findByNumber", query = "SELECT p FROM Phone p WHERE p.number = :number")
     , @NamedQuery(name = "PhoneDTO.findByNumber", query = "SELECT NEW dto.PhoneDTO(p.id, p.number, p.description, p.infoEntity.id) FROM Phone p WHERE p.number = :number")})
 public class Phone implements Serializable {
 

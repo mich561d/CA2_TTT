@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import junit.framework.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -34,12 +35,12 @@ public class TCompany {
         emf = Persistence.createEntityManagerFactory("pu-test");
         facade = new FCompany(emf);
         Generator2 generator = new Generator2(emf);
-        List<Person> persons = generator.generateExactTestPersonData();
+//        List<Person> persons = generator.generateExactTestPersonData();
         List<Company> companies = generator.generateExactTestCompanyData();
-        FPerson fPerson = new FPerson(emf);
-        for (int i = 0; i < persons.size(); i++) {
-            fPerson.createPerson(persons.get(i));
-        }
+//        FPerson fPerson = new FPerson(emf);
+//        for (int i = 0; i < persons.size(); i++) {
+//            fPerson.createPerson(persons.get(i));
+//        }
         for (int i = 0; i < companies.size(); i++) {
             facade.createCompany(companies.get(i));
         }
@@ -53,8 +54,10 @@ public class TCompany {
 
     @Test
     public void testGetCompanyByEmail() {
-        CompanyDTO c = facade.getCompanyByEmail("Company1@Company1.com");
-        assertNotNull(c);
+        String email = "Company1@Company1.com";
+        CompanyDTO c = facade.getCompanyByEmail(email);
+        //assertNotNull(c);
+        assertEquals(email, c.getEmail());
     }
 
     @Test

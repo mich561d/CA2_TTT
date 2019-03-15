@@ -5,6 +5,7 @@ import dto.CityInfoDTO;
 import dto.CompanyDTO;
 import dto.PhoneDTO;
 import entity.Company;
+import entity.Phone;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public interface ICompany {
 
     public abstract CompanyDTO getCompanyByEmail(String email);
 
-    public abstract CompanyDTO getCompanyByPhone(PhoneDTO phone);
+    public abstract CompanyDTO getCompanyByPhone(Phone phone);
 
     public abstract CompanyDTO getCompanyByCVR(int cvr);
 
