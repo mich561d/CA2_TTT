@@ -30,7 +30,7 @@ public class CityInfoResource {
     FCityInfo fCity = new FCityInfo(emf);
 
     @GET
-    @Path("/allCities")
+    @Path("/AllCities")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllCities() {
         return Response.ok().entity(gson.toJson(fCity.getAllCities())).build();
@@ -44,10 +44,9 @@ public class CityInfoResource {
     }
 
     @GET
-    @Path("/allZips")
+    @Path("/AllZips")
     @Produces(MediaType.APPLICATION_JSON)
     public Response get() {
         return Response.ok().entity(gson.toJson(fCity.getAllZipCodes())).build();
     }
-
 }

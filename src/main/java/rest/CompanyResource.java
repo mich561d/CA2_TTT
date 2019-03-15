@@ -25,111 +25,97 @@ import javax.ws.rs.core.Response;
 /**
  * REST Web Service
  *
- * @author Jesper
+ * @author Jesper, Michael
  */
-@Path("company")
+@Path("Company")
 public class CompanyResource {
 
     @Context
     private UriInfo context;
-    Gson gson;
-    EntityManagerFactory emf;
-    FCompany fCompany;
-    FPhone fPhone;
-    FCityInfo fCity;
 
-    /**
-     * Creates a new instance of CompanyResource
-     */
-    public CompanyResource() {
-        gson = new GsonBuilder().setPrettyPrinting().create();
-        emf = Persistence.createEntityManagerFactory("pu2", null);
-        fCompany = new FCompany(emf);
-        fPhone = new FPhone(emf);
-        fCity = new FCityInfo(emf);
-        
-    }
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu2", null);
+    FCompany fCompany = new FCompany(emf);
+    FPhone fPhone = new FPhone(emf);
+    FCityInfo fCity = new FCityInfo(emf);
 
     @GET
-    @Path("/email={email}")
+    @Path("/Email/{email}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCompanyByEmail(@PathParam("email") String email) {
         return Response.ok().entity(gson.toJson(fCompany.getCompanyByEmail(email))).build();
     }
 
     @GET
-    @Path("/company/phone={number}")
+    @Path("/Phone/{number}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCompanyByPhone(@PathParam("number") String number) {
         return Response.ok().entity(gson.toJson(fCompany.getCompanyByPhone(fPhone.getPhoneByNumber(number)))).build();
     }
 
     @GET
-    @Path("/cvr={cvr}")
+    @Path("/CVR/{cvr}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCompanyByCVR(@PathParam("cvr") int cvr) {
         return Response.ok().entity(gson.toJson(fCompany.getCompanyByCVR(cvr))).build();
     }
 
     @GET
-    @Path("/all")
+    @Path("/All")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllCompanies() {
         return Response.ok().entity(gson.toJson(fCompany.getAllCompanies())).build();
     }
-//
-//    @GET
-//    @Path("/zipcode={zipcode}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response getCompanyByZipCode(@PathParam("zipcode") String number) {
-//        return Response.ok().entity(gson.toJson(fCompany.getAllCompaniessByCity(fCity.getCityByZip(number)))).build();
-//    }
-//
-//    //Facade metode ikke implementeret, da vi mangler korrekte joins på vores entities 
-//    @GET
-//    @Path("/address={address}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response getCompanyByAddress(@PathParam("address") String address) {
-//        return null;
-//    }
-//
-//    @GET
-//    @Path("/empcount={amount}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response getCompanyWithMoreEmployeesThan(@PathParam("amount") int amount) {
-//        return Response.ok().entity(gson.toJson(fCompany.getAllCompaniesWithNumEmployeesOver(amount))).build();
-//    }
-//
-//    @GET
-//    @Path("/value={value}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response get(@PathParam("number") int value) {
-//        return Response.ok().entity(gson.toJson(fCompany.getAllCompaniesWithMarketValueOver(value))).build();
-//    }
-//
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public void createHobby(String content) {
-//        Company c = gson.fromJson(content, Company.class);
-//        fCompany.createCompany(c);
-//    }
-//
-//    @PUT
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public void updateCompany(String content) {
-//        CompanyDTO c = gson.fromJson(content, CompanyDTO.class);
-//        fCompany.updateCompany(c);
-//    }
-//
-//    @DELETE
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public void deleteCompany(int id) {
-//        Company c = fCompany.getCompanyByID(id);
-//        fCompany.deleteCompany(c.getId());
-//    }
 
+    @GET
+    @Path("/City/{zipcode}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCompanyByZipCode(@PathParam("zipcode") String number) {
+        return Response.ok().entity(gson.toJson(fCompany.getAllCompaniessByCity(fCity.getCityByZip(number)))).build();
+    }
+
+    @GET
+    @Path("/Address/{address}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCompanyByAddress(@PathParam("address") String address) {
+        return null;
+    }
+
+    @GET
+    @Path("/EmployeeCount/{amount}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCompanyWithMoreEmployeesThan(@PathParam("amount") int amount) {
+        return Response.ok().entity(gson.toJson(fCompany.getAllCompaniesWithNumEmployeesOver(amount))).build();
+    }
+
+    @GET
+    @Path("/MarketValue/{value}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCompanyWithMoreMarketValueThan(@PathParam("value") int value) {
+        return Response.ok().entity(gson.toJson(fCompany.getAllCompaniesWithMarketValueOver(value))).build();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createHobby(String content) {
+        Company c = gson.fromJson(content, Company.class);
+        fCompany.createCompany(c);
+    }
+
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updateCompany(String content) {
+        CompanyDTO c = gson.fromJson(content, CompanyDTO.class);
+        fCompany.updateCompany(c);
+    }
+
+    @DELETE
+    @Path("/Delete/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void deleteCompany(@PathParam("id") int id) {
+        Company c = fCompany.getCompanyByID(id);
+        fCompany.deleteCompany(c.getId());
+    }
 }

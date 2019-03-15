@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rest;
 
 import com.google.gson.Gson;
@@ -28,9 +23,9 @@ import javax.ws.rs.core.Response;
 /**
  * REST Web Service
  *
- * @author Admin
+ * @author Jesper, Michael
  */
-@Path("hobby")
+@Path("Hobby")
 public class HobbyResource {
 
     @Context
@@ -40,39 +35,23 @@ public class HobbyResource {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu2", null);
     FHobby fHobby = new FHobby(emf);
 
-    /**
-     * Creates a new instance of HobbyResource
-     */
-    public HobbyResource() {
-    }
-
-    //Not working (HTTP Status 500)
     @GET
-    @Path("/id={id}")
+    @Path("/Name/{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response get(@PathParam("id") int id) {
-        return Response.ok().entity(gson.toJson(fHobby.getHobbyByID(id))).build();
+    public Response getHobbyByName(@PathParam("name") String name) {
+        return Response.ok().entity(gson.toJson(fHobby.getHobbyByName(name))).build();
     }
 
     @GET
-    @Path("/name={hobby}")
+    @Path("/All")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getHobbyByName(@PathParam("hobby") String hobby) {
-        return Response.ok().entity(gson.toJson(fHobby.getHobbyByName(hobby))).build();
-    }
-
-    @GET
-    @Path("/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response getAllHobbies() {
         return Response.ok().entity(gson.toJson(fHobby.getAllHobbies())).build();
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void createHobby(String content) {
         Hobby h = gson.fromJson(content, Hobby.class);
         fHobby.createHobby(h);
@@ -80,22 +59,17 @@ public class HobbyResource {
 
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void updateHobby(String content) {
         HobbyDTO h = gson.fromJson(content, HobbyDTO.class);
         fHobby.updateHobby(h);
     }
 
     @DELETE
+    @Path("Delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public void deleteHobbyById(int id) {
+    public void deleteHobbyById(@PathParam("id") int id) {
         Hobby h = fHobby.getHobbyByID(id);
         fHobby.deleteHobbyByID(h.getId());
     }
-
-//    @DELETE
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public void deleteHobbyByName(String name) {
-//        HobbyDTO h = fHobby.getHobbyByName(name);
-//        fHobby.deleteHobbyByName(h.getName());
-//    }
 }
