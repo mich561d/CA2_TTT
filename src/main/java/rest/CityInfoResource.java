@@ -2,7 +2,9 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import facade.FCityInfo;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
@@ -47,6 +49,11 @@ public class CityInfoResource {
     @Path("/AllZips")
     @Produces(MediaType.APPLICATION_JSON)
     public Response get() {
-        return Response.ok().entity(gson.toJson(fCity.getAllZipCodes())).build();
+        JsonObject jo = new JsonObject();
+        List<String> zips = fCity.getAllZipCodes();
+        for (int i = 0; i < zips.size(); i++) {
+            jo.addProperty("zip", zips.get(i));
+        }
+        return Response.ok().entity(gson.toJson(jo)).build();
     }
 }
