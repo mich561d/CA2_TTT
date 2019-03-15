@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
  *
  * @author Jesper, Michael
  */
-@Path("city")
+@Path("City")
 public class CityInfoResource {
 
     @Context
