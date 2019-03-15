@@ -22,9 +22,9 @@ public class Address implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String street, additionalInfo;
-    @OneToMany(mappedBy = "address", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "address", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<InfoEntity> infoEntities;
-    @ManyToOne //(cascade = CascadeType.ALL)
+    @ManyToOne (cascade = {CascadeType.REFRESH, CascadeType.MERGE})
     private CityInfo cityInfo;
 
     public Address() {
