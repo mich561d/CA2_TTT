@@ -51,17 +51,8 @@ public class CompanyResource {
     }
 
     @GET
-    @Path("/id={id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getCompanyById(@PathParam("id") int id) {
-        return Response.ok().entity(gson.toJson(fCompany.getCompanyByID(id))).build();
-    }
-
-    @GET
     @Path("/email={email}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response getCompanyByEmail(@PathParam("email") String email) {
         return Response.ok().entity(gson.toJson(fCompany.getCompanyByEmail(email))).build();
     }
@@ -69,7 +60,6 @@ public class CompanyResource {
     @GET
     @Path("/company/phone={number}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response getCompanyByPhone(@PathParam("number") String number) {
         return Response.ok().entity(gson.toJson(fCompany.getCompanyByPhone(fPhone.getPhoneByNumber(number)))).build();
     }
@@ -77,7 +67,6 @@ public class CompanyResource {
     @GET
     @Path("/cvr={cvr}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response getCompanyByCVR(@PathParam("cvr") int cvr) {
         return Response.ok().entity(gson.toJson(fCompany.getCompanyByCVR(cvr))).build();
     }
@@ -85,7 +74,6 @@ public class CompanyResource {
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     public Response getAllCompanies() {
         return Response.ok().entity(gson.toJson(fCompany.getAllCompanies())).build();
     }
