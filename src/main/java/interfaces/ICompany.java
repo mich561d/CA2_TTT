@@ -3,7 +3,6 @@ package interfaces;
 import dto.AddressDTO;
 import dto.CityInfoDTO;
 import dto.CompanyDTO;
-import dto.PhoneDTO;
 import entity.Company;
 import entity.Phone;
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
  */
 public interface ICompany {
 
-    public abstract Company getCompanyByID(int id);
+    public abstract Company getCompanyByIDRaw(int id);
 
     public abstract CompanyDTO getCompanyByEmail(String email);
 

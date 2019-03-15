@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface IPerson {
 
-    public abstract Person getPersonByID(int id);
+    public abstract Person getPersonByIDRaw(int id);
 
     public abstract PersonDTO getPersonByEmail(String email);
 

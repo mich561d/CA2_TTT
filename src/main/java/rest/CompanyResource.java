@@ -50,7 +50,7 @@ public class CompanyResource {
     @Path("/Phone/{number}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCompanyByPhone(@PathParam("number") String number) {
-        return Response.ok().entity(gson.toJson(fCompany.getCompanyByPhone(fPhone.getPhoneByNumber(number)))).build();
+        return Response.ok().entity(gson.toJson(fCompany.getCompanyByPhone(fPhone.getPhoneByNumberRaw(number)))).build();
     }
 
     @GET
@@ -115,7 +115,7 @@ public class CompanyResource {
     @Path("/Delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public void deleteCompany(@PathParam("id") int id) {
-        Company c = fCompany.getCompanyByID(id);
+        Company c = fCompany.getCompanyByIDRaw(id);
         fCompany.deleteCompany(c.getId());
     }
 }

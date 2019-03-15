@@ -24,7 +24,7 @@ public class CompanyDTO {
         this.phones = phones;
     }
 
-    public CompanyDTO(int id, int cvr, int numEmployees, int marketValue, String email, String name, String description, String address) {
+    public CompanyDTO(int id, int cvr, int numEmployees, int marketValue, String email, String name, String description) {
         this.id = id;
         this.cvr = cvr;
         this.numEmployees = numEmployees;
@@ -32,7 +32,6 @@ public class CompanyDTO {
         this.email = email;
         this.name = name;
         this.description = description;
-        this.address = address;
     }
 
     public int getId() {
