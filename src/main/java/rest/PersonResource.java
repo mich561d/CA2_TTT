@@ -79,13 +79,13 @@ public class PersonResource {
 //        return Response.ok().entity(gson.toJson(fPerson.getAllPersons())).build();
 //    }
 //
-//    @GET
-//    @Path("/person/hobby={hobby}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response getPersonsByHobby(@PathParam("hobby") String hobby) {
-//        return Response.ok().entity(gson.toJson(fPerson.getAllPersonsByHobby(fHobby.getHobbyByName(hobby)))).build();
-//    }
+    @GET
+    @Path("/hobby={hobby}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getPersonsByHobby(@PathParam("hobby") String hobby) {
+        return Response.ok().entity(gson.toJson(fPerson.getAllPersonsByHobbyName(hobby))).build();
+    }
 //
 //    @GET
 //    @Path("/person/zipcode={zipcode}")

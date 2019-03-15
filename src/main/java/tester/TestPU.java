@@ -32,17 +32,16 @@ public class TestPU {
         List<Person> persons = generator.generateRandomPersons(500);
         List<Company> companies = generator.generateRandomCompanies(100);
         FPerson fPerson = new FPerson(emf);
-        for(int i = 0; i < persons.size(); i++) {
+        for (int i = 0; i < persons.size(); i++) {
             //System.out.println(persons.get(i).getHobbies().get(0).getName());
             fPerson.createPerson(persons.get(i));
         }
         FCompany fCompany = new FCompany(emf);
-        for(int i = 0; i < companies.size(); i++) {
+        for (int i = 0; i < companies.size(); i++) {
             //System.out.println(persons.get(i).getHobbies().get(0).getName());
             fCompany.createCompany(companies.get(i));
         }
-        
-        
+
 //        EntityManager em = emf.createEntityManager();
 //        List<Hobby> hobbies = new ArrayList();
 //        hobbies.add(new Hobby("Programming", "Java is great"));

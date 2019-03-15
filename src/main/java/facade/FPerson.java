@@ -70,7 +70,16 @@ public class FPerson implements IPerson {
     public List<PersonDTO> getAllPersonsByHobby(HobbyDTO hobby) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("PersonDTO.findAllByHobby", PersonDTO.class).setParameter("hobby", hobby.getId()).getResultList();
+            return em.createNamedQuery("PersonDTO.findAllByHobby", PersonDTO.class).setParameter("name", hobby.getName()).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<PersonDTO> getAllPersonsByHobbyName(String name) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("PersonDTO.findAllByHobby", PersonDTO.class).setParameter("name", name).getResultList();
         } finally {
             em.close();
         }
@@ -115,7 +124,7 @@ public class FPerson implements IPerson {
             hobbies.add(person.getHobbies().get(i).getName());
         }
 
-        return new PersonDTO(person.getId(),person.getFirstName(),person.getLastName(),person.getEmail(),person.getAddress().getStreet(),hobbies,phones);
+        return new PersonDTO(person.getId(), person.getFirstName(), person.getLastName(), person.getEmail(), person.getAddress().getStreet(), hobbies, phones);
     }
 
     @Override

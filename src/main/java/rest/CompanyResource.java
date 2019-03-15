@@ -66,7 +66,6 @@ public class CompanyResource {
         return Response.ok().entity(gson.toJson(fCompany.getCompanyByEmail(email))).build();
     }
 
-    
     @GET
     @Path("/company/phone={number}")
     @Produces(MediaType.APPLICATION_JSON)

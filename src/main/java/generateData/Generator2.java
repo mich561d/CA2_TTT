@@ -118,8 +118,9 @@ public class Generator2 {
         programmingHobby.add(hobby);
         for (int i = 0; i < persons.size(); i++) {
             if (i < 9) {
-                if(!persons.get(i).getHobbies().contains(hobby))
-                persons.get(i).setHobbies(programmingHobby);
+                if (!persons.get(i).getHobbies().contains(hobby)) {
+                    persons.get(i).setHobbies(programmingHobby);
+                }
             } else {
                 if (persons.get(i).getHobbies().contains(hobby)) {
                     persons.get(i).getHobbies().remove(hobby);
