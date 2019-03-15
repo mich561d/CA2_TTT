@@ -6,13 +6,14 @@
 package interfaces;
 
 import dto.PhoneDTO;
+import entity.Phone;
 
 /**
  *
  * @author Admin
  */
 public interface IPhone {
-
-    public abstract PhoneDTO getPhoneByNumber(String number);
+    public abstract Phone getPhoneByNumber(String number);
+    public abstract PhoneDTO getPhoneByNumberRaw(String number);
 
 }

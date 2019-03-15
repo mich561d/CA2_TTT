@@ -1,6 +1,7 @@
 package facade;
 
 import dto.PhoneDTO;
+import entity.Phone;
 import interfaces.IPhone;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,10 +15,20 @@ public class FPhone implements IPhone {
     }
 
     @Override
-    public PhoneDTO getPhoneByNumber(String number) {
+    public PhoneDTO getPhoneByNumberRaw(String number) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("PhoneDTO.findByNumber", PhoneDTO.class).setParameter("number", number).getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public Phone getPhoneByNumber(String number) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("Phone.findByNumber", Phone.class).setParameter("number", number).getSingleResult();
         } finally {
             em.close();
         }

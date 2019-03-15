@@ -28,7 +28,7 @@ public class FCompany implements ICompany {
     public Company getCompanyByID(int id) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("Company.findById", Company.class).setParameter("id", id).getSingleResult();
+            return em.find(Company.class, id);//em.createNamedQuery("Company.findById", Company.class).setParameter("id", id).getSingleResult();
         } finally {
             em.close();
         }
@@ -45,7 +45,7 @@ public class FCompany implements ICompany {
     }
 
     @Override
-    public CompanyDTO getCompanyByPhone(PhoneDTO phone) {
+    public CompanyDTO getCompanyByPhone(Phone phone) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("CompanyDTO.findByPhone", CompanyDTO.class).setParameter("number", phone).getSingleResult();

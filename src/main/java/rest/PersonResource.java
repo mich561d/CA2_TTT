@@ -51,7 +51,7 @@ public class PersonResource {
     @Path("/Phone/{number}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPersonByPhone(@PathParam("number") String number) {
-        return Response.ok().entity(gson.toJson(fPerson.getPersonByPhone(fPhone.getPhoneByNumber(number)))).build();
+        return Response.ok().entity(gson.toJson(fPerson.getPersonByPhone(fPhone.getPhoneByNumberRaw(number)))).build();
 
     }
 
