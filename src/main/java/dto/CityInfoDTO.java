@@ -15,6 +15,10 @@ public class CityInfoDTO {
         this.city = city;
     }
 
+    public CityInfoDTO(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
     public int getId() {
         return id;
     }

@@ -50,10 +50,10 @@ public class FCityInfo implements ICityInfo {
     }
 
     @Override
-    public List<String> getAllZipCodes() {
+    public List<CityInfoDTO> getAllZipCodes() {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("CityInfo.findAllZipCodes", String.class).getResultList();
+            return em.createNamedQuery("CityInfo.findAllZipCodes", CityInfoDTO.class).getResultList();
         } finally {
             em.close();
         }
