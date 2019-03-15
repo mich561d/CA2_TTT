@@ -24,7 +24,7 @@ public class TCityInfo {
     FCityInfo facade;
 
     @Before
-    public void setup() {
+    public void setupTest() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-test");
         facade = new FCityInfo(emf);
         Generator2 generator = new Generator2(emf);
@@ -40,17 +40,15 @@ public class TCityInfo {
         }
     }
 
-    //FCityInfo facade = new FCityInfo(Persistence.createEntityManagerFactory("pu-test", null));
-
     @Test
     public void testGetAllCities() {
         List<CityInfoDTO> cities = facade.getAllCities();
-        assertEquals(1352, cities.size());
+        assertEquals(50, cities.size());
     }
 
     @Test
     public void testGetAllCitiesRaw() {
         List<CityInfo> cities = facade.getAllCitiesRaw();
-        assertEquals(1352, cities.size());
+        assertEquals(50, cities.size());
     }
 }

@@ -66,11 +66,11 @@ public class FHobby implements IHobby {
     public HobbyDTO updateHobby(HobbyDTO updatedHobby) {
         EntityManager em = emf.createEntityManager();
         try {
-            Hobby h = getHobbyByID(updatedHobby.getId());
+            em.getTransaction().begin();
+            Hobby h = em.find(Hobby.class, updatedHobby.getId());
             h.setName(updatedHobby.getName());
             h.setDescription(updatedHobby.getDescription());
-            em.getTransaction().begin();
-            em.persist(updatedHobby);
+            em.persist(h);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -82,8 +82,8 @@ public class FHobby implements IHobby {
     public void deleteHobbyByID(int id) {
         EntityManager em = emf.createEntityManager();
         try {
-            Hobby h = getHobbyByID(id);
             em.getTransaction().begin();
+            Hobby h = em.find(Hobby.class, id);
             em.remove(h);
             em.getTransaction().commit();
         } finally {
@@ -95,9 +95,10 @@ public class FHobby implements IHobby {
     public void deleteHobbyByName(String name) {
         EntityManager em = emf.createEntityManager();
         try {
-            HobbyDTO h = getHobbyByName(name);
             em.getTransaction().begin();
-            em.remove(h);
+            HobbyDTO h = getHobbyByName(name);
+            Hobby entity = em.find(Hobby.class, h.getId());
+            em.remove(entity);
             em.getTransaction().commit();
         } finally {
             em.close();
