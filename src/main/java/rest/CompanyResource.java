@@ -32,16 +32,22 @@ public class CompanyResource {
 
     @Context
     private UriInfo context;
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu2", null);
-    FCompany fCompany = new FCompany(emf);
-    FPhone fPhone = new FPhone(emf);
-    FCityInfo fCity = new FCityInfo(emf);
+    Gson gson;
+    EntityManagerFactory emf;
+    FCompany fCompany;
+    FPhone fPhone;
+    FCityInfo fCity;
 
     /**
      * Creates a new instance of CompanyResource
      */
     public CompanyResource() {
+        gson = new GsonBuilder().setPrettyPrinting().create();
+        emf = Persistence.createEntityManagerFactory("pu2", null);
+        fCompany = new FCompany(emf);
+        fPhone = new FPhone(emf);
+        fCity = new FCityInfo(emf);
+        
     }
 
     @GET
