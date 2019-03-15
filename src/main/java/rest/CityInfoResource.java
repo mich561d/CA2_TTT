@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import facade.FCityInfo;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -51,8 +52,9 @@ public class CityInfoResource {
     public Response get() {
         JsonObject jo = new JsonObject();
         List<String> zips = fCity.getAllZipCodes();
+        List<String> newList = new ArrayList();
         for (int i = 0; i < zips.size(); i++) {
-            jo.addProperty("zip", zips.get(i));
+            jo.addProperty("zip" + i, zips.get(i));
         }
         return Response.ok().entity(gson.toJson(jo)).build();
     }
