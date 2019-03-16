@@ -43,7 +43,7 @@ public class THobby {
 
     @Test
     public void getHobbyByID() {
-        Hobby hobby = facade.getHobbyByID(1);
+        Hobby hobby = facade.getHobbyByIDRaw(1);
         assertNotNull(hobby);
     }
 
@@ -55,42 +55,42 @@ public class THobby {
 
     @Test
     public void getAllHobbies() {
-        List<Hobby> hobbies = facade.getAllHobbies();
+        List<Hobby> hobbies = facade.getAllHobbiesRaw();
         assertEquals(11, hobbies.size());
     }
 
     @Test
     public void createHobby() {
-        List<Hobby> hBefore = facade.getAllHobbies();
+        List<Hobby> hBefore = facade.getAllHobbiesRaw();
         Hobby hobby = new Hobby("Art of Nothing", "The secret art of doing nothing!", new ArrayList<Person>());
         facade.createHobby(hobby);
-        List<Hobby> hAfter = facade.getAllHobbies();
+        List<Hobby> hAfter = facade.getAllHobbiesRaw();
         assertEquals(hBefore.size() + 1, hAfter.size());
     }
 
     @Test
     public void updateHobby() {
-        Hobby h = facade.getHobbyByID(5);
+        Hobby h = facade.getHobbyByIDRaw(5);
         String newValue = "Stalking";
         HobbyDTO hBefore = new HobbyDTO(h.getId(), newValue, h.getDescription());
         facade.updateHobby(hBefore);
-        Hobby hAfter = facade.getHobbyByID(5);
+        Hobby hAfter = facade.getHobbyByIDRaw(5);
         assertEquals(hBefore.getName(), hAfter.getName());
     }
 
     @Test
     public void deleteHobbyByID() {
-        List<Hobby> csBefore = facade.getAllHobbies();
+        List<Hobby> csBefore = facade.getAllHobbiesRaw();
         facade.deleteHobbyByID(3);
-        List<Hobby> csAfter = facade.getAllHobbies();
+        List<Hobby> csAfter = facade.getAllHobbiesRaw();
         assertEquals(csBefore.size() - 1, csAfter.size());
     }
 
     @Test
     public void deleteHobbyByName() {
-        List<Hobby> csBefore = facade.getAllHobbies();
+        List<Hobby> csBefore = facade.getAllHobbiesRaw();
         facade.deleteHobbyByName("Programming");
-        List<Hobby> csAfter = facade.getAllHobbies();
+        List<Hobby> csAfter = facade.getAllHobbiesRaw();
         assertEquals(csBefore.size() - 1, csAfter.size());
     }
 }

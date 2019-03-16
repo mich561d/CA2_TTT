@@ -20,7 +20,7 @@ public class FHobby implements IHobby {
     }
 
     @Override
-    public Hobby getHobbyByID(int id) {
+    public Hobby getHobbyByIDRaw(int id) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Hobby.FindByID", Hobby.class).setParameter("id", id).getSingleResult();
@@ -40,7 +40,7 @@ public class FHobby implements IHobby {
     }
 
     @Override
-    public List<Hobby> getAllHobbies() {
+    public List<Hobby> getAllHobbiesRaw() {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Hobby.findAll", Hobby.class).getResultList();

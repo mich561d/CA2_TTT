@@ -48,7 +48,7 @@ public class TCompany {
 
     @Test
     public void testGetCompanyByID() {
-        Company c = facade.getCompanyByID(1);
+        Company c = facade.getCompanyByIDRaw(1);
         assertNotNull(c);
     }
 
@@ -62,7 +62,7 @@ public class TCompany {
 
     @Test
     public void testGetCompanyByPhone() {
-        CompanyDTO c = facade.getCompanyByPhone(new FPhone(emf).getPhoneByNumber("10000001"));
+        CompanyDTO c = facade.getCompanyByPhone(new FPhone(emf).getPhoneByNumberRaw("10000001"));
         assertNotNull(c);
     }
 

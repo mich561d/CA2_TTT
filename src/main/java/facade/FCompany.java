@@ -4,7 +4,6 @@ import interfaces.ICompany;
 import dto.AddressDTO;
 import dto.CityInfoDTO;
 import dto.CompanyDTO;
-import dto.PhoneDTO;
 import entity.Company;
 import entity.Phone;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class FCompany implements ICompany {
     }
 
     @Override
-    public Company getCompanyByID(int id) {
+    public Company getCompanyByIDRaw(int id) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.find(Company.class, id);//em.createNamedQuery("Company.findById", Company.class).setParameter("id", id).getSingleResult();
@@ -135,7 +134,7 @@ public class FCompany implements ICompany {
     @Override
     public CompanyDTO updateCompany(CompanyDTO updatedCompany) {
         EntityManager em = emf.createEntityManager();
-        Company c = getCompanyByID(updatedCompany.getId());
+        Company c = getCompanyByIDRaw(updatedCompany.getId());
         c.setName(updatedCompany.getName());
         c.setDescription(updatedCompany.getDescription());
         c.setCvr(updatedCompany.getCvr());
@@ -165,7 +164,7 @@ public class FCompany implements ICompany {
     public void deleteCompany(int id) {
         EntityManager em = emf.createEntityManager();
         try {
-            Company c = getCompanyByID(id);
+            Company c = getCompanyByIDRaw(id);
             em.getTransaction().begin();
             em.remove(c);
             em.getTransaction().commit();

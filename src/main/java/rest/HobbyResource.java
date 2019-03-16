@@ -42,11 +42,11 @@ public class HobbyResource {
         return Response.ok().entity(gson.toJson(fHobby.getHobbyByName(name))).build();
     }
 
-    @GET
+    @GET 
     @Path("/All")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllHobbies() {
-        return Response.ok().entity(gson.toJson(fHobby.getAllHobbies())).build();
+        return Response.ok().entity(gson.toJson(fHobby.getAllHobbiesRaw())).build();
     }
 
     @POST
@@ -69,7 +69,7 @@ public class HobbyResource {
     @Path("Delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public void deleteHobbyById(@PathParam("id") int id) {
-        Hobby h = fHobby.getHobbyByID(id);
+        Hobby h = fHobby.getHobbyByIDRaw(id);
         fHobby.deleteHobbyByID(h.getId());
     }
 }

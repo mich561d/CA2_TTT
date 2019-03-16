@@ -3,11 +3,9 @@ package facade;
 import interfaces.IPerson;
 import dto.AddressDTO;
 import dto.CityInfoDTO;
-import dto.CompanyDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
-import entity.Address;
 import entity.Person;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +25,7 @@ public class FPerson implements IPerson {
     }
 
     @Override
-    public Person getPersonByID(int id) {
+    public Person getPersonByIDRaw(int id) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Person.findById", Person.class).setParameter("id", id).getSingleResult();
@@ -50,7 +48,7 @@ public class FPerson implements IPerson {
     public PersonDTO getPersonByPhone(PhoneDTO phone) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("PersonDTO.findByNumber", PersonDTO.class).setParameter("number", phone).getSingleResult();
+            return em.createNamedQuery("PersonDTO.findByNumber", PersonDTO.class).setParameter("number", phone.getNumber()).getSingleResult();
         } finally {
             em.close();
         }
@@ -71,15 +69,6 @@ public class FPerson implements IPerson {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("PersonDTO.findAllByHobby", PersonDTO.class).setParameter("name", hobby.getName()).getResultList();
-        } finally {
-            em.close();
-        }
-    }
-
-    public List<PersonDTO> getAllPersonsByHobbyName(String name) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            return em.createNamedQuery("PersonDTO.findAllByHobby", PersonDTO.class).setParameter("name", name).getResultList();
         } finally {
             em.close();
         }
@@ -132,7 +121,7 @@ public class FPerson implements IPerson {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            Person p = getPersonByID(updatedPerson.getId());
+            Person p = getPersonByIDRaw(updatedPerson.getId());
             p.setEmail(updatedPerson.getEmail());
             p.setFirstName(updatedPerson.getFirstName());
             p.setLastName(updatedPerson.getLastName());
@@ -147,7 +136,7 @@ public class FPerson implements IPerson {
     @Override
     public void deletePersonById(int id) {
         EntityManager em = emf.createEntityManager();
-        Person p = getPersonByID(id);
+        Person p = getPersonByIDRaw(id);
         try {
             em.getTransaction().begin();
             em.remove(p);

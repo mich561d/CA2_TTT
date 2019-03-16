@@ -49,14 +49,14 @@ public class TPerson {
 
     @Test
     public void getPersonByID() {
-        Person person = facade.getPersonByID(1);
+        Person person = facade.getPersonByIDRaw(1);
         assertNotNull(person);
 
     }
 
     @Test
     public void getPersonByEmail() {
-        Person p = facade.getPersonByID(5);
+        Person p = facade.getPersonByIDRaw(5);
         PersonDTO person = facade.getPersonByEmail(p.getEmail());
         assertNotNull(email);
 
@@ -64,7 +64,7 @@ public class TPerson {
 
     @Test
     public void getPersonByPhone() {
-        Person p = facade.getPersonByID(7);
+        Person p = facade.getPersonByIDRaw(7);
         PersonDTO phone = facade.getPersonByPhone((PhoneDTO) p.getPhones());
         assertNotNull(phone);
     }
@@ -77,7 +77,7 @@ public class TPerson {
 
     @Test
     public void getAllPersonsByHobby() {
-        List<PersonDTO> person = facade.getAllPersonsByHobbyName("progamming");
+        List<PersonDTO> person = facade.getAllPersonsByHobby(new HobbyDTO(0, "programming", "programming"));
         assertEquals(9, person.size());
     }
 

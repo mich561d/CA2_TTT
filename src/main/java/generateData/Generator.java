@@ -1,6 +1,5 @@
 package generateData;
 
-import com.google.gson.Gson;
 import entity.Address;
 import entity.CityInfo;
 import entity.Company;
@@ -38,7 +37,7 @@ public class Generator {
         Random rand = new Random();
         String path = "src/main/resources/scripts/infoEntities.sql";
 
-        List<Hobby> allHobbies = hobbyFacade.getAllHobbies();
+        List<Hobby> allHobbies = hobbyFacade.getAllHobbiesRaw();
         List<CityInfo> allZipCodes = cityInfoFacade.getAllCitiesRaw();
         int phoneNumber = 50000000;
 

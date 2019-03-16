@@ -25,12 +25,11 @@ public class PersonDTO {
         this.phones = phones;
     }
 
-    public PersonDTO(int id, String firstName, String lastName, String email, String address) {
+    public PersonDTO(int id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.address = address;
     }
 
     public int getId() {

@@ -4,14 +4,12 @@ import entity.Address;
 import entity.CityInfo;
 import entity.Company;
 import entity.Hobby;
-import entity.InfoEntity;
 import entity.Person;
 import entity.Phone;
 import facade.FCityInfo;
 import facade.FHobby;
 import interfaces.ICityInfo;
 import interfaces.IHobby;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -19,7 +17,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Fen
+ * @author Mads
  */
 public class Generator2 {
 
@@ -41,7 +39,7 @@ public class Generator2 {
         int phoneNumber = 50000000;
 
         for (int i = 0; i < amountOfPersons; i++) {
-            List<Hobby> allHobbies = hobbyFacade.getAllHobbies();
+            List<Hobby> allHobbies = hobbyFacade.getAllHobbiesRaw();
             String firstName = FIRSTNAMES[rand.nextInt(FIRSTNAMES.length)];
             String lastName = LASTNAMES[rand.nextInt(LASTNAMES.length)];
             ArrayList<Hobby> hobbies = new ArrayList();
@@ -108,7 +106,7 @@ public class Generator2 {
 
         //ArrayList<Person> entities = new ArrayList();
         IHobby hobbyFacade = new FHobby(emf);
-        Hobby hobby = hobbyFacade.getHobbyByID(hobbyFacade.getHobbyByName("Programming").getId());
+        Hobby hobby = hobbyFacade.getHobbyByIDRaw(hobbyFacade.getHobbyByName("Programming").getId());
 
         List<Person> persons = generateRandomPersons(20);
 

@@ -2,6 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dto.HobbyDTO;
 import dto.PersonDTO;
 import entity.Person;
 import facade.FCityInfo;
@@ -51,7 +52,7 @@ public class PersonResource {
     @Path("/Phone/{number}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPersonByPhone(@PathParam("number") String number) {
-        return Response.ok().entity(gson.toJson(fPerson.getPersonByPhone(fPhone.getPhoneByNumberRaw(number)))).build();
+        return Response.ok().entity(gson.toJson(fPerson.getPersonByPhone(fPhone.getPhoneByNumber(number)))).build();
 
     }
 
@@ -66,7 +67,7 @@ public class PersonResource {
     @Path("Hobby/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPersonsByHobby(@PathParam("name") String name) {
-        return Response.ok().entity(gson.toJson(fPerson.getAllPersonsByHobbyName(name))).build();
+        return Response.ok().entity(gson.toJson(fPerson.getAllPersonsByHobby(new HobbyDTO(0, name, name)))).build();
     }
 
     @GET
@@ -103,6 +104,6 @@ public class PersonResource {
     @Path("/Delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public void deletePerson(@PathParam("id") int id) {
-        fPerson.deletePersonById(fPerson.getPersonByID(id).getId());
+        fPerson.deletePersonById(fPerson.getPersonByIDRaw(id).getId());
     }
 }

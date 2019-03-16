@@ -10,11 +10,11 @@ import java.util.List;
  */
 public interface IHobby {
 
-    public abstract Hobby getHobbyByID(int id);
+    public abstract Hobby getHobbyByIDRaw(int id);
 
     public abstract HobbyDTO getHobbyByName(String name);
 
-    public abstract List<Hobby> getAllHobbies();
+    public abstract List<Hobby> getAllHobbiesRaw();
 
     public abstract HobbyDTO createHobby(Hobby hobby);
 

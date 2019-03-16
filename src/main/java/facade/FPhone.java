@@ -6,6 +6,10 @@ import interfaces.IPhone;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+/**
+ *
+ * @author Michael
+ */
 public class FPhone implements IPhone {
 
     EntityManagerFactory emf;
@@ -15,7 +19,7 @@ public class FPhone implements IPhone {
     }
 
     @Override
-    public PhoneDTO getPhoneByNumberRaw(String number) {
+    public PhoneDTO getPhoneByNumber(String number) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("PhoneDTO.findByNumber", PhoneDTO.class).setParameter("number", number).getSingleResult();
@@ -25,7 +29,7 @@ public class FPhone implements IPhone {
     }
 
     @Override
-    public Phone getPhoneByNumber(String number) {
+    public Phone getPhoneByNumberRaw(String number) {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Phone.findByNumber", Phone.class).setParameter("number", number).getSingleResult();
