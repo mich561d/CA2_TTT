@@ -14,12 +14,16 @@ import facade.FPhone;
 import generateData.Generator2;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import junit.framework.Assert;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  *
@@ -27,22 +31,50 @@ import org.junit.Before;
  */
 public class TCompany {
 
-    FCompany facade;
-    EntityManagerFactory emf;
+    private static EntityManagerFactory emf;
+    private static FCompany facade;
+    private static List<Company> companies;
+    //private EntityManager em;
 
-    @Before
-    public void setup() {
+    @BeforeClass
+    public static void setUpClass() {
         emf = Persistence.createEntityManagerFactory("pu-test");
-        facade = new FCompany(emf);
         Generator2 generator = new Generator2(emf);
-//        List<Person> persons = generator.generateExactTestPersonData();
-        List<Company> companies = generator.generateExactTestCompanyData();
-//        FPerson fPerson = new FPerson(emf);
-//        for (int i = 0; i < persons.size(); i++) {
-//            fPerson.createPerson(persons.get(i));
-//        }
+        companies = generator.generateExactTestCompanyData();
+        facade = new FCompany(emf);
+        //em = emf.createEntityManager();
         for (int i = 0; i < companies.size(); i++) {
             facade.createCompany(companies.get(i));
+        }
+    }
+
+//    @Before
+//    public void setup() {
+//        emf = Persistence.createEntityManagerFactory("pu-test");
+//        Generator2 generator = new Generator2(emf);
+//        companies = generator.generateExactTestCompanyData();
+//        facade = new FCompany(emf);
+//        em = emf.createEntityManager();
+//        for (int i = 0; i < companies.size(); i++) {
+//            facade.createCompany(companies.get(i));
+//        }
+//    }
+//    @After
+//    public void tearDown() throws Exception {
+//        if (em != null) {
+//            em.getTransaction().begin();
+//            em.flush();
+//            em.
+//            em.getTransaction().commit();
+//            em.close();
+//            em = null;
+//        }
+//    }
+    @AfterClass
+    public static void tearDownClass() {
+        if (emf != null) {
+            emf.close();
+            emf = null;
         }
     }
 
@@ -62,8 +94,10 @@ public class TCompany {
 
     @Test
     public void testGetCompanyByPhone() {
-        CompanyDTO c = facade.getCompanyByPhone(new FPhone(emf).getPhoneByNumberRaw("10000001"));
-        assertNotNull(c);
+        String number = "21346578";
+        Phone phone = new FPhone(emf).getPhoneByNumberRaw(number);
+        CompanyDTO c = facade.getCompanyByPhone(phone);
+        assertTrue(phone.getInfoEntity().getId() == c.getId());
     }
 
     @Test

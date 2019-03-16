@@ -47,7 +47,7 @@ public class Generator2 {
             ArrayList<Phone> phones = new ArrayList();
             Address address = new Address();
 
-            Person person = new Person(firstName, lastName, hobbies, email, phones, address);
+            Person person = new Person(firstName, lastName, hobbies, email.replace(" ", ""), phones, address);
 
             int amountOfHobbies = rand.nextInt(3) + 1;
             for (int j = 0; j < amountOfHobbies; j++) {
@@ -89,7 +89,7 @@ public class Generator2 {
             Address address = new Address();
 
             //String name, String description, int cvr, int numEmployees, int marketValue, String email, List<Phone> phones, Address address
-            Company company = new Company(name, description, cvr, numEmployees, marketValue, email, phones, address);
+            Company company = new Company(name, description, cvr, numEmployees, marketValue, email.replace(" ", ""), phones, address);
             int amountOfPhones = rand.nextInt(2) + 1;
             for (int j = 0; j < amountOfPhones; j++) {
                 phones.add(new Phone(Integer.toString(phoneNumber++), "mobile", company));

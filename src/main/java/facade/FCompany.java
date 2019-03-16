@@ -47,7 +47,7 @@ public class FCompany implements ICompany {
     public CompanyDTO getCompanyByPhone(Phone phone) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("CompanyDTO.findByPhone", CompanyDTO.class).setParameter("number", phone).getSingleResult();
+            return em.createNamedQuery("CompanyDTO.findByPhone", CompanyDTO.class).setParameter("number", phone.getNumber()).getSingleResult();
         } finally {
             em.close();
         }
