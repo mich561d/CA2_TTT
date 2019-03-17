@@ -14,6 +14,7 @@ import javax.persistence.Persistence;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  *
@@ -21,12 +22,11 @@ import org.junit.Before;
  */
 public class TCityInfo {
 
-    FCityInfo facade;
+    private static FCityInfo facade;
 
-    @Before
-    public void setupTest() {
+    @BeforeClass
+    public static void setUpClass() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-test");
-        facade = new FCityInfo(emf);
         Generator2 generator = new Generator2(emf);
         List<Person> persons = generator.generateExactTestPersonData();
         List<Company> companies = generator.generateExactTestCompanyData();
@@ -38,6 +38,7 @@ public class TCityInfo {
         for (int i = 0; i < companies.size(); i++) {
             fCompany.createCompany(companies.get(i));
         }
+        facade = new FCityInfo(emf);
     }
 
     @Test
@@ -51,4 +52,5 @@ public class TCityInfo {
         List<CityInfo> cities = facade.getAllCitiesRaw();
         assertEquals(50, cities.size());
     }
+
 }

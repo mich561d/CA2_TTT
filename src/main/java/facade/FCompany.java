@@ -13,7 +13,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Michael, Jesper
+ * @author Michael, Jesper, Mads
  */
 public class FCompany implements ICompany {
 

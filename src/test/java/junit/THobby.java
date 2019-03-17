@@ -12,35 +12,58 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  *
- * @author Michael
+ * @author Michael, Mads
  */
 public class THobby {
 
-    FHobby facade;
+    private static EntityManagerFactory emf;
+    private static FHobby facade;
+    private static List<Person> persons;
 
-    @Before
-    public void setup() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-test");
-        facade = new FHobby(emf);
+    @BeforeClass
+    public static void setUpClass() {
+        emf = Persistence.createEntityManagerFactory("pu-test");
         Generator2 generator = new Generator2(emf);
-        List<Person> persons = generator.generateExactTestPersonData();
-        List<Company> companies = generator.generateExactTestCompanyData();
+        persons = generator.generateExactTestPersonData();
         FPerson fPerson = new FPerson(emf);
         for (int i = 0; i < persons.size(); i++) {
             fPerson.createPerson(persons.get(i));
         }
-        FCompany fCompany = new FCompany(emf);
-        for (int i = 0; i < companies.size(); i++) {
-            fCompany.createCompany(companies.get(i));
+        facade = new FHobby(emf);
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+        if (emf != null) {
+            emf.close();
+            emf = null;
         }
     }
 
+//    @Before
+//    public void setup() {
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-test");
+//        facade = new FHobby(emf);
+//        Generator2 generator = new Generator2(emf);
+//        List<Person> persons = generator.generateExactTestPersonData();
+//        List<Company> companies = generator.generateExactTestCompanyData();
+//        FPerson fPerson = new FPerson(emf);
+//        for (int i = 0; i < persons.size(); i++) {
+//            fPerson.createPerson(persons.get(i));
+//        }
+//        FCompany fCompany = new FCompany(emf);
+//        for (int i = 0; i < companies.size(); i++) {
+//            fCompany.createCompany(companies.get(i));
+//        }
+//    }
     @Test
     public void getHobbyByID() {
         Hobby hobby = facade.getHobbyByIDRaw(1);

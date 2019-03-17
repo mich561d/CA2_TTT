@@ -14,7 +14,7 @@ import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author Michael
+ * @author Michael, Mads
  */
 public class FPerson implements IPerson {
 
