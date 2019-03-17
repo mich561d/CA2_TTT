@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li><a href="#section-1" class="navTitleTop">Person Commands</a></li>
-                <li><a href="#section-2" class="navTitle">Comapny Commands</a></li>
+                <li><a href="#section-2" class="navTitle">Company Commands</a></li>
                 <li><a href="#section-3" class="navTitle">Hobbies Commands</a></li>
                 <li><a href="#section-4" class="navTitle">Cities Commands</a></li>
                 <li><a href="#section-5" class="navTitle">To the top</a></li>
@@ -28,35 +28,35 @@
                     <div class="container">
                         <div class="control-group">
                             <h2>Persons commands:</h2>
-                            <p>@Path("Phone/{number}") | ERROR: NOT WORKING</p>
-                            <a href="https://dueinator.dk/CA2/api/Person/Phone/12435687">api/Person/Phone/{number}</a>
+                            <p>@Path("Phone/{number}")</p>
+                            <a href="https://dueinator.dk/CA2/api/Person/Phone/50000000">api/Person/Phone/{number}</a>
                             <br>
-                            Output: 
+                            <p>Output: { "id": 1, "firstName": "Rasmus", "lastName": "Olsen", "email": "Rasmus0@Olsen.com" }</p> 
                             <hr>
-                            <p>@Path("Hobby/{name}") | ERROR: NOT WORKING</p>
+                            <p>@Path("Hobby/{name}")</p>
                             <a href="https://dueinator.dk/CA2/api/Person/Hobby/Programming">api/Person/Hobby/{name}</a>
                             <br>
-                            Output: 
+                            <p>Output:[ { "id": 12, "firstName": "Mette", "lastName": "Petersen", "email": "Mette11@Petersen.com" } ]</p> 
                             <hr>
-                            <p>@Path("/City/{zip}") | ERROR: NOT WORKING</p>
-                            <a href="https://dueinator.dk/CA2/api/Person/City/2600">api/Person/CitY/{zip}</a>
+                            <p>@Path("/City/{zipcode}")</p>
+                            <a href="https://dueinator.dk/CA2/api/Person/City/2600">api/Person/City/{zipcode}</a>
                             <br>
-                            Output: 
+                            <p>Output: [ { "id": 147, "firstName": "Bente", "lastName": "Fløistrup", "email": "Bente146@Fløistrup.com" } ]</p> 
                             <hr>
-                            <p>@Path("/Email/{email}") | ERROR: NOT WORKING</p>
-                            <a href="https://dueinator.dk/CA2/api/Person/Email/test@test.com">api/Person/Email/{email}</a>
+                            <p>@Path("/Email/{email}")</p>
+                            <a href="https://dueinator.dk/CA2/api/Person/Email/Rasmus0@Olsen.com">api/Person/Email/{email}</a>
                             <br>
-                            Output: 
+                            <p>Output: { "id": 1, "firstName": "Rasmus", "lastName": "Olsen", "email": "Rasmus0@Olsen.com" }</p> 
                             <hr>
                             <p>@Path("/Address/{address}") | ERROR: NOT WORKING</p>
                             <a href="https://dueinator.dk/CA2/api/Person/Address/Personstreet">api/Person/Address/{address}</a>
                             <br>
                             Output: 
                             <hr>
-                            <p>@Path("/All") | ERROR: NOT WORKING</p>
+                            <p>@Path("/All")</p>
                             <a href="https://dueinator.dk/CA2/api/Person/All">api/Person/All</a>
                             <br>
-                            Output: 
+                            <p>Output: [ { "id": 1, "firstName": "Rasmus", "lastName": "Olsen", "email": "Rasmus0@Olsen.com" } ]</p>
                         </div>
                     </div>
                 </div>
@@ -66,50 +66,45 @@
                     <div class="container">
                         <div class="control-group">
                             <h2>Company commands:</h2>
-                            <p>@Path("/{number}")</p>
-                            <a href="https://dueinator.dk/CA2/api/Company/"></a>
+                            <p>@Path("/Phone/{number}")</p>
+                            <a href="https://dueinator.dk/CA2/api/Company/Phone/10000000">api/Company/Phone/{number}</a>
                             <br>
-                            Output: getCompanyByPhone
+                            <p>Output: { "id": 501, "cvr": 70000000, "numEmployees": 415, "marketValue": 415000, "email": "Company0@Company0.com", "name": "Company 0", "description": "Description of Company 0" }</p> 
                             <hr>
-                            <p>@Path("/{cvr}")</p>
-                            <a href="https://dueinator.dk/CA2/api/Company/"></a>
+                            <p>@Path("/CVR/{cvr}")</p>
+                            <a href="https://dueinator.dk/CA2/api/Company/CVR/70000000">api/Company/CVR/{cvr}</a>
                             <br>
-                            Output: getCompanyByCVR
+                            <p>Output: { "id": 501, "cvr": 70000000, "numEmployees": 415, "marketValue": 415000, "email": "Company0@Company0.com", "name": "Company 0", "description": "Description of Company 0" }</p>
                             <hr>
-                            <p>@Path("/company/{amount}")</p>
-                            <a href="https://dueinator.dk/CA2/api/Company/"></a>
+                            <p>@Path("/EmployeeCount/{amount}")</p>
+                            <a href="https://dueinator.dk/CA2/api/Company/EmployeeCount/360">api/EmployeeCount/{amount}</a>
                             <br>
-                            Output: getAllCompaniesWithMoreEmployeesThan
+                            <p>Output: [ { "id": 501, "cvr": 70000000, "numEmployees": 415, "marketValue": 415000, "email": "Company0@Company0.com", "name": "Company 0", "description": "Description of Company 0" } ]</p>
                             <hr>
-                            <p>@path("/company/{id}"</p>
-                            <a href="https://dueinator.dk/CA2/api/Company/"></a>
+                            <p>@path("/Email/{email}")</p>
+                            <a href="https://dueinator.dk/CA2/api/Company/Email/Company0@Company0.com">api/Company/Email/{email}</a>
                             <br>
-                            Output: getCompanyByID
+                            <p>Output: { "id": 501, "cvr": 70000000, "numEmployees": 415, "marketValue": 415000, "email": "Company0@Company0.com", "name": "Company 0", "description": "Description of Company 0" }</p>
                             <hr>
-                            <p>@path("/company/{email}"</p>
-                            <a href="https://dueinator.dk/CA2/api/Company/"></a>
+                            <p>@path("/All")</p>
+                            <a href="https://dueinator.dk/CA2/api/Company/All">api/Company/All</a>
                             <br>
-                            Output: getCompanyByEmail
+                            <p>Output: [ { "id": 501, "cvr": 70000000, "numEmployees": 415, "marketValue": 415000, "email": "Company0@Company0.com", "name": "Company 0", "description": "Description of Company 0" } ]</p>
                             <hr>
-                            <p>@path("/all/companies"</p>
-                            <a href="https://dueinator.dk/CA2/api/Company/"></a>
+                            <p>@path("/City/{zipcode}")</p>
+                            <a href="https://dueinator.dk/CA2/api/Company/City/1051">api/Company/City/{zipcode}</a>
                             <br>
-                            Output: getAllCompanies
+                            <p>Output: [ { "id": 523, "cvr": 70000022, "numEmployees": 962, "marketValue": 962000, "email": "Company22@Company22.com", "name": "Company 22", "description": "Description of Company 22" } ]</p>
                             <hr>
-                            <p>@path("/company/{city}"</p>
-                            <a href="https://dueinator.dk/CA2/api/Company/"></a>
+                            <p>@path("/Address/{address}") | ERROR: NOT WORKING</p>
+                            <a href="https://dueinator.dk/CA2/api/Company/Address/Companystreet">api/Company/Address/{address}</a>
                             <br>
-                            Output: getAllCompaniessByCity
+                            <p>Output: </p> 
                             <hr>
-                            <p>@path("/company/{address}"</p>
-                            <a href="https://dueinator.dk/CA2/api/Company/"></a>
+                            <p>@path("/MarketValue/{value}")</p>
+                            <a href="https://dueinator.dk/CA2/api/Company/MarketValue/250000">api/Company/MarketValue/{value}</a>
                             <br>
-                            Output: getAllCompaniesByAddress
-                            <hr>
-                            <p>@path("/company/{value}"</p>
-                            <a href="https://dueinator.dk/CA2/api/Company/"></a>
-                            <br>
-                            Output: getAllCompaniesWithMarketValueOver
+                            <p>Output: [ { "id": 501, "cvr": 70000000, "numEmployees": 415, "marketValue": 415000, "email": "Company0@Company0.com", "name": "Company 0", "description": "Description of Company 0" } ]</p> 
                         </div>
                     </div>
                 </div>
@@ -123,7 +118,7 @@
                             <a href="https://dueinator.dk/CA2/api/Hobby/Name/Programming">api/Hobby/Name/{name}</a>
                             <p>Output: { "id": 1, "name": "Programming", "description": "Nerdy business" }</p>
                             <hr>
-                            <p>@Path("https://dueinator.dk/CA2/api/Hobby/All") | ERROR: NOT WORKING</p> 
+                            <p>@Path("/All")</p> 
                             <a href="https://dueinator.dk/CA2/api/Hobby/All">api/Hobby/All</a>
                             <p>Output: [ { "id": 1, "zipCode": "0555", "city": "Scanning" } ]</p>
                         </div>
@@ -142,7 +137,7 @@
                         <a href="https://dueinator.dk/CA2/api/City/AllZips"><p>api/City/AllZips</p></a>
                         <p>Output: [ { "id": 0, "zipCode": "0555" } ]</p>
                         <hr>
-                        <p>@Path("api/City/AllCities</p>
+                        <p>@Path("/AllCities</p>
                         <a href="https://dueinator.dk/CA2/api/City/AllCities"><p>api/City/AllCities</p></a>
                         <p>Output: [ { "id": 1, "zipCode": "0555", "city": "Scanning" } ]</p>
                     </div>
