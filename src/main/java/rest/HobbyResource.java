@@ -42,11 +42,11 @@ public class HobbyResource {
         return Response.ok().entity(gson.toJson(fHobby.getHobbyByName(name))).build();
     }
 
-    @GET 
+    @GET
     @Path("/All")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllHobbies() {
-        return Response.ok().entity(gson.toJson(fHobby.getAllHobbiesRaw())).build();
+        return Response.ok().entity(gson.toJson(fHobby.getAllHobbies())).build();
     }
 
     @POST

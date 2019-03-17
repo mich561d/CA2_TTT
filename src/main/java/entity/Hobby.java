@@ -21,6 +21,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Hobby.findAll", query = "SELECT h FROM Hobby h")
+    , @NamedQuery(name = "HobbyDTO.findAll", query = "SELECT NEW dto.HobbyDTO(h.id, h.name, h.description) FROM Hobby h")
     , @NamedQuery(name = "Hobby.FindByID", query = "SELECT h FROM Hobby h WHERE h.id = :id")
     , @NamedQuery(name = "HobbyDTO.findByName", query = "SELECT NEW dto.HobbyDTO(h.id, h.name, h.description) FROM Hobby h WHERE h.name = :name")})
 public class Hobby implements Serializable {

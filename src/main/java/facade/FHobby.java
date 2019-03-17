@@ -50,6 +50,16 @@ public class FHobby implements IHobby {
     }
 
     @Override
+    public List<HobbyDTO> getAllHobbies() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("HobbyDTO.findAll", HobbyDTO.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    @Override
     public HobbyDTO createHobby(Hobby hobby) {
         EntityManager em = emf.createEntityManager();
         try {

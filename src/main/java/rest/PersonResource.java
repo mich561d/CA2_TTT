@@ -10,6 +10,7 @@ import facade.FHobby;
 import facade.FPerson;
 import facade.FPhone;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -35,7 +36,7 @@ public class PersonResource {
     private UriInfo context;
 
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    EntityManagerFactory emf;
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu2", null);
     FPerson fPerson = new FPerson(emf);
     FPhone fPhone = new FPhone(emf);
     FHobby fHobby = new FHobby(emf);
