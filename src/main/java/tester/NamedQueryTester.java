@@ -53,11 +53,11 @@ public class NamedQueryTester {
         System.out.println("----- Person -----------------------------------------------------------------------------------");
         System.out.println("getPersonByIDRaw                    : " + fPerson.getPersonByIDRaw(5));
         System.out.println("getPersonByEmail                    : " + fPerson.getPersonByEmail("Tester@Test.com"));
-        //System.out.println("getPersonByPhone                    : " + fPerson.getPersonByPhone(new PhoneDTO(0, "12435687", "Tester", 0)));
+        System.out.println("getPersonByPhone                    : " + fPerson.getPersonByPhone(new PhoneDTO(0, "12435687", "Tester", 0)));
         System.out.println("getAllPersons                       : " + fPerson.getAllPersons());
-        //System.out.println("getAllPersonsByHobby                : " + fPerson.getAllPersonsByHobby(new HobbyDTO(0, "Programming", "Tester")));
-        //System.out.println("getAllPersonsByCity                 : " + fPerson.getAllPersonsByCity(new CityInfoDTO("2640")));
-        //System.out.println("getAllPersonsByAddress              : " + fPerson.getAllPersonsByAddress(new AddressDTO(0, "Personstreet", "Tester")));
+        System.out.println("getAllPersonsByHobby                : " + fPerson.getAllPersonsByHobby(new HobbyDTO(0, "Programming", "Tester")));
+        System.out.println("getAllPersonsByCity                 : " + fPerson.getAllPersonsByCity(new CityInfoDTO("2640")));
+        System.out.println("getAllPersonsByAddress              : " + fPerson.getAllPersonsByAddress(new AddressDTO(0, "Personstreet", "Tester")));
         System.out.println("----- Hobby ------------------------------------------------------------------------------------");
         System.out.println("getHobbyByIDRaw                     : " + fHobby.getHobbyByIDRaw(1));
         System.out.println("getAllHobbiesRaw                    : " + fHobby.getAllHobbiesRaw());
@@ -68,10 +68,10 @@ public class NamedQueryTester {
         System.out.println("getCompanyByEmail                   : " + fCompany.getCompanyByEmail("Company0@Company0.com"));
         System.out.println("getCompanyByPhone                   : " + fCompany.getCompanyByPhone(fPhone.getPhoneByNumberRaw("21346578")));
         System.out.println("getAllCompanies                     : " + fCompany.getAllCompanies());
-        //System.out.println("getAllCompaniesByAddress            : " + fCompany.getAllCompaniesByAddress(new AddressDTO(0, "Companystreet", "Tester")));
+        System.out.println("getAllCompaniesByAddress            : " + fCompany.getAllCompaniesByAddress(new AddressDTO(0, "Companystreet", "Tester")));
         System.out.println("getAllCompaniesWithMarketValueOver  : " + fCompany.getAllCompaniesWithMarketValueOver(100000));
         System.out.println("getAllCompaniesWithNumEmployeesOver : " + fCompany.getAllCompaniesWithNumEmployeesOver(360));
-        //System.out.println("getAllCompaniessByCity              : " + fCompany.getAllCompaniessByCity(new CityInfoDTO("2640")));
+        System.out.println("getAllCompaniessByCity              : " + fCompany.getAllCompaniessByCity(new CityInfoDTO("2640")));
         System.out.println("----- City -------------------------------------------------------------------------------------");
         System.out.println("getAllCities                        : " + fCity.getAllCities());
         System.out.println("getAllCitiesRaw                     : " + fCity.getAllCitiesRaw());

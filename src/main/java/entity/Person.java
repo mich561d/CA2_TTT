@@ -23,10 +23,10 @@ import javax.persistence.Table;
     , @NamedQuery(name = "Person.findById", query = "SELECT p FROM Person p WHERE p.id = :id")
     , @NamedQuery(name = "PersonDTO.findAll", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email) FROM Person p")
     , @NamedQuery(name = "PersonDTO.findByEmail", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email) FROM Person p WHERE p.email = :email")
-    , @NamedQuery(name = "PersonDTO.findByNumber", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email) FROM Person p LEFT JOIN p.phones n GROUP BY n.id HAVING n.number = :number")
-    , @NamedQuery(name = "PersonDTO.findAllByHobby", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email) FROM Person p LEFT JOIN p.hobbies h GROUP BY h.id HAVING h.name = :name")
-    , @NamedQuery(name = "PersonDTO.findAllByCity", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email) FROM Person p LEFT JOIN p.address as a GROUP BY a.id HAVING a.cityInfo = :zip")
-    , @NamedQuery(name = "PersonDTO.findAllByAddress", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email) FROM Person p WHERE p.address.street = :street")})
+    , @NamedQuery(name = "PersonDTO.findByNumber", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email) FROM Person p, Phone n WHERE n.infoEntity = p AND n.number = :number")//LEFT JOIN p.phones n GROUP BY n.id HAVING n.number = :number")
+    , @NamedQuery(name = "PersonDTO.findAllByHobby", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email) FROM Person p, Hobby h WHERE p MEMBER OF h.persons AND h.name = :hobbyname")//LEFT JOIN p.hobbies h GROUP BY h.id HAVING h.name = :name")
+    , @NamedQuery(name = "PersonDTO.findAllByCity", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email) FROM Person p, Address a WHERE p MEMBER OF a.infoEntities AND a.cityInfo.zip = :zip ")//LEFT JOIN p.address as a GROUP BY a.id HAVING a.cityInfo = :zip")
+    , @NamedQuery(name = "PersonDTO.findAllByAddress", query = "SELECT NEW dto.PersonDTO(p.id, p.firstName, p.lastName, p.email) FROM Person p, Address a WHERE p MEMBER OF a.infoEntities AND a.street = :street")})
 public class Person extends InfoEntity {
 
     private static final long serialVersionUID = 1L;
