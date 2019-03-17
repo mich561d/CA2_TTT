@@ -106,6 +106,7 @@ public class PersonResource {
     @Path("/Delete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public void deletePerson(@PathParam("id") int id) {
-        fPerson.deletePersonById(fPerson.getPersonByIDRaw(id).getId());
+        Person p = fPerson.getPersonByIDRaw(id);
+        fPerson.deletePersonById(p.getId());
     }
 }
