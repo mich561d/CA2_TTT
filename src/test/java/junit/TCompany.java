@@ -102,20 +102,21 @@ public class TCompany {
 
     @Test
     public void testGetCompanyByCVR() {
-        CompanyDTO c = facade.getCompanyByCVR(70000001);
+        int CVR = 70000001;
+        CompanyDTO c = facade.getCompanyByCVR(CVR);
         assertNotNull(c);
     }
 
     @Test
     public void testGetAllCompanies() {
         List<CompanyDTO> cs = facade.getAllCompanies();
-        assertEquals(5, cs.size());
+        assertEquals(20, cs.size());
     }
 
     @Test
     public void testGetAllCompaniessByCity() {
         List<CompanyDTO> cs = facade.getAllCompaniessByCity(new CityInfoDTO(0, "2800", "Lyngby"));
-        assertEquals(2, cs.size());
+        assertEquals(7, cs.size());
     }
 
     @Test
@@ -127,13 +128,13 @@ public class TCompany {
     @Test
     public void testGetAllCompaniesWithNumEmployeesOver() {
         List<CompanyDTO> cs = facade.getAllCompaniesWithNumEmployeesOver(360);
-        assertEquals(2, cs.size());
+        assertEquals(7, cs.size());
     }
 
     @Test
     public void testGetAllCompaniesWithMarketValueOver() {
-        List<CompanyDTO> cs = facade.getAllCompaniesWithMarketValueOver(2500000);
-        assertEquals(1, cs.size());
+        List<CompanyDTO> cs = facade.getAllCompaniesWithMarketValueOver(4900000);
+        assertEquals(7, cs.size());
     }
 
     @Test

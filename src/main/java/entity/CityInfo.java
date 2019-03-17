@@ -2,6 +2,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "CityInfo.findAll", query = "SELECT c FROM CityInfo c")
+    , @NamedQuery(name = "CityInfo.findByZipCode", query = "SELECT c FROM CityInfo c WHERE c.zip = :zip")
     , @NamedQuery(name = "CityInfoDTO.findAll", query = "SELECT NEW dto.CityInfoDTO(c.id, c.zip, c.city) FROM CityInfo c")
     , @NamedQuery(name = "CityInfoDTO.findByZipCode", query = "SELECT NEW dto.CityInfoDTO(c.id, c.zip, c.city) FROM CityInfo c WHERE c.zip = :zip")
     , @NamedQuery(name = "CityInfo.findAllZipCodes", query = "SELECT NEW dto.CityInfoDTO(c.zip) FROM CityInfo c")})
@@ -81,5 +83,31 @@ public class CityInfo implements Serializable {
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CityInfo other = (CityInfo) obj;
+        if (!Objects.equals(this.zip, other.zip)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }

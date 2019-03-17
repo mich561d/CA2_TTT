@@ -22,7 +22,7 @@ import javax.persistence.Table;
     , @NamedQuery(name = "CompanyDTO.findByPhone", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description) FROM Company c WHERE :number MEMBER OF c.phones")
     , @NamedQuery(name = "CompanyDTO.findByCVR", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description) FROM Company c WHERE c.cvr = :cvr")
     , @NamedQuery(name = "CompanyDTO.findAllByAddress", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description) FROM Company c LEFT JOIN c.address a GROUP BY a.id HAVING a.street = :street") // Not working
-    , @NamedQuery(name = "CompanyDTO.findByCity", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description) FROM Company c WHERE c.address = :zip") // Not working
+    , @NamedQuery(name = "CompanyDTO.findByCity", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description) FROM Company c, Address a WHERE c MEMBER OF a.infoEntities AND a.cityInfo.zip = :zip") // Not working
     , @NamedQuery(name = "CompanyDTO.findByEmployeeCountMoreThan", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description) FROM Company c WHERE c.numEmployees > :amount")
     , @NamedQuery(name = "CompanyDTO.findByMarketValueHigherThan", query = "SELECT NEW dto.CompanyDTO(c.id, c.cvr, c.numEmployees, c.marketValue, c.email, c.name, c.description) FROM Company c WHERE c.marketValue > :value")})
 public class Company extends InfoEntity {

@@ -75,6 +75,8 @@ public class Generator2 {
         Random rand = new Random();
 
         List<CityInfo> allZipCodes = cityInfoFacade.getAllCitiesRaw();
+        CityInfo city = cityInfoFacade.getCityByZipRAW("2800");
+        allZipCodes.remove(city);
         int phoneNumber = 10000000;
         int cvrNumber = 70000000;
 
@@ -131,12 +133,16 @@ public class Generator2 {
 
     public List<Company> generateExactTestCompanyData() {
         Random rand = new Random();
+        ICityInfo cityInfoFacade = new FCityInfo(emf);
+        CityInfo city = cityInfoFacade.getCityByZipRAW("2800");
         List<Company> companies = generateRandomCompanies(20);
         companies.get(0).getPhones().get(0).setNumber("21346578");
         companies.get(0).setCvr(36069420);
         for (int i = 0; i < companies.size(); i++) {
             if (i < 7) {
+                companies.get(i).getAddress().setCityInfo(city);
                 companies.get(i).setNumEmployees(rand.nextInt(1000) + 361);
+                companies.get(i).setMarketValue(5000000);
             } else {
                 companies.get(i).setNumEmployees(rand.nextInt(360));
             }

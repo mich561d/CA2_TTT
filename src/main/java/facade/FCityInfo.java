@@ -38,6 +38,17 @@ public class FCityInfo implements ICityInfo {
             em.close();
         }
     }
+    
+    @Override
+    public CityInfo getCityByZipRAW(String zip) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("CityInfo.findByZipCode", CityInfo.class).setParameter("zip", zip).getSingleResult();
+        } finally {
+            em.close();
+        }
+        
+    }
 
     @Override
     public CityInfoDTO getCityByZip(String zip) {
