@@ -137,38 +137,46 @@ public class TCompany {
         assertEquals(7, cs.size());
     }
 
-//    @Test
-//    public void testCreateCompany() {
-//        List<CompanyDTO> csBefore = facade.getAllCompanies();
-//        // Creating company
-//        List<Phone> phones = new ArrayList();
-//        Phone phone = new Phone("13371337", "Call the elite");
-//        phones.add(phone);
-//        Address address = new Address("Heaven", "Because we are gods", new FCityInfo(emf).getAllCitiesRaw().get(4));
-//        Company company = new Company("The Turtle Troopers A/S", "We are the best", 36069421, 4, 2499999, "contact@TTT.com", phones, address);
-//        //address.getInfoEntities().add(company);
-//        //phone.setInfoEntity(company);
-//        facade.createCompany(company);
-//        // Done creating company
-//        List<CompanyDTO> csAfter = facade.getAllCompanies();
-//        assertEquals(csBefore.size() + 1, csAfter.size());
-//    }
+    @Test
+    public void testCreateAndDeleteCompany() {
+        List<CompanyDTO> csBefore = facade.getAllCompanies();
+        // Creating company
+        List<Phone> phones = new ArrayList();
+        Phone phone = new Phone("13371337", "Call the elite");
+        phones.add(phone);
+        Address address = new Address("Heaven", "Because we are gods", new FCityInfo(emf).getAllCitiesRaw().get(4));
+        Company company = new Company("The Turtle Troopers A/S", "We are the best", 36069421, 4, 2499999, "contact@TTT.com", phones, address);
+
+        CompanyDTO dto = facade.createCompany(company);
+        // Done creating company
+        List<CompanyDTO> csAfter = facade.getAllCompanies();
+        assertEquals(csBefore.size() + 1, csAfter.size());
+        
+        facade.deleteCompany(dto.getId());
+        List<CompanyDTO> csAfter2 = facade.getAllCompanies();
+        assertEquals(csBefore.size(), csAfter2.size());
+        
+        
+    }
 
     @Test
     public void testUpdateCompany() {
         CompanyDTO cBefore = facade.getCompanyByCVR(36069420);
+        System.out.println("Name 1:" + cBefore.getName());
         String newValue = "NewName A/S";
         cBefore.setName(newValue);
-        facade.updateCompany(cBefore);
+        System.out.println("Name 2:" + cBefore.getName());
+        CompanyDTO test = facade.updateCompany(cBefore);
+        System.out.println("Name 3:" + test.getName());
         CompanyDTO cAfter = facade.getCompanyByCVR(36069420);
         assertEquals(cBefore.getName(), cAfter.getName());
     }
 
-    @Test
-    public void testDeleteCompany() {
-        List<CompanyDTO> csBefore = facade.getAllCompanies();
-        facade.deleteCompany(4);
-        List<CompanyDTO> csAfter = facade.getAllCompanies();
-        assertEquals(csBefore.size() - 1, csAfter.size());
-    }
+//    @Test
+//    public void testDeleteCompany() {
+//        List<CompanyDTO> csBefore = facade.getAllCompanies();
+//        facade.deleteCompany(4);
+//        List<CompanyDTO> csAfter = facade.getAllCompanies();
+//        assertEquals(csBefore.size() - 1, csAfter.size());
+//    }
 }

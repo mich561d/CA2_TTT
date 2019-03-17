@@ -134,18 +134,17 @@ public class FCompany implements ICompany {
     @Override
     public CompanyDTO updateCompany(CompanyDTO updatedCompany) {
         EntityManager em = emf.createEntityManager();
-        Company c;
+        Company c = em.find(Company.class, updatedCompany.getId());
+        c.setName(updatedCompany.getName());
+        c.setDescription(updatedCompany.getDescription());
+        c.setCvr(updatedCompany.getCvr());
+        c.setNumEmployees(updatedCompany.getNumEmployees());
+        c.setMarketValue(updatedCompany.getMarketValue());
+        c.setEmail(updatedCompany.getEmail());
         try {
-            c = em.find(Company.class, updatedCompany.getId()); //= getCompanyByIDRaw(updatedCompany.getId());
-            c.setName(updatedCompany.getName());
-            c.setDescription(updatedCompany.getDescription());
-            c.setCvr(updatedCompany.getCvr());
-            c.setNumEmployees(updatedCompany.getNumEmployees());
-            c.setMarketValue(updatedCompany.getMarketValue());
-            c.setEmail(updatedCompany.getEmail());
             em.getTransaction().begin();
-//            em.merge(c);
-            em.refresh(c);
+            //em.refresh(c);
+            //em.flush();
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -164,7 +163,7 @@ public class FCompany implements ICompany {
     public void deleteCompany(int id) {
         EntityManager em = emf.createEntityManager();
         try {
-            Company c = getCompanyByIDRaw(id);
+            Company c = em.find(Company.class, id);
             em.getTransaction().begin();
             em.remove(c);
             em.getTransaction().commit();
