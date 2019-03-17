@@ -16,6 +16,8 @@ public interface IHobby {
 
     public abstract List<Hobby> getAllHobbiesRaw();
 
+    public abstract List<HobbyDTO> getAllHobbies();
+
     public abstract HobbyDTO createHobby(Hobby hobby);
 
     public abstract HobbyDTO updateHobby(HobbyDTO updatedHobby);
