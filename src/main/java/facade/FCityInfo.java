@@ -38,7 +38,7 @@ public class FCityInfo implements ICityInfo {
             em.close();
         }
     }
-    
+
     @Override
     public CityInfo getCityByZipRAW(String zip) {
         EntityManager em = emf.createEntityManager();
@@ -47,7 +47,7 @@ public class FCityInfo implements ICityInfo {
         } finally {
             em.close();
         }
-        
+
     }
 
     @Override

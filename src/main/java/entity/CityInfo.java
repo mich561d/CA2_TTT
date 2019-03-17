@@ -107,7 +107,5 @@ public class CityInfo implements Serializable {
         }
         return true;
     }
-    
-    
 
 }

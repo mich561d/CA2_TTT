@@ -17,6 +17,6 @@ public interface ICityInfo {
     public abstract List<CityInfoDTO> getAllZipCodes();
 
     public abstract List<CityInfo> getAllCitiesRaw();
-    
+
     public abstract CityInfo getCityByZipRAW(String zip);
 }
