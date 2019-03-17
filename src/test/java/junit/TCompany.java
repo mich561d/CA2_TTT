@@ -5,36 +5,29 @@ import dto.CityInfoDTO;
 import dto.CompanyDTO;
 import entity.Address;
 import entity.Company;
-import entity.Person;
 import entity.Phone;
 import facade.FCityInfo;
 import facade.FCompany;
-import facade.FPerson;
 import facade.FPhone;
 import generateData.Generator2;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import junit.framework.Assert;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Before;
 import org.junit.BeforeClass;
 
 /**
  *
- * @author Michael
+ * @author Michael, Mads
  */
 public class TCompany {
 
     private static EntityManagerFactory emf;
     private static FCompany facade;
     private static List<Company> companies;
-    //private EntityManager em;
 
     @BeforeClass
     public static void setUpClass() {
@@ -42,7 +35,6 @@ public class TCompany {
         Generator2 generator = new Generator2(emf);
         companies = generator.generateExactTestCompanyData();
         facade = new FCompany(emf);
-        //em = emf.createEntityManager();
         for (int i = 0; i < companies.size(); i++) {
             facade.createCompany(companies.get(i));
         }
@@ -88,7 +80,6 @@ public class TCompany {
     public void testGetCompanyByEmail() {
         String email = "Company1@Company1.com";
         CompanyDTO c = facade.getCompanyByEmail(email);
-        //assertNotNull(c);
         assertEquals(email, c.getEmail());
     }
 
@@ -151,12 +142,11 @@ public class TCompany {
         // Done creating company
         List<CompanyDTO> csAfter = facade.getAllCompanies();
         assertEquals(csBefore.size() + 1, csAfter.size());
-        
+
         facade.deleteCompany(dto.getId());
         List<CompanyDTO> csAfter2 = facade.getAllCompanies();
         assertEquals(csBefore.size(), csAfter2.size());
-        
-        
+
     }
 
     @Test

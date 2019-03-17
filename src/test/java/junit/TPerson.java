@@ -5,13 +5,9 @@ import dto.CityInfoDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
-import entity.Address;
 import entity.Company;
 import entity.Person;
-import entity.Phone;
-import static entity.db.Hobby_.persons;
 import static entity.db.InfoEntity_.email;
-import facade.FCityInfo;
 import facade.FCompany;
 import facade.FPerson;
 import generateData.Generator2;
@@ -25,7 +21,7 @@ import org.junit.Before;
 
 /**
  *
- * @author Christian
+ * @author Michael, Christian
  */
 public class TPerson {
 
