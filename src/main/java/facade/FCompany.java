@@ -134,18 +134,18 @@ public class FCompany implements ICompany {
     @Override
     public CompanyDTO updateCompany(CompanyDTO updatedCompany) {
         EntityManager em = emf.createEntityManager();
-        Company c = getCompanyByIDRaw(updatedCompany.getId());
-        c.setName(updatedCompany.getName());
-        c.setDescription(updatedCompany.getDescription());
-        c.setCvr(updatedCompany.getCvr());
-        c.setNumEmployees(updatedCompany.getNumEmployees());
-        c.setMarketValue(updatedCompany.getMarketValue());
-        c.setEmail(updatedCompany.getEmail());
-        c.setPhones(null);
-        c.setAddress(null);
+        Company c;
         try {
+            c = em.find(Company.class, updatedCompany.getId()); //= getCompanyByIDRaw(updatedCompany.getId());
+            c.setName(updatedCompany.getName());
+            c.setDescription(updatedCompany.getDescription());
+            c.setCvr(updatedCompany.getCvr());
+            c.setNumEmployees(updatedCompany.getNumEmployees());
+            c.setMarketValue(updatedCompany.getMarketValue());
+            c.setEmail(updatedCompany.getEmail());
             em.getTransaction().begin();
-            em.persist(c);
+//            em.merge(c);
+            em.refresh(c);
             em.getTransaction().commit();
         } finally {
             em.close();

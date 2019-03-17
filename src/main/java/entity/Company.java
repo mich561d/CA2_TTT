@@ -1,11 +1,13 @@
 package entity;
 
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -29,7 +31,10 @@ public class Company extends InfoEntity {
 
     private static final long serialVersionUID = 1L;
     private String name, description;
-    private int cvr, numEmployees, marketValue;
+    @NotNull
+    @Column(unique = true)
+    private int cvr;
+    private int numEmployees, marketValue;
 
     public Company() {
     }
