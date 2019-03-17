@@ -2,6 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dto.AddressDTO;
 import dto.CompanyDTO;
 import entity.Company;
 import facade.FCityInfo;
@@ -78,7 +79,7 @@ public class CompanyResource {
     @Path("/Address/{address}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCompanyByAddress(@PathParam("address") String address) {
-        return null;
+        return Response.ok().entity(gson.toJson(fCompany.getAllCompaniesByAddress(new AddressDTO(0, address, "")))).build();
     }
 
     @GET

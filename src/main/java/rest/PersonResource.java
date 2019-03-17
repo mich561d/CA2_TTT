@@ -2,6 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dto.AddressDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import entity.Person;
@@ -82,7 +83,7 @@ public class PersonResource {
     @Path("/Address/{address}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllPersonsByAddress(@PathParam("address") String address) {
-        return null;
+        return Response.ok().entity(gson.toJson(fPerson.getAllPersonsByAddress(new AddressDTO(0, address, "")))).build();
     }
 
     @POST
