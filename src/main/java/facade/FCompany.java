@@ -87,7 +87,7 @@ public class FCompany implements ICompany {
     public List<CompanyDTO> getAllCompaniesByAddress(AddressDTO address) {
         EntityManager em = emf.createEntityManager();
         try {
-            return em.createNamedQuery("CompanyDTO.findAllByAddress", CompanyDTO.class).setParameter("address", address.getStreet()).getResultList();
+            return em.createNamedQuery("CompanyDTO.findAllByAddress", CompanyDTO.class).setParameter("street", address.getStreet()).getResultList();
         } finally {
             em.close();
         }

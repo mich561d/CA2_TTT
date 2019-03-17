@@ -61,7 +61,7 @@ public class Generator2 {
                 phones.add(new Phone(Integer.toString(phoneNumber++), "mobile", person));
             }
             person.setPhones(phones);
-            address = new Address("Personstreet", "Number: " + i, allZipCodes.get(rand.nextInt(allZipCodes.size())));
+            address = new Address("Personstreet", "" + i, allZipCodes.get(rand.nextInt(allZipCodes.size())));
             person.setAddress(address);
             persons.add(person);
 
@@ -97,7 +97,7 @@ public class Generator2 {
                 phones.add(new Phone(Integer.toString(phoneNumber++), "mobile", company));
             }
             company.setPhones(phones);
-            address = new Address("Companystreet", "Number: " + i, allZipCodes.get(rand.nextInt(allZipCodes.size())));
+            address = new Address("Companystreet", "" + i, allZipCodes.get(rand.nextInt(allZipCodes.size())));
             company.setAddress(address);
             companies.add(company);
         }

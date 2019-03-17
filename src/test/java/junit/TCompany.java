@@ -121,8 +121,8 @@ public class TCompany {
 
     @Test
     public void testGetAllCompaniesByAddress() {
-        List<CompanyDTO> cs = facade.getAllCompaniesByAddress(new AddressDTO(0, "Companystreet 1", "Test"));
-        assertEquals(1, cs.size());
+        List<CompanyDTO> cs = facade.getAllCompaniesByAddress(new AddressDTO(0, "Companystreet", "Test"));
+        assertEquals(20, cs.size());
     }
 
     @Test
