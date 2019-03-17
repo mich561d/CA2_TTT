@@ -26,21 +26,21 @@ public class TestPU {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //Persistence.generateSchema("pu-test", null);
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-test");
-        Generator2 generator = new Generator2(emf);
-        List<Person> persons = generator.generateRandomPersons(500);
-        List<Company> companies = generator.generateRandomCompanies(100);
-        FPerson fPerson = new FPerson(emf);
-        for (int i = 0; i < persons.size(); i++) {
-            //System.out.println(persons.get(i).getHobbies().get(0).getName());
-            fPerson.createPerson(persons.get(i));
-        }
-        FCompany fCompany = new FCompany(emf);
-        for (int i = 0; i < companies.size(); i++) {
-            //System.out.println(persons.get(i).getHobbies().get(0).getName());
-            fCompany.createCompany(companies.get(i));
-        }
+        Persistence.generateSchema("pu-test", null);
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu-test");
+//        Generator2 generator = new Generator2(emf);
+//        List<Person> persons = generator.generateRandomPersons(500);
+//        List<Company> companies = generator.generateRandomCompanies(100);
+//        FPerson fPerson = new FPerson(emf);
+//        for (int i = 0; i < persons.size(); i++) {
+//            //System.out.println(persons.get(i).getHobbies().get(0).getName());
+//            fPerson.createPerson(persons.get(i));
+//        }
+//        FCompany fCompany = new FCompany(emf);
+//        for (int i = 0; i < companies.size(); i++) {
+//            //System.out.println(persons.get(i).getHobbies().get(0).getName());
+//            fCompany.createCompany(companies.get(i));
+//        }
 
 //        EntityManager em = emf.createEntityManager();
 //        List<Hobby> hobbies = new ArrayList();

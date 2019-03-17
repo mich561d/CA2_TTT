@@ -65,7 +65,7 @@ public class NamedQueryTester {
         System.out.println("----- Company ----------------------------------------------------------------------------------");
         System.out.println("getCompanyByIDRaw                   : " + fCompany.getCompanyByIDRaw(25));
         System.out.println("getCompanyByCVR                     : " + fCompany.getCompanyByCVR(36069420));
-        System.out.println("getCompanyByEmail                   : " + fCompany.getCompanyByEmail("Company 0@Company 0.com"));
+        System.out.println("getCompanyByEmail                   : " + fCompany.getCompanyByEmail("Company0@Company0.com"));
         System.out.println("getCompanyByPhone                   : " + fCompany.getCompanyByPhone(fPhone.getPhoneByNumberRaw("21346578")));
         System.out.println("getAllCompanies                     : " + fCompany.getAllCompanies());
         //System.out.println("getAllCompaniesByAddress            : " + fCompany.getAllCompaniesByAddress(new AddressDTO(0, "Companystreet", "Tester")));

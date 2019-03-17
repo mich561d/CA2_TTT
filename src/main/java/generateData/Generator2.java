@@ -43,7 +43,7 @@ public class Generator2 {
             String firstName = FIRSTNAMES[rand.nextInt(FIRSTNAMES.length)];
             String lastName = LASTNAMES[rand.nextInt(LASTNAMES.length)];
             ArrayList<Hobby> hobbies = new ArrayList();
-            String email = "" + firstName + "@" + lastName + ".com";
+            String email = "" + firstName + i + "@" + lastName + ".com";
             ArrayList<Phone> phones = new ArrayList();
             Address address = new Address();
 
