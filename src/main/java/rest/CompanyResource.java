@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import dto.AddressDTO;
 import dto.CompanyDTO;
 import entity.Company;
+import exceptions.Entity2NotFoundException;
 import facade.FCityInfo;
 import facade.FCompany;
 import facade.FPhone;
@@ -43,15 +44,23 @@ public class CompanyResource {
     @GET
     @Path("/Email/{email}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCompanyByEmail(@PathParam("email") String email) {
-        return Response.ok().entity(gson.toJson(fCompany.getCompanyByEmail(email))).build();
+    public Response getCompanyByEmail(@PathParam("email") String email) throws Entity2NotFoundException {
+        try {
+            return Response.ok().entity(gson.toJson(fCompany.getCompanyByEmail(email))).build();
+        } catch (IllegalArgumentException e) {
+            throw new Entity2NotFoundException("Company with that email not found.");
+        }
     }
 
     @GET
     @Path("/Phone/{number}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCompanyByPhone(@PathParam("number") String number) {
-        return Response.ok().entity(gson.toJson(fCompany.getCompanyByPhone(fPhone.getPhoneByNumberRaw(number)))).build();
+    public Response getCompanyByPhone(@PathParam("number") String number) throws Entity2NotFoundException {
+        try {
+            return Response.ok().entity(gson.toJson(fCompany.getCompanyByPhone(fPhone.getPhoneByNumberRaw(number)))).build();
+        } catch (IllegalArgumentException e) {
+            throw new Entity2NotFoundException("Company with that phone not found.");
+        }
     }
 
     @GET
