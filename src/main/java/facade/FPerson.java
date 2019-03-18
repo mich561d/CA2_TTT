@@ -121,11 +121,10 @@ public class FPerson implements IPerson {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            Person p = getPersonByIDRaw(updatedPerson.getId());
+            Person p = em.find(Person.class, updatedPerson.getId());
             p.setEmail(updatedPerson.getEmail());
             p.setFirstName(updatedPerson.getFirstName());
             p.setLastName(updatedPerson.getLastName());
-            em.persist(p);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -136,7 +135,7 @@ public class FPerson implements IPerson {
     @Override
     public void deletePersonById(int id) {
         EntityManager em = emf.createEntityManager();
-        Person p = getPersonByIDRaw(id);
+        Person p = em.find(Person.class, id);
         try {
             em.getTransaction().begin();
             em.remove(p);

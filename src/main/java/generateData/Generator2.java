@@ -122,8 +122,8 @@ public class Generator2 {
         programmingHobby.add(hobby);
         for (int i = 0; i < persons.size(); i++) {
             if (i < 9) {
+                persons.get(i).getAddress().setCityInfo(city);
                 if (!persons.get(i).getHobbies().contains(hobby)) {
-                    persons.get(i).getAddress().setCityInfo(city);
                     persons.get(i).setHobbies(programmingHobby);
                 }
             } else {

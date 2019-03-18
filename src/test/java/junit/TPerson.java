@@ -1,6 +1,7 @@
 package junit;
 
 import dto.AddressDTO;
+import dto.CityInfoDTO;
 import dto.HobbyDTO;
 import dto.PersonDTO;
 import dto.PhoneDTO;
@@ -25,7 +26,7 @@ import org.junit.BeforeClass;
  * @author Michael, Christian
  */
 public class TPerson {
-    
+
     private static EntityManagerFactory emf;
     private static FPerson facade;
     private static List<Person> persons;
@@ -76,12 +77,12 @@ public class TPerson {
         assertEquals(9, person.size());
     }
 
-//    @Test
-//    public void getAllPersonsByCity() {
-//        List<PersonDTO> person = facade.getAllPersonsByCity(new CityInfoDTO(14, "2600", "Glostrup"));
-//        assertEquals(10, person.size());
-//
-//    }
+    @Test
+    public void getAllPersonsByCity() {
+        List<PersonDTO> person = facade.getAllPersonsByCity(new CityInfoDTO(14, "2600", "Glostrup"));
+        assertEquals(9, person.size());
+
+    }
 
     @Test
     public void getAllPersonsByAddress() {
@@ -90,22 +91,32 @@ public class TPerson {
     }
 
     @Test
-    public void createPerson() {
-        List<PersonDTO> csBefore = facade.getAllPersons();
+    public void createAndDeletePerson() {
+        List<PersonDTO> pBefore = facade.getAllPersons();
+        //creating person
         List<Hobby> hobby = new ArrayList();
         List<Phone> phones = new ArrayList();
         Phone phone = new Phone("12345678", "Call the test person");
         phones.add(phone);
         Address address = new Address("Testervej 1", "Test personer bor her", new FCityInfo(emf).getAllCitiesRaw().get(4));
-        
         Person p = new Person("Test", "Testsen", hobby, "test@test.dk", phones, address);
+        PersonDTO dto = facade.createPerson(p);
+        //delete person
+        List<PersonDTO> pAfter = facade.getAllPersons();
+        assertEquals(pBefore.size() + 1, pAfter.size());
+
+        facade.deletePersonById(dto.getId());
+        List<PersonDTO> pAfter2 = facade.getAllPersons();
+        assertEquals(pBefore.size(), pAfter2.size());
     }
 
     @Test
     public void updatePerson() {
-    }
-
-    @Test
-    public void deletePerson() {
+        PersonDTO pBefore = facade.getPersonByPhone(new PhoneDTO("12435687", "test"));
+        String newValue = "Karl Oskar";
+        pBefore.setFirstName(newValue);
+        PersonDTO test = facade.updatePerson(pBefore);
+        PersonDTO pAfter = facade.getPersonByPhone(new PhoneDTO("12435687", "test"));
+        assertEquals(pBefore.getFirstName(), pAfter.getFirstName());
     }
 }
