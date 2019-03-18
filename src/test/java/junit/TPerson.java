@@ -7,6 +7,7 @@ import dto.PersonDTO;
 import dto.PhoneDTO;
 import entity.Company;
 import entity.Person;
+import entity.Phone;
 import static entity.db.InfoEntity_.email;
 import facade.FCompany;
 import facade.FPerson;
@@ -92,8 +93,12 @@ public class TPerson {
 
     @Test
     public void createPerson() {
+        List<PersonDTO> csBefore = facade.getAllPersons();
         List<HobbyDTO> hobby = new ArrayList();
-        //Person p = new Person("Test", "Testsen", hobby, "test@test.dk", "12345678", "Testervej 1");
+        List<Phone> phones = new ArrayList();
+        Phone phone = new Phone("12345678", "Call the test person");
+        
+        //Person p = new Person("Test", "Testsen", hobby, "test@test.dk", "phone", "Testervej 1");
     }
 
     @Test
