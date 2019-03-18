@@ -17,6 +17,11 @@ public class PhoneDTO {
         this.infoEntityID = infoEntityID;
     }
 
+    public PhoneDTO(String number, String description) {
+        this.number = number;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }

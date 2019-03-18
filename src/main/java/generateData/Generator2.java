@@ -36,6 +36,8 @@ public class Generator2 {
         Random rand = new Random();
 
         List<CityInfo> allZipCodes = cityInfoFacade.getAllCitiesRaw();
+        CityInfo city = cityInfoFacade.getCityByZipRAW("2600");
+        allZipCodes.remove(city);
         int phoneNumber = 50000000;
 
         for (int i = 0; i < amountOfPersons; i++) {
@@ -109,6 +111,8 @@ public class Generator2 {
         //ArrayList<Person> entities = new ArrayList();
         IHobby hobbyFacade = new FHobby(emf);
         Hobby hobby = hobbyFacade.getHobbyByIDRaw(hobbyFacade.getHobbyByName("Programming").getId());
+        ICityInfo cityInfoFacade = new FCityInfo(emf);
+        CityInfo city = cityInfoFacade.getCityByZipRAW("2600");
 
         List<Person> persons = generateRandomPersons(20);
 
@@ -119,6 +123,7 @@ public class Generator2 {
         for (int i = 0; i < persons.size(); i++) {
             if (i < 9) {
                 if (!persons.get(i).getHobbies().contains(hobby)) {
+                    persons.get(i).getAddress().setCityInfo(city);
                     persons.get(i).setHobbies(programmingHobby);
                 }
             } else {
