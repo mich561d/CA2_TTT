@@ -152,12 +152,9 @@ public class TCompany {
     @Test
     public void testUpdateCompany() {
         CompanyDTO cBefore = facade.getCompanyByCVR(36069420);
-        System.out.println("Name 1:" + cBefore.getName());
         String newValue = "NewName A/S";
         cBefore.setName(newValue);
-        System.out.println("Name 2:" + cBefore.getName());
         CompanyDTO test = facade.updateCompany(cBefore);
-        System.out.println("Name 3:" + test.getName());
         CompanyDTO cAfter = facade.getCompanyByCVR(36069420);
         assertEquals(cBefore.getName(), cAfter.getName());
     }
