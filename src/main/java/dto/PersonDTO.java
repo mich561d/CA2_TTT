@@ -1,8 +1,5 @@
 package dto;
 
-import entity.Hobby;
-import entity.Phone;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -1,10 +1,8 @@
 package junit;
 
 import dto.HobbyDTO;
-import entity.Company;
 import entity.Hobby;
 import entity.Person;
-import facade.FCompany;
 import facade.FHobby;
 import facade.FPerson;
 import generateData.Generator2;
@@ -15,7 +13,6 @@ import javax.persistence.Persistence;
 import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Before;
 import org.junit.BeforeClass;
 
 /**

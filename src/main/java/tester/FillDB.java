@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Fen
+ * @author Mads
  */
 public class FillDB {
 
