@@ -12,8 +12,8 @@ import javax.ws.rs.ext.Provider;
  *
  * @author Fen
  */
-@Provider  //This will ensure that the filter is used "automatically"
-@PreMatching
+//@Provider  //This will ensure that the filter is used "automatically"
+//@PreMatching
 public class CorsRequestFilter implements ContainerRequestFilter {
 
     private final static Logger log = Logger.getLogger(CorsRequestFilter.class.getName());
