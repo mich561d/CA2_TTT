@@ -66,8 +66,12 @@ public class CompanyResource {
     @GET
     @Path("/CVR/{cvr}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCompanyByCVR(@PathParam("cvr") int cvr) {
+    public Response getCompanyByCVR(@PathParam("cvr") int cvr) throws Entity2NotFoundException {
+        try {
         return Response.ok().entity(gson.toJson(fCompany.getCompanyByCVR(cvr))).build();
+        } catch (IllegalArgumentException e) {
+            throw new Entity2NotFoundException("Company with that CVR not found.");
+        }
     }
 
     @GET
@@ -80,8 +84,12 @@ public class CompanyResource {
     @GET
     @Path("/City/{zipcode}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCompanyByZipCode(@PathParam("zipcode") String number) {
+    public Response getCompanyByZipCode(@PathParam("zipcode") String number) throws Entity2NotFoundException {
+        try {
         return Response.ok().entity(gson.toJson(fCompany.getAllCompaniessByCity(fCity.getCityByZip(number)))).build();
+        } catch (IllegalArgumentException e) {
+            throw new Entity2NotFoundException("Company with that phone not found.");
+        }
     }
 
     @GET
